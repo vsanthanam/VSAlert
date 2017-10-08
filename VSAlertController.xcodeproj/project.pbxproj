@@ -6,20 +6,46 @@
 	objectVersion = 48;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		0710F9991F8AD45A00C6D084 /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0710F99A1F8AD45A00C6D084 /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				0710F99F1F8AD47C00C6D084 /* ShellScript */,
+			);
+			dependencies = (
+				0710F99E1F8AD46400C6D084 /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
+		0710F9881F8ACBA200C6D084 /* AlertExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0710F9871F8ACBA200C6D084 /* AlertExampleViewController.m */; };
+		0710F9931F8AD22900C6D084 /* VSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 07F00F081F8A9773006FAC96 /* VSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0710F9941F8AD22B00C6D084 /* VSAlertAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 07F00F0C1F8A9A47006FAC96 /* VSAlertAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07F00EE81F8A96F4006FAC96 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F00EE71F8A96F4006FAC96 /* AppDelegate.m */; };
-		07F00EEB1F8A96F4006FAC96 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F00EEA1F8A96F4006FAC96 /* ViewController.m */; };
 		07F00EEE1F8A96F4006FAC96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07F00EEC1F8A96F4006FAC96 /* Main.storyboard */; };
 		07F00EF01F8A96F4006FAC96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F00EEF1F8A96F4006FAC96 /* Assets.xcassets */; };
 		07F00EF31F8A96F4006FAC96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07F00EF11F8A96F4006FAC96 /* LaunchScreen.storyboard */; };
 		07F00EF61F8A96F4006FAC96 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F00EF51F8A96F4006FAC96 /* main.m */; };
-		07F00F031F8A972D006FAC96 /* VSAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F00F021F8A972D006FAC96 /* VSAlert.m */; };
 		07F00F041F8A972D006FAC96 /* VSAlert.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07F00F011F8A972D006FAC96 /* VSAlert.h */; };
 		07F00F0A1F8A9773006FAC96 /* VSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F00F091F8A9773006FAC96 /* VSAlertController.m */; };
 		07F00F0B1F8A9773006FAC96 /* VSAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F00F091F8A9773006FAC96 /* VSAlertController.m */; };
 		07F00F0E1F8A9A47006FAC96 /* VSAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F00F0D1F8A9A47006FAC96 /* VSAlertAction.m */; };
 		07F00F0F1F8A9A47006FAC96 /* VSAlertAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F00F0D1F8A9A47006FAC96 /* VSAlertAction.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0710F99D1F8AD46400C6D084 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07F00ED91F8A96D9006FAC96 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07F00EFE1F8A972D006FAC96;
+			remoteInfo = VSAlert;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		07F00EFD1F8A972D006FAC96 /* CopyFiles */ = {
@@ -35,11 +61,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0710F9861F8ACBA200C6D084 /* AlertExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertExampleViewController.h; sourceTree = "<group>"; };
+		0710F9871F8ACBA200C6D084 /* AlertExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertExampleViewController.m; sourceTree = "<group>"; };
+		0710F9A01F8AD60000C6D084 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		07F00EE31F8A96F4006FAC96 /* VSAlertController-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VSAlertController-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F00EE61F8A96F4006FAC96 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		07F00EE71F8A96F4006FAC96 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		07F00EE91F8A96F4006FAC96 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		07F00EEA1F8A96F4006FAC96 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		07F00EED1F8A96F4006FAC96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		07F00EEF1F8A96F4006FAC96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07F00EF21F8A96F4006FAC96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,7 +74,6 @@
 		07F00EF51F8A96F4006FAC96 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		07F00EFF1F8A972D006FAC96 /* libVSAlert.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVSAlert.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F00F011F8A972D006FAC96 /* VSAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSAlert.h; sourceTree = "<group>"; };
-		07F00F021F8A972D006FAC96 /* VSAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSAlert.m; sourceTree = "<group>"; };
 		07F00F081F8A9773006FAC96 /* VSAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSAlertController.h; sourceTree = "<group>"; };
 		07F00F091F8A9773006FAC96 /* VSAlertController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSAlertController.m; sourceTree = "<group>"; };
 		07F00F0C1F8A9A47006FAC96 /* VSAlertAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSAlertAction.h; sourceTree = "<group>"; };
@@ -94,8 +120,8 @@
 		0710F9801F8ACA5A00C6D084 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				07F00EE91F8A96F4006FAC96 /* ViewController.h */,
-				07F00EEA1F8A96F4006FAC96 /* ViewController.m */,
+				0710F9861F8ACBA200C6D084 /* AlertExampleViewController.h */,
+				0710F9871F8ACBA200C6D084 /* AlertExampleViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -186,12 +212,24 @@
 			isa = PBXGroup;
 			children = (
 				07F00F011F8A972D006FAC96 /* VSAlert.h */,
-				07F00F021F8A972D006FAC96 /* VSAlert.m */,
+				0710F9A01F8AD60000C6D084 /* module.modulemap */,
 			);
 			path = "VSAlertController-StaticFramework";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0710F9921F8AD22200C6D084 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0710F9931F8AD22900C6D084 /* VSAlertController.h in Headers */,
+				0710F9941F8AD22B00C6D084 /* VSAlertAction.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		07F00EE21F8A96F4006FAC96 /* VSAlertController-Example */ = {
@@ -218,6 +256,8 @@
 				07F00EFB1F8A972D006FAC96 /* Sources */,
 				07F00EFC1F8A972D006FAC96 /* Frameworks */,
 				07F00EFD1F8A972D006FAC96 /* CopyFiles */,
+				0710F9921F8AD22200C6D084 /* Headers */,
+				0710F9951F8AD29600C6D084 /* Build Framework */,
 			);
 			buildRules = (
 			);
@@ -236,6 +276,10 @@
 			attributes = {
 				LastUpgradeCheck = 0900;
 				TargetAttributes = {
+					0710F9991F8AD45A00C6D084 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
 					07F00EE21F8A96F4006FAC96 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
@@ -261,6 +305,7 @@
 			targets = (
 				07F00EE21F8A96F4006FAC96 /* VSAlertController-Example */,
 				07F00EFE1F8A972D006FAC96 /* VSAlert */,
+				0710F9991F8AD45A00C6D084 /* Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -278,13 +323,43 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0710F9951F8AD29600C6D084 /* Build Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nexport FRAMEWORK_LOCN=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework\"\n# Create the path to the real Headers die\nmkdir -p \"${FRAMEWORK_LOCN}/Versions/A/Headers\"\nmkdir -p \"${FRAMEWORK_LOCN}/Modules\"\n# Create the required symlinks\n/bin/ln -sfh A \"${FRAMEWORK_LOCN}/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${FRAMEWORK_LOCN}/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \\\n\"${FRAMEWORK_LOCN}/${PRODUCT_NAME}\"\n# Copy the public headers into the framework\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \\\n\"${FRAMEWORK_LOCN}/Versions/A/Headers\"";
+		};
+		0710F99F1F8AD47C00C6D084 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n# If we're already inside this script then die\nif [ -n \"$MULTIPLATFORM_BUILD_IN_PROGRESS\" ]; then\nexit 0\nfi\nexport MULTIPLATFORM_BUILD_IN_PROGRESS=1\nFRAMEWORK_NAME=\"VSAlert\"\nINPUT_STATIC_LIB=\"lib${FRAMEWORK_NAME}.a\"\nFRAMEWORK_LOCATION=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORK_NAME}.framework\"\nfunction build_static_library {\n    # Will rebuild the static library as specified\n    #     build_static_library sdk\n    xcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" \\\n    -target \"${TARGET_NAME}\" \\\n    -configuration \"${CONFIGURATION}\" \\\n    -sdk \"${1}\" \\\n    ONLY_ACTIVE_ARCH=NO \\\n    BUILD_DIR=\"${BUILD_DIR}\" \\\n    OBJROOT=\"${OBJROOT}\" \\\n    BUILD_ROOT=\"${BUILD_ROOT}\" \\\n    SYMROOT=\"${SYMROOT}\" $ACTION\n}\nfunction make_fat_library {\n    # Will smash 2 static libs together\n    #     make_fat_library in1 in2 out\n    xcrun lipo -create \"${1}\" \"${2}\" -output \"${3}\"\n}\n# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]; then\nSDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n# 2 - Extract the version from the SDK\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]; then\nSDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n# 3 - Determine the other platform\nif [ \"$SDK_PLATFORM\" == \"iphoneos\" ]; then\nOTHER_PLATFORM=iphonesimulator\nelse\nOTHER_PLATFORM=iphoneos\nfi\n# 4 - Find the build directory\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SDK_PLATFORM$ ]]; then\nOTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${OTHER_PLATFORM}\"\nelse\necho \"Could not find other platform build directory.\"\nexit 1\nfi\n# Build the other platform.\nbuild_static_library \"${OTHER_PLATFORM}${SDK_VERSION}\"\n# If we're currently building for iphonesimulator, then need to rebuild\n#   to ensure that we get both i386 and x86_64\nif [ \"$SDK_PLATFORM\" == \"iphonesimulator\" ]; then\nbuild_static_library \"${SDK_NAME}\"\nfi\n# Join the 2 static libs into 1 and push into the .framework\nmake_fat_library \"${BUILT_PRODUCTS_DIR}/${INPUT_STATIC_LIB}\" \\\n\"${OTHER_BUILT_PRODUCTS_DIR}/${INPUT_STATIC_LIB}\" \\\n\"${FRAMEWORK_LOCATION}/Versions/A/${FRAMEWORK_NAME}\"\n# Ensure that the framework is present in both platform's build directories\ncp -a \"${FRAMEWORK_LOCATION}/Versions/A/${FRAMEWORK_NAME}\" \\\n\"${OTHER_BUILT_PRODUCTS_DIR}/${FRAMEWORK_NAME}.framework/Versions/A/${FRAMEWORK_NAME}\"\n# Copy the framework to the user's desktop\nditto \"${FRAMEWORK_LOCATION}\" \"${PROJECT_DIR}/Release/${FRAMEWORK_NAME}.framework\"\nditto \"${PROJECT_DIR}/VSAlertController-StaticFramework/module.modulemap\" \"${PROJECT_DIR}/Release/${FRAMEWORK_NAME}.framework/Modules\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		07F00EDF1F8A96F4006FAC96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07F00EEB1F8A96F4006FAC96 /* ViewController.m in Sources */,
 				07F00F0E1F8A9A47006FAC96 /* VSAlertAction.m in Sources */,
+				0710F9881F8ACBA200C6D084 /* AlertExampleViewController.m in Sources */,
 				07F00EF61F8A96F4006FAC96 /* main.m in Sources */,
 				07F00EE81F8A96F4006FAC96 /* AppDelegate.m in Sources */,
 				07F00F0A1F8A9773006FAC96 /* VSAlertController.m in Sources */,
@@ -295,13 +370,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07F00F031F8A972D006FAC96 /* VSAlert.m in Sources */,
 				07F00F0F1F8A9A47006FAC96 /* VSAlertAction.m in Sources */,
 				07F00F0B1F8A9773006FAC96 /* VSAlertController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0710F99E1F8AD46400C6D084 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07F00EFE1F8A972D006FAC96 /* VSAlert */;
+			targetProxy = 0710F99D1F8AD46400C6D084 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		07F00EEC1F8A96F4006FAC96 /* Main.storyboard */ = {
@@ -323,6 +405,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0710F99B1F8AD45A00C6D084 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y88YPD4RJA;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				VALID_ARCHS = "armv7s armv7 arm64";
+			};
+			name = Debug;
+		};
+		0710F99C1F8AD45A00C6D084 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y88YPD4RJA;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				VALID_ARCHS = "armv7s armv7 arm64";
+			};
+			name = Release;
+		};
 		07F00EDD1F8A96D9006FAC96 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -487,6 +595,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = Y88YPD4RJA;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -505,13 +614,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -548,6 +659,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = Y88YPD4RJA;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -560,12 +672,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "include/$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -574,6 +688,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0710F99A1F8AD45A00C6D084 /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0710F99B1F8AD45A00C6D084 /* Debug */,
+				0710F99C1F8AD45A00C6D084 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		07F00EDC1F8A96D9006FAC96 /* Build configuration list for PBXProject "VSAlertController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

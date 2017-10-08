@@ -27,14 +27,46 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
 };
 
 /**
- VSAlertController is a drop-in replacement for UIAlertController with a bit more customization and better looks. It's largely based on Codeido's PMAlertController, but has been re-written in Objective-C rather than Swift, and supports a few more features like dynamically sorted alert actions and a "destructive" action style that was missing in PMAlertController. It doesn't requrie a separate XIB file for better potability, and uses the system font by default for a more vanilla look (which you can obviously customize)
+ VSAlertController is a drop-in replacement for UIAlertController with a bit more customization and better looks. It's largely based on Codeido's PMAlertController, but has been re-written in Objective-C rather than Swift, and supports a few more features like dynamically sorted alert actions and a "destructive" action style that was missing in PMAlertController. It doesn't requrie a separate XIB file for better potability, and uses the system font by default for a more vanilla look. VSAlertController can can be customized at the class level, so you can make any/all UI changes once.
  */
 @interface VSAlertController : UIViewController
+
+/**
+ @name Class Properties
+ */
+
+/**
+The color of the title text used by alert controllers. The default value is nil. If nil is specified when an alert controller is displayed, VSAlertController.textColor's value is used instead. (Class property, applies to all instances created after change)
+*/
+@property (class, nullable) UIColor *titleTextColor;
+
+/**
+ The color of the text used by alert controllers. (Class property, applies to all instances created after change)
+ */
+@property (class, nonnull) UIColor *textColor;
+
+/**
+ The font of the title used by alert controllers. The default value is the system font at size 17.0f. (Class property, applies to all instances created after change)
+ */
+@property (class, nonnull) UIFont *titleTextFont;
+
+/**
+ The font of the text used by alert controllers. The default value is the the system font at size 15.0f (Class property, applies to all instances created after change)
+ */
+@property (class, nonnull) UIFont *textFont;
+
+/**
+ @name Instance Properties
+ */
 
 /**
  An array of UITextFields visible on the alert
  */
 @property (NS_NONATOMIC_IOSONLY, strong, readonly, nonnull) NSArray<UITextField *> *textFields;
+
+/**
+ @name Class Methods
+ */
 
 /**
  A factory method to create a new alert. The alert is dynamically sized based on your initialization paramaters
@@ -46,6 +78,15 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
  @return The initialized alert controller.
  */
 + (nullable instancetype)alertControllerWithTitle:(nullable NSString *)title description:(nullable NSString *)description image:(nullable UIImage *)image style:(VSAlertControllerStyle)style;
+
+/**
+ Reset class property customization to its default settings
+ */
++ (void)resetStyleToDefaults;
+
+/**
+ @name Instance Methods
+ */
 
 /**
  Create a new alert controller
