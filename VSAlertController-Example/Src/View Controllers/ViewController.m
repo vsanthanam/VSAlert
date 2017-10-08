@@ -44,12 +44,19 @@
     
     VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
                                                           style:VSAlertActionStyleCancel
-                                                         action:nil];
-//    action.backgroundColor = [UIColor redColor];
+                                                         action:^(VSAlertAction *action) {
+                                                             
+                                                             NSLog(@"Cancelled");
+                                                             
+                                                         }];
+    
     VSAlertAction *action2 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Confirm", nil)
                                                            style:VSAlertActionStyleDefault
-                                                          action:nil];
-//    action2.backgroundColor = [UIColor blueColor];
+                                                          action:^(VSAlertAction *action) {
+                                                              
+                                                              NSLog(@"%@", controller.textFields[0].text);
+                                                              
+                                                          }];
     [controller addAction:action];
     [controller addAction:action2];
     [self presentViewController:controller

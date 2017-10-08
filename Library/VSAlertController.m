@@ -11,7 +11,7 @@
 
 NSString * const VSAlertActionNotImplementedException = @"VSAlertActionNotImplementedException";
 
-@interface VSAlertController ()<UITextFieldDelegate>
+@interface VSAlertController ()
 
 @property (NS_NONATOMIC_IOSONLY, strong) UIImageView *alertMaskBackground;
 @property (NS_NONATOMIC_IOSONLY, strong) UIView *alertView;
@@ -209,15 +209,15 @@ NSString * const VSAlertActionNotImplementedException = @"VSAlertActionNotImplem
 - (void)addTextField:(void (^)(UITextField *))configuration {
     
     UITextField *textField = [[UITextField alloc] init];
-    textField.delegate = self;
     textField.returnKeyType = UIReturnKeyDone;
     textField.font = [UIFont systemFontOfSize:17.0f];
     textField.textAlignment = NSTextAlignmentCenter;
+    [textField addTarget:self
+                  action:@selector(_closeKeyboard:)
+        forControlEvents:UIControlEventEditingDidEndOnExit];
     configuration(textField);
     
     _textFields = [_textFields arrayByAddingObject:textField];
-    
-//    [self _addTextField:textField];
     
 }
 
@@ -738,6 +738,12 @@ NSString * const VSAlertActionNotImplementedException = @"VSAlertActionNotImplem
     }
     
     [self _dismissAlertController:sender];
+    
+}
+
+- (void)_closeKeyboard:(id)sender {
+    
+    [sender resignFirstResponder];
     
 }
 

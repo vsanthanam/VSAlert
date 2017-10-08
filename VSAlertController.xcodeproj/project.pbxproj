@@ -72,6 +72,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0710F97E1F8ACA4A00C6D084 /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				0710F9841F8ACA9F00C6D084 /* Supporting */,
+				0710F9831F8ACA9800C6D084 /* Other Classes */,
+				0710F9801F8ACA5A00C6D084 /* View Controllers */,
+			);
+			path = Src;
+			sourceTree = "<group>";
+		};
+		0710F97F1F8ACA5400C6D084 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				0710F9821F8ACA8A00C6D084 /* Asset Catalogues */,
+				0710F9811F8ACA6600C6D084 /* Storyboards */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		0710F9801F8ACA5A00C6D084 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				07F00EE91F8A96F4006FAC96 /* ViewController.h */,
+				07F00EEA1F8A96F4006FAC96 /* ViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		0710F9811F8ACA6600C6D084 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				07F00EF11F8A96F4006FAC96 /* LaunchScreen.storyboard */,
+				07F00EEC1F8A96F4006FAC96 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		0710F9821F8ACA8A00C6D084 /* Asset Catalogues */ = {
+			isa = PBXGroup;
+			children = (
+				07F00EEF1F8A96F4006FAC96 /* Assets.xcassets */,
+			);
+			path = "Asset Catalogues";
+			sourceTree = "<group>";
+		};
+		0710F9831F8ACA9800C6D084 /* Other Classes */ = {
+			isa = PBXGroup;
+			children = (
+				07F00EE61F8A96F4006FAC96 /* AppDelegate.h */,
+				07F00EE71F8A96F4006FAC96 /* AppDelegate.m */,
+			);
+			path = "Other Classes";
+			sourceTree = "<group>";
+		};
+		0710F9841F8ACA9F00C6D084 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				07F00EF51F8A96F4006FAC96 /* main.m */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		0710F9851F8ACAA700C6D084 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				07F00EF41F8A96F4006FAC96 /* Info.plist */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
 		07F00ED81F8A96D9006FAC96 = {
 			isa = PBXGroup;
 			children = (
@@ -94,15 +164,9 @@
 		07F00EE51F8A96F4006FAC96 /* VSAlertController-Example */ = {
 			isa = PBXGroup;
 			children = (
-				07F00EE61F8A96F4006FAC96 /* AppDelegate.h */,
-				07F00EE71F8A96F4006FAC96 /* AppDelegate.m */,
-				07F00EE91F8A96F4006FAC96 /* ViewController.h */,
-				07F00EEA1F8A96F4006FAC96 /* ViewController.m */,
-				07F00EEC1F8A96F4006FAC96 /* Main.storyboard */,
-				07F00EEF1F8A96F4006FAC96 /* Assets.xcassets */,
-				07F00EF11F8A96F4006FAC96 /* LaunchScreen.storyboard */,
-				07F00EF41F8A96F4006FAC96 /* Info.plist */,
-				07F00EF51F8A96F4006FAC96 /* main.m */,
+				0710F9851F8ACAA700C6D084 /* Supporting */,
+				0710F97F1F8ACA5400C6D084 /* UI */,
+				0710F97E1F8ACA4A00C6D084 /* Src */,
 			);
 			path = "VSAlertController-Example";
 			sourceTree = "<group>";
@@ -322,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "VSAlertController-Example/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/VSAlertController-Example/Supporting/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -379,7 +443,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "VSAlertController-Example/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/VSAlertController-Example/Supporting/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
