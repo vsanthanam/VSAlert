@@ -1,24 +1,24 @@
 # VSAlertController
 An drop-in replacement for UIAlertController that looks a hell of a lot better, built in Objective-C. Based on Codedio's aweomse Swift library, PMAlertController (https://github.com/Codeido/PMAlertController).
 
-Like PMAlertController, VSAlertController builds on the functionality of UIAlertController by adding
+Like PMAlertController, VSAlertController builds on the functionality of UIAlertController by adding:
 
-1. Built-in support for images in the heading of the alert
-2. Much better animation
-3. Much more flexible customization, because alert actions are subclasses of UIButton.
+* Built-in support for images in the heading of the alert
+* Much better animation
+* Much more flexible customization, because alert actions are subclasses of UIButton.
 
 VSAlertController differs from PMAlertController in a few ways:
 
 1. VSAlertController doesn't build it's UI using a XIB file, which makes it a little bit more portable and easier to manage.
 2. VSAlertController is written in Objective-C rather than Swift (but is marked up using nullability for easy use in Swift)
 3. VSAlertController allows for a bit more customization without actually changing the library.
-4. VSAlertController adds the "destructive" action style from apple's UIAlertController that was missing in PMAlertController
+4. VSAlertController adds the "destructive" action style from Apple's UIAlertController that was missing in PMAlertController
 5. VSAlertController doesn't add actions and text fields in the order you create them, but rather in a dynamic order based on how many there are and what "style" they are (again, like Apple's UIAlertController)
-6. VSAlertController doesn't rely on UITextFieldDelegate, so you can freely assign your UITextFields `.delegate` property without fear and the library will continue to work as expected.
-6. VSAlertController executes action blocks on the main-thread, to allow for UI actions and not get caught up by the main-thread checker in Xcode 9.
+6. VSAlertController doesn't rely on UITextFieldDelegate, so you can freely assign your UITextField's `.delegate` property without fear and the library will continue to work as expected.
+6. VSAlertController executes action blocks on the main-thread, to allow for UI actions and not get caught up by the main thread checker in Xcode 9.
 
 ## Just Give Me The Code
-VSAlertController is packaged as a static library (with slices for all modern iPhones and the similulator), but four files for the two classes that comprise the library are also available. Open the xcode project, and build the "Framework" target if you want to re-compile the static library. The library is built as a module, so you can use the `@import module;` syntax 
+VSAlertController is packaged as a static library (with slices for all modern iPhones and the simulator), but the four files for the two classes that comprise the library are also available in the repo. Open the project, build the "Framework" target if you want to re-compile the static library. The framework is built as a clang module, so you can use the `@import module;` syntax. (More info here: https://clang.llvm.org/docs/Modules.html)
 
 ## Getting Started (Static Framework)
 

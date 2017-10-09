@@ -66,6 +66,8 @@
 		0710F9871F8ACBA200C6D084 /* AlertExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertExampleViewController.m; sourceTree = "<group>"; };
 		0710F9A01F8AD60000C6D084 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		0710F9A71F8AFB5100C6D084 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
+		0710F9A91F8B09FB00C6D084 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0710F9AA1F8B0A0600C6D084 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		07F00EE31F8A96F4006FAC96 /* VSAlertController-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VSAlertController-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F00EE61F8A96F4006FAC96 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		07F00EE71F8A96F4006FAC96 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -182,6 +184,8 @@
 		07F00ED81F8A96D9006FAC96 = {
 			isa = PBXGroup;
 			children = (
+				0710F9A91F8B09FB00C6D084 /* README.md */,
+				0710F9AA1F8B0A0600C6D084 /* LICENSE */,
 				07F00EFA1F8A96FB006FAC96 /* Library */,
 				07F00EE51F8A96F4006FAC96 /* VSAlertController-Example */,
 				07F00F001F8A972D006FAC96 /* VSAlertController-StaticFramework */,
