@@ -13,7 +13,6 @@ NSString * const VSAlertActionNotImplementedException = @"VSAlertActionNotImplem
 
 @interface VSAlertController ()
 
-@property (NS_NONATOMIC_IOSONLY, strong) UIImageView *alertMaskBackground;
 @property (NS_NONATOMIC_IOSONLY, strong) UIView *alertView;
 @property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertViewWidthConstraint;
 @property (NS_NONATOMIC_IOSONLY, strong) UIView *headerView;
@@ -339,8 +338,8 @@ static UIFont *_textFont;
 
 - (void)_setUpAlertMaskBackground {
     
-    self.alertMaskBackground = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.alertMaskBackground.backgroundColor = [UIColor colorWithRed:(85.0f/255.0f) green:(85.0f/255.0f) blue:(85.0f/255.0f) alpha:0.15f];
+    _alertMaskBackground = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.alertMaskBackground.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
     self.alertMaskBackground.translatesAutoresizingMaskIntoConstraints = NO;
     self.alertMaskBackground.userInteractionEnabled = YES;
     

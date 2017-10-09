@@ -64,6 +64,12 @@ The color of the title text used by alert controllers. The default value is nil.
  */
 @property (NS_NONATOMIC_IOSONLY, strong, readonly, nonnull) NSArray<UITextField *> *textFields;
 
+
+/**
+ The background view of the alert. It's default image is set to nil, and its default background color is set to #FFFFFF with an alpha component of 0.5. You can change it's background color or assign an image if you prefer an different background for your alert.
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, readonly, nonnull) UIImageView *alertMaskBackground;
+
 /**
  @name Class Methods
  */
