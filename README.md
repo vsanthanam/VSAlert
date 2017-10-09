@@ -16,6 +16,7 @@ VSAlertController differs from PMAlertController in a few ways:
 5. VSAlertController doesn't add actions and text fields in the order you create them, but rather in a dynamic order based on how many there are and what "style" they are (again, like Apple's UIAlertController)
 6. VSAlertController doesn't rely on UITextFieldDelegate, so you can freely assign your UITextField's `.delegate` property without fear and the library will continue to work as expected.
 6. VSAlertController executes action blocks on the main-thread, to allow for UI actions and not get caught up by the main thread checker in Xcode 9.
+7. VSAlertController adds the "Action Sheet" style from Apple's UIAlertController, missing from PMAlertController
 
 ## Just Give Me The Code
 VSAlertController is packaged as a static library (with slices for all modern iPhones and the simulator), but the four files for the two classes that comprise the library are also available in the repo. Open the project, build the "Framework" targetfor "Generic iOS Device"  if you want to re-compile the static library. The framework is built as a clang module, so you can use the `@import module;` syntax. (More info here: https://clang.llvm.org/docs/Modules.html)
@@ -57,7 +58,7 @@ The included Xcode project allows you to build the static library and an example
 @end
 ```
 
-Full documentation is available at https://vsanthanam.github.io/VSAlertController/
+Full documentation is available at https://vsanthanam.github.io/VSAlertController/docs
 
 ## Image Template
 
