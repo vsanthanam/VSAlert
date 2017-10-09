@@ -162,7 +162,7 @@ static os_log_t example_log;
                                                           description:NSLocalizedString(@"The operation couldn't be completed. Please try again later.", nil)
                                                                 image:nil
                                                                 style:VSAlertControllerStyleAlert];
-        VSAlertAction *okCancelAction = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
+                VSAlertAction *okCancelAction = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
                                                                       style:VSAlertActionStyleCancel
                                                                      action:nil];
         [alertController addAction:okCancelAction];
@@ -183,8 +183,6 @@ static os_log_t example_log;
                                                                    action:nil];
         [alertController addAction:action];
         [alertController addAction:cancelAction];
-        
-        
         
     }
     

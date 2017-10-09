@@ -45,6 +45,38 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
 };
 
 /**
+ An enumeration for the various ways that the alerd can animate off screen
+
+ - VSAlertControllerAnimationStyleNone: No Animation
+ - VSAlertControllerAnimationStyleGravityFall: Fall downwards with gravity
+ - VSAlertControllerAnimationStylePushDown: Push down linear
+ - VSAlertControllerAnimationStylePushLeftRight: Push left or right linear
+ */
+typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
+    
+    /**
+     No Animation
+     */
+    VSAlertControllerAnimationStyleNone,
+    
+    /**
+     Fall downwards with gravity
+     */
+    VSAlertControllerAnimationStyleGravityFall,
+    
+    /**
+     Push down linear
+     */
+    VSAlertControllerAnimationStylePushDown,
+    
+    /**
+     Push left or right linear
+     */
+    VSAlertControllerAnimationStylePushLeftRight,
+    
+};
+
+/**
  VSAlertController is a drop-in replacement for UIAlertController with a bit more customization and better looks. It's largely based on Codeido's PMAlertController, but has been re-written in Objective-C rather than Swift, and supports a few more features like dynamically sorted alert actions and a "destructive" action style that was missing in PMAlertController. It doesn't requrie a separate XIB file for better potability, and uses the system font by default for a more vanilla look. VSAlertController can can be customized at the class level, so you can make any/all UI changes once.
  */
 @interface VSAlertController : UIViewController
@@ -87,6 +119,11 @@ The color of the title text used by alert controllers. The default value is nil.
  The background view of the alert. It's default image is set to nil, and its default background color is set to #FFFFFF with an alpha component of 0.5. You can change it's background color or assign an image if you prefer an different background for your alert.
  */
 @property (NS_NONATOMIC_IOSONLY, strong, readonly, nonnull) UIImageView *alertMaskBackground;
+
+/**
+ The style of the animation when the alert disappears. The default selection is "gravity fall"
+ */
+@property (NS_NONATOMIC_IOSONLY, assign) VSAlertControllerAnimationStyle animationStyle;
 
 /**
  @name Class Methods
