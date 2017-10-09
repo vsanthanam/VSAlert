@@ -36,14 +36,24 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
  */
 
 /**
- The color of the text used by alert controllers. The default value is the system font at size 15. (Class property, applies to all instances created after change)
- */
-@property (NS_NONATOMIC_IOSONLY, class, nonnull) UIColor *textColor;
+The color of the title text used by alert controllers. The default value is nil. If nil is specified when an alert controller is displayed, VSAlertController.textColor's value is used instead. (Class property, applies to all instances created after change)
+*/
+@property (class, nullable) UIColor *titleTextColor;
 
 /**
- The color of the title text used by alert controllers. The default value is nil. If nil is specified when an alert controller is displayed, VSAlertController.textColor's value is used instead. (Class property, applies to all instances created after change)
+ The color of the text used by alert controllers. (Class property, applies to all instances created after change)
  */
-@property (NS_NONATOMIC_IOSONLY, class, nullable) UIColor *titleTextColor;
+@property (class, nonnull) UIColor *textColor;
+
+/**
+ The font of the title used by alert controllers. The default value is the system font at size 17.0f. (Class property, applies to all instances created after change)
+ */
+@property (class, nonnull) UIFont *titleTextFont;
+
+/**
+ The font of the text used by alert controllers. The default value is the the system font at size 15.0f (Class property, applies to all instances created after change)
+ */
+@property (class, nonnull) UIFont *textFont;
 
 /**
  @name Instance Properties
@@ -53,6 +63,12 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
  An array of UITextFields visible on the alert
  */
 @property (NS_NONATOMIC_IOSONLY, strong, readonly, nonnull) NSArray<UITextField *> *textFields;
+
+
+/**
+ The background view of the alert. It's default image is set to nil, and its default background color is set to #FFFFFF with an alpha component of 0.5. You can change it's background color or assign an image if you prefer an different background for your alert.
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, readonly, nonnull) UIImageView *alertMaskBackground;
 
 /**
  @name Class Methods
@@ -68,6 +84,11 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
  @return The initialized alert controller.
  */
 + (nullable instancetype)alertControllerWithTitle:(nullable NSString *)title description:(nullable NSString *)description image:(nullable UIImage *)image style:(VSAlertControllerStyle)style;
+
+/**
+ Reset class property customization to its default settings
+ */
++ (void)resetStyleToDefaults;
 
 /**
  @name Instance Methods

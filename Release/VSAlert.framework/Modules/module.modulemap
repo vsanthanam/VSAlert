@@ -1,6 +1,0 @@
-framework module VSAlert {
-    umbrella header "VSAlert.hh"
-    
-    export *
-    module * { export * }
-}
