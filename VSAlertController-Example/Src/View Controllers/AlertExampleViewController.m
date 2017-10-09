@@ -20,7 +20,8 @@ typedef NS_ENUM(NSInteger, AlertExampleViewControllerExampleType) {
     AlertExampleViewControllerExampleTypeTextField,
     AlertExampleViewControllerExampleTypeLogIn,
     AlertExampleViewControllerExampleTypeImageAlert,
-    AlertExampleViewControllerExampleTypeChangedCustomized
+    AlertExampleViewControllerExampleTypeChangedCustomized,
+    AlertExampleViewControllerExampleTypeActionSheet
     
 };
 
@@ -50,7 +51,8 @@ static os_log_t example_log;
                       @(AlertExampleViewControllerExampleTypeTextField),
                       @(AlertExampleViewControllerExampleTypeLogIn),
                       @(AlertExampleViewControllerExampleTypeImageAlert),
-                      @(AlertExampleViewControllerExampleTypeChangedCustomized)];
+                      @(AlertExampleViewControllerExampleTypeChangedCustomized),
+                      @(AlertExampleViewControllerExampleTypeActionSheet)];
     
 }
 
@@ -137,6 +139,12 @@ static os_log_t example_log;
     if (exampleType == AlertExampleViewControllerExampleTypeChangedCustomized) {
         
         cell.textLabel.text = NSLocalizedString(@"Customized (PMAlertController Demo)", nil);
+        
+    }
+    
+    if (exampleType == AlertExampleViewControllerExampleTypeActionSheet) {
+        
+        cell.textLabel.text = NSLocalizedString(@"Action Sheet", nil);
         
     }
     
@@ -341,6 +349,19 @@ static os_log_t example_log;
                           forState:UIControlStateNormal];
         [alertController addAction:closeAction];
         [alertController addAction:okCancelAction];
+        
+    }
+    
+    if (type == AlertExampleViewControllerExampleTypeActionSheet) {
+        
+        alertController = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Action Sheet", nil)
+                                                          description:NSLocalizedString(@"Messages", nil)
+                                                                image:nil
+                                                                style:VSAlertControllerStyleActionSheet];
+        VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
+                                                              style:VSAlertActionStyleDefault
+                                                             action:nil];
+        [alertController addAction:action];
         
     }
     

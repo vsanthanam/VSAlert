@@ -9,12 +9,15 @@
 
 #import "VSAlertController.h"
 
-NSString * const VSAlertActionNotImplementedException = @"VSAlertActionNotImplementedException";
+NSString * const VSAlertControllerNotImplementedException = @"VSAlertControllerNotImplementedException";
+NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControllerTextFieldInvalidException";
 
 @interface VSAlertController ()
 
 @property (NS_NONATOMIC_IOSONLY, strong) UIView *alertView;
 @property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertViewWidthConstraint;
+@property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertViewCenterYConstraint;
+@property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertViewBottomConstraint;
 @property (NS_NONATOMIC_IOSONLY, strong) UIView *headerView;
 @property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *headerViewHeightConstraint;
 @property (NS_NONATOMIC_IOSONLY, strong) UIImageView *alertImage;
@@ -156,15 +159,6 @@ static UIFont *_textFont;
 #pragma mark - Overridden Instance Methods
 
 - (void)viewDidLoad {
-
-    if (_style == VSAlertControllerStyleActionSheet) {
-        
-        // TODO: Implement Action Sheet
-        [NSException raise:VSAlertActionNotImplementedException format:@"Action Sheet Style Not Yet Implemented"];
-        
-        return;
-        
-    }
     
     [self _setUpAlertControllerUI];
     
@@ -183,6 +177,7 @@ static UIFont *_textFont;
     // Configure Constraints
     self.headerViewHeightConstraint.constant = (BOOL)self.alertImage.image ? self.headerViewHeightConstraint.constant : 0.0f;
     self.alertViewWidthConstraint.constant = _style == VSAlertControllerStyleAlert ? 270.0f : [UIScreen mainScreen].bounds.size.width - 36.0f;
+    _style == VSAlertControllerStyleActionSheet ? [self.view addConstraint:self.alertViewBottomConstraint] : [self.view addConstraint:self.alertViewCenterYConstraint];
     
     // Set Up Background Tap Gesture Recognizer
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -294,6 +289,12 @@ static UIFont *_textFont;
 
 - (void)addTextField:(void (^)(UITextField *))configuration {
     
+    if (_style == VSAlertControllerStyleActionSheet) {
+        
+        [NSException raise:VSAlertControllerTextFieldInvalidException format:@"You can't add text fields to an action sheet"];
+        
+    }
+    
     // Instantiate textfield rather than accepting textfield param
     UITextField *textField = [[UITextField alloc] init];
     
@@ -398,13 +399,6 @@ static UIFont *_textFont;
                                                             multiplier:1.0f
                                                               constant:0.0f],
                                 [NSLayoutConstraint constraintWithItem:self.alertView
-                                                             attribute:NSLayoutAttributeCenterY
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:self.view
-                                                             attribute:NSLayoutAttributeCenterY
-                                                            multiplier:1.0f
-                                                              constant:0.0f],
-                                [NSLayoutConstraint constraintWithItem:self.alertView
                                                              attribute:NSLayoutAttributeHeight
                                                              relatedBy:NSLayoutRelationGreaterThanOrEqual
                                                                 toItem:nil
@@ -421,6 +415,22 @@ static UIFont *_textFont;
                                                                   constant:357.0f];
     
     [self.view addConstraint:self.alertViewWidthConstraint];
+    
+    self.alertViewCenterYConstraint = [NSLayoutConstraint constraintWithItem:self.alertView
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                  multiplier:1.0f
+                                                                    constant:0.0f];
+    
+    self.alertViewBottomConstraint = [NSLayoutConstraint constraintWithItem:self.alertView
+                                                                  attribute:NSLayoutAttributeBottom
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:self.view
+                                                                  attribute:NSLayoutAttributeBottom
+                                                                 multiplier:1.0f
+                                                                   constant:-18.0f];
     
 }
 
@@ -668,9 +678,7 @@ static UIFont *_textFont;
     
     if (_dismissWithGravityAnimation) {
         
-        // Gravity Animation, back for cancel, forward for everything else
-        double radian = (style == VSAlertActionStyleCancel) ? (-2.0f * M_PI) : (2.0f * M_PI);
-        
+        // Gravity Animation, back for cancel, forward for everything else (directionless for actionsheets)
         _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
         
         UIGravityBehavior *gravityBehavior = [[UIGravityBehavior alloc] initWithItems:@[self.alertView]];
@@ -678,10 +686,16 @@ static UIFont *_textFont;
         
         [_animator addBehavior:gravityBehavior];
         
-        UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.alertView]];
-        [itemBehavior addAngularVelocity:radian forItem:self.alertView];
-        [_animator addBehavior:itemBehavior];
-
+        if (_style != VSAlertControllerStyleActionSheet) {
+            
+            double radian = (style == VSAlertActionStyleCancel) ? (-2.0f * M_PI) : (2.0f * M_PI);
+            
+            UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.alertView]];
+            [itemBehavior addAngularVelocity:radian forItem:self.alertView];
+            [_animator addBehavior:itemBehavior];
+            
+        }
+        
     }
     
 }
@@ -754,7 +768,7 @@ static UIFont *_textFont;
     
     NSInteger totalActions = _cancelActions.count + _destructiveActions.count + _defaultActions.count + self.textFields.count;
     
-    if (totalActions > 2) {
+    if (totalActions > 2 || _style == VSAlertControllerStyleActionSheet) {
 
         [self _processDefaultActions];
         [self _processDestructiveActions];

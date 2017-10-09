@@ -11,10 +11,15 @@
 /**
  An exception thrown when an unimplemented feature is used at runtime.
  */
-extern NSString * _Nonnull const VSAlertActionNotImplementedException;
+extern NSString * _Nonnull const VSAlertControllerNotImplementedException;
 
 /**
- An enuration for the various ui styles of VSAlertController
+ An exceptino thrown when a textfield is added in an alertcontroller style which doesn't support text fields
+ */
+extern NSString * _Nonnull const VSAlertControllerTextFieldInvalidException;
+
+/**
+ An enuration for the various UI styles of VSAlertController
 
  - VSAlertControllerStyleAlert: A pop up alert that displays at 270px wide (like Apple's UIAlertController)
  - VSAlertControllerStyleWalkthroughAlert: A wider popup that stretches it's to fit the width of the device (minus some padding)
@@ -33,7 +38,7 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
     VSAlertControllerStyleWalkthroughAlert,
     
     /**
-     A bottom of the screen alert (NOT IMPLEMENTED)
+     A bottom of the screen alert, similar to Apple's Action sheet style
      */
     VSAlertControllerStyleActionSheet
     
