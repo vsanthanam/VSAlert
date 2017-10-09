@@ -19,6 +19,16 @@
 			name = Framework;
 			productName = Framework;
 		};
+		0710F9AB1F8B173300C6D084 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0710F9AC1F8B173300C6D084 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -295,6 +305,10 @@
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 					};
+					0710F9AB1F8B173300C6D084 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
 					07F00EE21F8A96F4006FAC96 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
@@ -321,6 +335,7 @@
 				07F00EE21F8A96F4006FAC96 /* VSAlertController-Example */,
 				07F00EFE1F8A972D006FAC96 /* VSAlert */,
 				0710F9991F8AD45A00C6D084 /* Framework */,
+				0710F9AB1F8B173300C6D084 /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -444,6 +459,24 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "armv7s armv7 arm64";
+			};
+			name = Release;
+		};
+		0710F9AD1F8B173300C6D084 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y88YPD4RJA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0710F9AE1F8B173300C6D084 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y88YPD4RJA;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -709,6 +742,15 @@
 			buildConfigurations = (
 				0710F99B1F8AD45A00C6D084 /* Debug */,
 				0710F99C1F8AD45A00C6D084 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0710F9AC1F8B173300C6D084 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0710F9AD1F8B173300C6D084 /* Debug */,
+				0710F9AE1F8B173300C6D084 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
