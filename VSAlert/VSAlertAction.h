@@ -16,8 +16,19 @@
  */
 typedef NS_ENUM(NSInteger, VSAlertActionStyle) {
     
+    /**
+     Standard action UI
+     */
     VSAlertActionStyleDefault,
+    
+    /**
+     Slightly bolder action UI, use for actions that will "cancel"
+     */
     VSAlertActionStyleCancel,
+    
+    /**
+     Red action UI, use for actions that will break or ireversably cahgne something
+     */
     VSAlertActionStyleDestructive
     
 };

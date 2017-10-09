@@ -11,14 +11,14 @@ VSAlertController differs from PMAlertController in a few ways:
 
 1. VSAlertController doesn't build it's UI using a XIB file, which makes it a little bit more portable and easier to manage.
 2. VSAlertController is written in Objective-C rather than Swift (but is marked up using nullability for easy use in Swift)
-3. VSAlertController allows for a bit more customization without actually changing the library.
+3. VSAlertController allows for a bit more customization at runtime.
 4. VSAlertController adds the "destructive" action style from Apple's UIAlertController that was missing in PMAlertController
 5. VSAlertController doesn't add actions and text fields in the order you create them, but rather in a dynamic order based on how many there are and what "style" they are (again, like Apple's UIAlertController)
 6. VSAlertController doesn't rely on UITextFieldDelegate, so you can freely assign your UITextField's `.delegate` property without fear and the library will continue to work as expected.
 6. VSAlertController executes action blocks on the main-thread, to allow for UI actions and not get caught up by the main thread checker in Xcode 9.
 
 ## Just Give Me The Code
-VSAlertController is packaged as a static library (with slices for all modern iPhones and the simulator), but the four files for the two classes that comprise the library are also available in the repo. Open the project, build the "Framework" target if you want to re-compile the static library. The framework is built as a clang module, so you can use the `@import module;` syntax. (More info here: https://clang.llvm.org/docs/Modules.html)
+VSAlertController is packaged as a static library (with slices for all modern iPhones and the simulator), but the four files for the two classes that comprise the library are also available in the repo. Open the project, build the "Framework" targetfor "Generic iOS Device"  if you want to re-compile the static library. The framework is built as a clang module, so you can use the `@import module;` syntax. (More info here: https://clang.llvm.org/docs/Modules.html)
 
 ## Getting Started (Static Framework)
 
@@ -57,7 +57,7 @@ The included Xcode project allows you to build the static library and an example
 @end
 ```
 
-Both the two classes are documented thoroughly in their respective header files.
+Full documentation is available at https://github.vsanthanam.io/VSAlertController
 
 ## Image Template
 

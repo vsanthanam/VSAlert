@@ -8,20 +8,33 @@
 @import UIKit;
 
 #import "VSAlertAction.h"
-
+/**
+ An exception thrown when an unimplemented feature is thrown at runtime.
+ */
 extern NSString * _Nonnull const VSAlertActionNotImplementedException;
 
 /**
  An enuration for the various ui styles of VSAlertController
 
  - VSAlertControllerStyleAlert: A pop up alert that displays at 270px wide (like Apple's UIAlertController)
- - VSAlertControllerStyleWalkthroughAlert: A wider popup that stretches it's to fit the width of the device (minus some padding_
+ - VSAlertControllerStyleWalkthroughAlert: A wider popup that stretches it's to fit the width of the device (minus some padding)
  - VSAlertControllerStyleActionSheet: A bottom of the screen alert (NOT IMPLEMENTED)
  */
 typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
-  
+
+    /**
+     A pop up alert that displays at 270px wide (like Apple's UIAlertController)
+     */
     VSAlertControllerStyleAlert,
+    
+    /**
+     A wider popup that stretches it's to fit the width of the device (minus some padding)
+     */
     VSAlertControllerStyleWalkthroughAlert,
+    
+    /**
+     A bottom of the screen alert (NOT IMPLEMENTED)
+     */
     VSAlertControllerStyleActionSheet
     
 };
@@ -38,22 +51,22 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
 /**
 The color of the title text used by alert controllers. The default value is nil. If nil is specified when an alert controller is displayed, VSAlertController.textColor's value is used instead. (Class property, applies to all instances created after change)
 */
-@property (class, nullable) UIColor *titleTextColor;
+@property (class, strong, nullable) UIColor *titleTextColor;
 
 /**
  The color of the text used by alert controllers. (Class property, applies to all instances created after change)
  */
-@property (class, nonnull) UIColor *textColor;
+@property (class, strong, nonnull) UIColor *textColor;
 
 /**
  The font of the title used by alert controllers. The default value is the system font at size 17.0f. (Class property, applies to all instances created after change)
  */
-@property (class, nonnull) UIFont *titleTextFont;
+@property (class, strong, nonnull) UIFont *titleTextFont;
 
 /**
  The font of the text used by alert controllers. The default value is the the system font at size 15.0f (Class property, applies to all instances created after change)
  */
-@property (class, nonnull) UIFont *textFont;
+@property (class, strong, nonnull) UIFont *textFont;
 
 /**
  @name Instance Properties
