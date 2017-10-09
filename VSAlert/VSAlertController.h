@@ -9,7 +9,7 @@
 
 #import "VSAlertAction.h"
 /**
- An exception thrown when an unimplemented feature is thrown at runtime.
+ An exception thrown when an unimplemented feature is used at runtime.
  */
 extern NSString * _Nonnull const VSAlertActionNotImplementedException;
 
