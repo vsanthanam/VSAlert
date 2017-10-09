@@ -25,6 +25,7 @@
 		0710F9881F8ACBA200C6D084 /* AlertExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0710F9871F8ACBA200C6D084 /* AlertExampleViewController.m */; };
 		0710F9931F8AD22900C6D084 /* VSAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 07F00F081F8A9773006FAC96 /* VSAlertController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0710F9941F8AD22B00C6D084 /* VSAlertAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 07F00F0C1F8A9A47006FAC96 /* VSAlertAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0710F9A81F8AFB8700C6D084 /* flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 0710F9A71F8AFB5100C6D084 /* flag.png */; };
 		07F00EE81F8A96F4006FAC96 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F00EE71F8A96F4006FAC96 /* AppDelegate.m */; };
 		07F00EEE1F8A96F4006FAC96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07F00EEC1F8A96F4006FAC96 /* Main.storyboard */; };
 		07F00EF01F8A96F4006FAC96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F00EEF1F8A96F4006FAC96 /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		0710F9861F8ACBA200C6D084 /* AlertExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertExampleViewController.h; sourceTree = "<group>"; };
 		0710F9871F8ACBA200C6D084 /* AlertExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertExampleViewController.m; sourceTree = "<group>"; };
 		0710F9A01F8AD60000C6D084 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		0710F9A71F8AFB5100C6D084 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		07F00EE31F8A96F4006FAC96 /* VSAlertController-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VSAlertController-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F00EE61F8A96F4006FAC96 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		07F00EE71F8A96F4006FAC96 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		0710F97F1F8ACA5400C6D084 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0710F9A61F8AFB4500C6D084 /* Images */,
 				0710F9821F8ACA8A00C6D084 /* Asset Catalogues */,
 				0710F9811F8ACA6600C6D084 /* Storyboards */,
 			);
@@ -166,6 +169,14 @@
 				07F00EF41F8A96F4006FAC96 /* Info.plist */,
 			);
 			path = Supporting;
+			sourceTree = "<group>";
+		};
+		0710F9A61F8AFB4500C6D084 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0710F9A71F8AFB5100C6D084 /* flag.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		07F00ED81F8A96D9006FAC96 = {
@@ -316,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07F00EF31F8A96F4006FAC96 /* LaunchScreen.storyboard in Resources */,
+				0710F9A81F8AFB8700C6D084 /* flag.png in Resources */,
 				07F00EF01F8A96F4006FAC96 /* Assets.xcassets in Resources */,
 				07F00EEE1F8A96F4006FAC96 /* Main.storyboard in Resources */,
 			);

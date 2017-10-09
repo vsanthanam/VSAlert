@@ -18,7 +18,9 @@ typedef NS_ENUM(NSInteger, AlertExampleViewControllerExampleType) {
     AlertExampleViewControllerExampleTypeMultiChoice,
     AlertExampleViewControllerExampleTypeWalkthroughAlert,
     AlertExampleViewControllerExampleTypeTextField,
-    AlertExampleViewControllerExampleTypeLogIn
+    AlertExampleViewControllerExampleTypeLogIn,
+    AlertExampleViewControllerExampleTypeImageAlert,
+    AlertExampleViewControllerExampleTypeChangedCustomized
     
 };
 
@@ -46,7 +48,9 @@ static os_log_t example_log;
                       @(AlertExampleViewControllerExampleTypeMultiChoice),
                       @(AlertExampleViewControllerExampleTypeWalkthroughAlert),
                       @(AlertExampleViewControllerExampleTypeTextField),
-                      @(AlertExampleViewControllerExampleTypeLogIn)];
+                      @(AlertExampleViewControllerExampleTypeLogIn),
+                      @(AlertExampleViewControllerExampleTypeImageAlert),
+                      @(AlertExampleViewControllerExampleTypeChangedCustomized)];
     
 }
 
@@ -124,6 +128,18 @@ static os_log_t example_log;
         
     }
     
+    if (exampleType == AlertExampleViewControllerExampleTypeImageAlert) {
+        
+        cell.textLabel.text = NSLocalizedString(@"Image Alert", nil);
+        
+    }
+    
+    if (exampleType == AlertExampleViewControllerExampleTypeChangedCustomized) {
+        
+        cell.textLabel.text = NSLocalizedString(@"Customized (PMAlertController Demo)", nil);
+        
+    }
+    
     return cell;
     
 }
@@ -134,7 +150,7 @@ static os_log_t example_log;
     
     if (type == AlertExampleViewControllerExampleTypeStandard) {
         
-        alertController = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Error", nil)
+        alertController = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Alert", nil)
                                                           description:NSLocalizedString(@"The operation couldn't be completed. Please try again later.", nil)
                                                                 image:nil
                                                                 style:VSAlertControllerStyleAlert];
@@ -234,7 +250,7 @@ static os_log_t example_log;
     if (type == AlertExampleViewControllerExampleTypeLogIn) {
         
         alertController = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Log In", nil)
-                                                          description:nil
+                                                          description:NSLocalizedString(@"Please enter your credentials", nil)
                                                                 image:nil
                                                                 style:VSAlertControllerStyleAlert];
         [alertController addTextField:^(UITextField *textField) {
@@ -276,9 +292,65 @@ static os_log_t example_log;
         
     }
     
+    if (type == AlertExampleViewControllerExampleTypeImageAlert) {
+        
+        alertController = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Subscription Required", nil)
+                                                          description:NSLocalizedString(@"This article requires a monthly subscription. Please visit our website for more info.", nil)
+                                                                image:[UIImage imageNamed:@"news-alert"]
+                                                                style:VSAlertControllerStyleAlert];
+                           
+        VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
+                                                              style:VSAlertActionStyleDefault
+                                                             action:nil];
+        [alertController addAction:action];
+        
+    }
+    
+    if (type == AlertExampleViewControllerExampleTypeChangedCustomized) {
+        
+        VSAlertController.titleTextFont = [UIFont fontWithName:@"Avenir-Roman" size:17.0f];
+        VSAlertController.titleTextColor = [UIColor colorWithRed:0.929f
+                                                           green:0.596f
+                                                            blue:0.082
+                                                           alpha:1.0f];
+        VSAlertController.textFont = [UIFont fontWithName:@"Avenir-Medium" size:15.0f];
+        VSAlertController.textColor = [UIColor colorWithRed:0.333f
+                                                      green:0.333f
+                                                       blue:0.333f
+                                                      alpha:1.0f];
+        
+        alertController = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Locate your device", nil)
+                                                          description:NSLocalizedString(@"Enables access to your location: discover what you can do when you're traveling and what is available near you.", nil)
+                                                                image:[UIImage imageNamed:@"flag.png"]
+                                                                style:VSAlertControllerStyleAlert];
+        VSAlertAction *okCancelAction = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Allow", nil)
+                                                                      style:VSAlertActionStyleDefault
+                                                                     action:nil];
+        VSAlertAction *closeAction = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
+                                                                   style:VSAlertActionStyleCancel
+                                                                  action:nil];
+        
+        okCancelAction.titleLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:17.0f];
+        closeAction.titleLabel.font = [UIFont fontWithName:@"Avenir-Heavy" size:17.0f];
+        [okCancelAction setTitleColor:[UIColor colorWithRed:191.0f/255.0f
+                                                      green:51.0/255.0f
+                                                       blue:98.0f/255.0f
+                                                      alpha:1.0f]
+                             forState:UIControlStateNormal];
+        [closeAction setTitleColor:[UIColor grayColor]
+                          forState:UIControlStateNormal];
+        [alertController addAction:closeAction];
+        [alertController addAction:okCancelAction];
+        
+    }
+    
     [self presentViewController:alertController
                        animated:YES
-                     completion:nil];
+                     completion:^{
+                         
+                         [VSAlertController resetStyleToDefaults];
+                         
+                     }];
     
 }
 

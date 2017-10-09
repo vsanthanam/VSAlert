@@ -470,6 +470,7 @@ static UIFont *_textFont;
     
     self.alertImage = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.alertImage.translatesAutoresizingMaskIntoConstraints = NO;
+    self.alertImage.contentMode = UIViewContentModeScaleAspectFit;
 
     [self.headerView addSubview:self.alertImage];
     
@@ -841,7 +842,7 @@ static UIFont *_textFont;
             
         } else {
             
-            self.alertStackViewHeightConstraint.constant= self.alertStackViewHeight;
+            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight;
             self.alertActionStackView.axis = UILayoutConstraintAxisHorizontal;
             
         }
