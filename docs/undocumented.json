@@ -1,0 +1,54 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/vsanthanam/Desktop/VSAlertController/VSAlert/VSAlertAction.h",
+      "line": 19,
+      "symbol": "VSAlertActionStyle.VSAlertActionStyleDefault",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vsanthanam/Desktop/VSAlertController/VSAlert/VSAlertAction.h",
+      "line": 20,
+      "symbol": "VSAlertActionStyle.VSAlertActionStyleCancel",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vsanthanam/Desktop/VSAlertController/VSAlert/VSAlertAction.h",
+      "line": 21,
+      "symbol": "VSAlertActionStyle.VSAlertActionStyleDestructive",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vsanthanam/Desktop/VSAlertController/VSAlert/VSAlertController.h",
+      "line": 12,
+      "symbol": "VSAlertActionNotImplementedException",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vsanthanam/Desktop/VSAlertController/VSAlert/VSAlertController.h",
+      "line": 23,
+      "symbol": "VSAlertControllerStyle.VSAlertControllerStyleAlert",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vsanthanam/Desktop/VSAlertController/VSAlert/VSAlertController.h",
+      "line": 24,
+      "symbol": "VSAlertControllerStyle.VSAlertControllerStyleWalkthroughAlert",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vsanthanam/Desktop/VSAlertController/VSAlert/VSAlertController.h",
+      "line": 25,
+      "symbol": "VSAlertControllerStyle.VSAlertControllerStyleActionSheet",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/vsanthanam/Desktop/VSAlertController"
+}
