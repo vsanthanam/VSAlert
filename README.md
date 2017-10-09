@@ -58,3 +58,7 @@ The included Xcode project allows you to build the static library and an example
 ```
 
 Both the two classes are documented thoroughly in their respective header files.
+
+## Image Template
+
+VSAlertController includes template images to help you size your images to make them look just right on an alert. I suggest using an Image that is 270pt tall and 180pt high, with your actual content centered in the middle at 116 x 116 pt. I've included PNGs with the appropriate outline, as well as a .sketch file
