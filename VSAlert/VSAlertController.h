@@ -23,7 +23,7 @@ extern NSString * _Nonnull const VSAlertControllerTextFieldInvalidException;
 
  - VSAlertControllerStyleAlert: A pop up alert that displays at 270px wide (like Apple's UIAlertController)
  - VSAlertControllerStyleWalkthroughAlert: A wider popup that stretches it's to fit the width of the device (minus some padding)
- - VSAlertControllerStyleActionSheet: A bottom of the screen alert (NOT IMPLEMENTED)
+ - VSAlertControllerStyleActionSheet: A bottom of the screen alert, similar to Apple's Action Sheet style
  */
 typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
 
@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
     VSAlertControllerStyleWalkthroughAlert,
     
     /**
-     A bottom of the screen alert, similar to Apple's Action sheet style
+     A bottom of the screen alert, similar to Apple's Action Sheet style
      */
     VSAlertControllerStyleActionSheet
     
