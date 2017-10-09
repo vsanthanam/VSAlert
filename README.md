@@ -57,7 +57,7 @@ The included Xcode project allows you to build the static library and an example
 @end
 ```
 
-Full documentation is available at https://github.vsanthanam.io/VSAlertController
+Full documentation is available at https://vsanthanam.github.io/VSAlertController/
 
 ## Image Template
 
