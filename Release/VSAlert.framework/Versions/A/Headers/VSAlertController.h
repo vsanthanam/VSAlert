@@ -109,6 +109,15 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
 - (nullable instancetype)initWithTitle:(nullable NSString *)title description:(nullable NSString *)description image:(nullable UIImage *)image style:(VSAlertControllerStyle)style NS_DESIGNATED_INITIALIZER;
 
 /**
+ @name Configuring Alert Appearance
+ */
+
+/**
+ The color of the alert title
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *titleTextColor UI_APPEARANCE_SELECTOR;
+
+/**
  @name Configuring Interactive Alert Content
  */
 

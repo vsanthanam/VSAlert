@@ -47,6 +47,8 @@
 		074538171F8C437700092DAF /* VSAlertControllerTransitionAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 074538151F8C437700092DAF /* VSAlertControllerTransitionAnimator.h */; };
 		074538181F8C437700092DAF /* VSAlertControllerTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 074538161F8C437700092DAF /* VSAlertControllerTransitionAnimator.m */; };
 		074538191F8C437700092DAF /* VSAlertControllerTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 074538161F8C437700092DAF /* VSAlertControllerTransitionAnimator.m */; };
+		07A7C4061F8D655100A71580 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A7C4051F8D655100A71580 /* Foundation.framework */; };
+		07A7C4081F8D655700A71580 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A7C4071F8D655700A71580 /* UIKit.framework */; };
 		07F00EE81F8A96F4006FAC96 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F00EE71F8A96F4006FAC96 /* AppDelegate.m */; };
 		07F00EEE1F8A96F4006FAC96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07F00EEC1F8A96F4006FAC96 /* Main.storyboard */; };
 		07F00EF01F8A96F4006FAC96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F00EEF1F8A96F4006FAC96 /* Assets.xcassets */; };
@@ -92,6 +94,8 @@
 		0710F9D21F8BCDB700C6D084 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		074538151F8C437700092DAF /* VSAlertControllerTransitionAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSAlertControllerTransitionAnimator.h; sourceTree = "<group>"; };
 		074538161F8C437700092DAF /* VSAlertControllerTransitionAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSAlertControllerTransitionAnimator.m; sourceTree = "<group>"; };
+		07A7C4051F8D655100A71580 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		07A7C4071F8D655700A71580 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		07F00EE31F8A96F4006FAC96 /* VSAlertController-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VSAlertController-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F00EE61F8A96F4006FAC96 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		07F00EE71F8A96F4006FAC96 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07A7C4081F8D655700A71580 /* UIKit.framework in Frameworks */,
+				07A7C4061F8D655100A71580 /* Foundation.framework in Frameworks */,
 				0710F9D31F8BCDB700C6D084 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,6 +233,8 @@
 		0710F9D11F8BCDB700C6D084 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07A7C4071F8D655700A71580 /* UIKit.framework */,
+				07A7C4051F8D655100A71580 /* Foundation.framework */,
 				0710F9D21F8BCDB700C6D084 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;

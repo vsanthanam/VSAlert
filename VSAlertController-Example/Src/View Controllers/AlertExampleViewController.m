@@ -322,16 +322,6 @@ static os_log_t example_log;
     
     if (type == AlertExampleViewControllerExampleTypeChangedCustomized) {
         
-        VSAlertController.titleTextFont = [UIFont fontWithName:@"Avenir-Roman" size:17.0f];
-        VSAlertController.titleTextColor = [UIColor colorWithRed:0.929f
-                                                           green:0.596f
-                                                            blue:0.082
-                                                           alpha:1.0f];
-        VSAlertController.textFont = [UIFont fontWithName:@"Avenir-Medium" size:15.0f];
-        VSAlertController.textColor = [UIColor colorWithRed:0.333f
-                                                      green:0.333f
-                                                       blue:0.333f
-                                                      alpha:1.0f];
         
         alertController = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Locate your device", nil)
                                                           description:NSLocalizedString(@"Enables access to your location: discover what you can do when you're traveling and what is available near you.", nil)
@@ -403,7 +393,6 @@ static os_log_t example_log;
                        animated:YES
                      completion:^{
                          
-                         [VSAlertController resetStyleToDefaults];
                          
                      }];
     
