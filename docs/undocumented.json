@@ -1,26 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Users/vsanthanam/Documents/Dev/VSAlertController/VSAlert/VSAlertAction.h",
-      "line": 34,
-      "symbol": "",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.unexposed",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Documents/Dev/VSAlertController/VSAlert/VSAlertController.h",
-      "line": 45,
-      "symbol": "",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.unexposed",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Documents/Dev/VSAlertController/VSAlert/VSAlertController.h",
-      "line": 77,
-      "symbol": "",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.unexposed",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Users/vsanthanam/Documents/Dev/VSAlertController"
 }

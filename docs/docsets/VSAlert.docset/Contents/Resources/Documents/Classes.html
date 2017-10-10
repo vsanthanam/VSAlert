@@ -13,7 +13,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">VSAlert Docs</a> (90% documented)</p>
+        <p><a href="index.html">VSAlert Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -49,10 +49,16 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Functions.html">Functions</a>
+            <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Functions.html#/c:@F@NS_ENUM">NS_ENUM</a>
+                <a href="Enums/VSAlertActionStyle.html">VSAlertActionStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/VSAlertControllerAnimationStyle.html">VSAlertControllerAnimationStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/VSAlertControllerStyle.html">VSAlertControllerStyle</a>
               </li>
             </ul>
           </li>
@@ -81,7 +87,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>VSAlertAction is a specialized subclass used to configure a VSAlertController.</p>
+                        <p>VSAlertAction is a specialized subclass of UIButton that is used to populate and provide interactive controls to an instance of VSAlertController.</p>
 
                         <a href="Classes/VSAlertAction.html" class="slightly-smaller">See more</a>
                       </div>
@@ -89,12 +95,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">VSAlertAction</span></code></pre>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">VSAlertAction</span> <span class="p">:</span> <span class="nc">UIButton</span> <span class="o">&lt;</span><span class="n">UIAppearance</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">VSAlertAction</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">VSAlertAction</span> <span class="p">:</span> <span class="kt">UIButton</span><span class="p">,</span> <span class="kt">UIAppearance</span></code></pre>
 
                         </div>
                       </div>
@@ -118,7 +124,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>VSAlertController is a drop-in replacement for UIAlertController with a bit more customization and better looks. It&rsquo;s largely based on Codeido&rsquo;s PMAlertController, but has been re-written in Objective-C rather than Swift, and supports a few more features like dynamically sorted alert actions and a <q>destructive</q> action style that was missing in PMAlertController. It doesn&rsquo;t requrie a separate XIB file for better potability, and uses the system font by default for a more vanilla look. VSAlertController can can be customized at the class level, so you can make any/all UI changes once.</p>
+                        <p>VSAlertController is a drop-in replacement for UIAlertController with more features. It is created using the +alertControllerWithTitle:description:image:style: class method, and configured using instances of VSAlertAction. You can add text fields by calling -addTextField: on an instance of VSAlertController. Instantiate the controller, add your actions and textfieds. and any other configuration you might need. Present the controller modally using UIViewController&rsquo;s -presentViewController:animated:completion: method. VSAlertController respects the animation paramater of this call, and you configure the animation in question by setting your instances animationStyle property before presentation. You can also change this property in the handler of an action to use a different animation on dismissal.</p>
 
                         <a href="Classes/VSAlertController.html" class="slightly-smaller">See more</a>
                       </div>
@@ -126,12 +132,12 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">VSAlertController</span></code></pre>
+                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">VSAlertController</span> <span class="p">:</span> <span class="nc">UIViewController</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">VSAlertController</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">VSAlertController</span> <span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
 
                         </div>
                       </div>

@@ -14,7 +14,7 @@
     <a title="VSAlertController Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">VSAlert Docs</a> (90% documented)</p>
+        <p><a href="../index.html">VSAlert Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -50,10 +50,16 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Functions.html">Functions</a>
+            <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Functions.html#/c:@F@NS_ENUM">NS_ENUM</a>
+                <a href="../Enums/VSAlertActionStyle.html">VSAlertActionStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/VSAlertControllerAnimationStyle.html">VSAlertControllerAnimationStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/VSAlertControllerStyle.html">VSAlertControllerStyle</a>
               </li>
             </ul>
           </li>
@@ -65,234 +71,20 @@
             <h1>VSAlertController</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">VSAlertController</span></code></pre>
+                  <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">VSAlertController</span> <span class="p">:</span> <span class="nc">UIViewController</span></code></pre>
 
                 </div>
               </div>
-            <p>VSAlertController is a drop-in replacement for UIAlertController with a bit more customization and better looks. It&rsquo;s largely based on Codeido&rsquo;s PMAlertController, but has been re-written in Objective-C rather than Swift, and supports a few more features like dynamically sorted alert actions and a <q>destructive</q> action style that was missing in PMAlertController. It doesn&rsquo;t requrie a separate XIB file for better potability, and uses the system font by default for a more vanilla look. VSAlertController can can be customized at the class level, so you can make any/all UI changes once.</p>
+            <p>VSAlertController is a drop-in replacement for UIAlertController with more features. It is created using the +alertControllerWithTitle:description:image:style: class method, and configured using instances of VSAlertAction. You can add text fields by calling -addTextField: on an instance of VSAlertController. Instantiate the controller, add your actions and textfieds. and any other configuration you might need. Present the controller modally using UIViewController&rsquo;s -presentViewController:animated:completion: method. VSAlertController respects the animation paramater of this call, and you configure the animation in question by setting your instances animationStyle property before presentation. You can also change this property in the handler of an action to use a different animation on dismissal.</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Class%20Properties"></a>
-                <a name="//apple_ref/objc/Section/Class Properties" class="dashAnchor"></a>
-                <a href="#/Class%20Properties">
-                  <h3 class="section-name">Class Properties</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)VSAlertController(cpy)titleTextColor"></a>
-                    <a name="//apple_ref/objc/Property/titleTextColor" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertController(cpy)titleTextColor">titleTextColor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The color of the title text used by alert controllers. The default value is nil. If nil is specified when an alert controller is displayed, VSAlertController.textColor&rsquo;s value is used instead. (Class property, applies to all instances created after change)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">class</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">titleTextColor</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="k">var</span> <span class="nv">titleTextColor</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">Int32</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)VSAlertController(cpy)textColor"></a>
-                    <a name="//apple_ref/objc/Property/textColor" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertController(cpy)textColor">textColor</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The color of the text used by alert controllers. (Class property, applies to all instances created after change)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">class</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">textColor</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="k">var</span> <span class="nv">textColor</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">Int32</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)VSAlertController(cpy)titleTextFont"></a>
-                    <a name="//apple_ref/objc/Property/titleTextFont" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertController(cpy)titleTextFont">titleTextFont</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The font of the title used by alert controllers. The default value is the system font at size 17.0f. (Class property, applies to all instances created after change)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">class</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIFont</span> <span class="o">*</span><span class="n">titleTextFont</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="k">var</span> <span class="nv">titleTextFont</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">Int32</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)VSAlertController(cpy)textFont"></a>
-                    <a name="//apple_ref/objc/Property/textFont" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertController(cpy)textFont">textFont</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The font of the text used by alert controllers. The default value is the the system font at size 15.0f (Class property, applies to all instances created after change)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">class</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIFont</span> <span class="o">*</span><span class="n">textFont</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="k">var</span> <span class="nv">textFont</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">Int32</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Instance%20Properties"></a>
-                <a name="//apple_ref/objc/Section/Instance Properties" class="dashAnchor"></a>
-                <a href="#/Instance%20Properties">
-                  <h3 class="section-name">Instance Properties</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)VSAlertController(py)dismissOnBackgroundTap"></a>
-                    <a name="//apple_ref/objc/Property/dismissOnBackgroundTap" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertController(py)dismissOnBackgroundTap">dismissOnBackgroundTap</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>YES if the alert controller should dismiss itself when the background is tapped, otherwise NO (default is no)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">dismissOnBackgroundTap</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">dismissOnBackgroundTap</span><span class="p">:</span> <span class="kt">Int32</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)VSAlertController(py)animationStyle"></a>
-                    <a name="//apple_ref/objc/Property/animationStyle" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertController(py)animationStyle">animationStyle</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The animation style to use when the alert is presented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">animationStyle</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">animationStyle</span><span class="p">:</span> <span class="kt">Int32</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Class%20Methods"></a>
-                <a name="//apple_ref/objc/Section/Class Methods" class="dashAnchor"></a>
-                <a href="#/Class%20Methods">
-                  <h3 class="section-name">Class Methods</h3>
+                <a name="/Creating%20Alerts"></a>
+                <a name="//apple_ref/objc/Section/Creating Alerts" class="dashAnchor"></a>
+                <a href="#/Creating%20Alerts">
+                  <h3 class="section-name">Creating Alerts</h3>
                 </a>
               </div>
               <ul>
@@ -309,17 +101,18 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A factory method to create a new alert. The alert is dynamically sized based on your initialization paramaters</p>
+                        <p>A factory method to create an instance of VSAlertController. This is the preffered way to instantiate alerts</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">alertControllerWithTitle</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">title</span>
-                                      <span class="nf">description</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">description</span>
-                                            <span class="nf">image</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">image</span>
-                                            <span class="nf">style</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">style</span><span class="p">;</span></code></pre>
+                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">alertControllerWithTitle</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">title</span>
+                                      <span class="nf">description</span><span class="p">:</span>
+                                          <span class="p">(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">description</span>
+                                            <span class="nf">image</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">image</span>
+                                            <span class="nf">style</span><span class="p">:(</span><span class="n"><a href="../Enums/VSAlertControllerStyle.html">VSAlertControllerStyle</a></span><span class="p">)</span><span class="nv">style</span><span class="p">;</span></code></pre>
 
                         </div>
                       </div>
@@ -335,7 +128,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The title of the alert.</p>
+                                  <p>The title of the alert</p>
                                 </div>
                               </td>
                             </tr>
@@ -347,7 +140,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The message or body of the alert.</p>
+                                  <p>The description (message) of the alert</p>
                                 </div>
                               </td>
                             </tr>
@@ -359,7 +152,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The image to show on the alert, if any. See the provided image template for details.</p>
+                                  <p>The image to be displayed in the header of the alert.</p>
                                 </div>
                               </td>
                             </tr>
@@ -371,7 +164,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The UI style of the alert</p>
+                                  <p>The style of the alert</p>
                                 </div>
                               </td>
                             </tr>
@@ -380,54 +173,11 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The initialized alert controller.</p>
+                        <p>The instantiated alert object</p>
                       </div>
                     </section>
                   </div>
                 </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)VSAlertController(cm)resetStyleToDefaults"></a>
-                    <a name="//apple_ref/objc/Method/+resetStyleToDefaults" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertController(cm)resetStyleToDefaults">+resetStyleToDefaults</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Reset class property customization to its default settings</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">resetStyleToDefaults</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">resetStyleToDefaults</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Instance%20Methods"></a>
-                <a name="//apple_ref/objc/Section/Instance Methods" class="dashAnchor"></a>
-                <a href="#/Instance%20Methods">
-                  <h3 class="section-name">Instance Methods</h3>
-                </a>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -441,22 +191,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Create a new alert controller</p>
+                        <p>Create an instance of VSAlertController</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithTitle</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">title</span>
-                           <span class="nf">description</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">description</span>
-                                 <span class="nf">image</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">image</span>
-                                 <span class="nf">style</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">style</span><span class="p">;</span></code></pre>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithTitle</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">title</span>
+                           <span class="nf">description</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">description</span>
+                                 <span class="nf">image</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nv">image</span>
+                                 <span class="nf">style</span><span class="p">:(</span><span class="n"><a href="../Enums/VSAlertControllerStyle.html">VSAlertControllerStyle</a></span><span class="p">)</span><span class="nv">style</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">title</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">style</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">)</span></code></pre>
+                          <pre class="highlight"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?,</span> <span class="nv">style</span><span class="p">:</span> <span class="kt"><a href="../Enums/VSAlertControllerStyle.html">VSAlertControllerStyle</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -472,7 +222,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The title of the alert.</p>
+                                  <p>The title of the alert</p>
                                 </div>
                               </td>
                             </tr>
@@ -484,7 +234,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The message or body of the alert.</p>
+                                  <p>The description (message) of the alert</p>
                                 </div>
                               </td>
                             </tr>
@@ -496,7 +246,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The image to show on the alert, if any. See the provided image template for details.</p>
+                                  <p>The image to be displayed in the header of the alert.</p>
                                 </div>
                               </td>
                             </tr>
@@ -508,7 +258,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The UI style of the alert</p>
+                                  <p>The style of the alert</p>
                                 </div>
                               </td>
                             </tr>
@@ -517,11 +267,163 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>The initialized alert controller.</p>
+                        <p>The instantiated alert object</p>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Configuring%20Alert%20Appearance"></a>
+                <a name="//apple_ref/objc/Section/Configuring Alert Appearance" class="dashAnchor"></a>
+                <a href="#/Configuring%20Alert%20Appearance">
+                  <h3 class="section-name">Configuring Alert Appearance</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)VSAlertController(py)alertTitleTextColor"></a>
+                    <a name="//apple_ref/objc/Property/alertTitleTextColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)VSAlertController(py)alertTitleTextColor">alertTitleTextColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The color of the alert title. The default value is black.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">alertTitleTextColor</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">alertTitleTextColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)VSAlertController(py)alertDescriptionTextColor"></a>
+                    <a name="//apple_ref/objc/Property/alertDescriptionTextColor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)VSAlertController(py)alertDescriptionTextColor">alertDescriptionTextColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The color of the alert message (description). The default value is black.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span>
+    <span class="n">UIColor</span> <span class="o">*</span><span class="n">alertDescriptionTextColor</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">alertDescriptionTextColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)VSAlertController(py)alertTitleTextFont"></a>
+                    <a name="//apple_ref/objc/Property/alertTitleTextFont" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)VSAlertController(py)alertTitleTextFont">alertTitleTextFont</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The font of the alert title. The default value is the system font size 17 weight medium.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIFont</span> <span class="o">*</span><span class="n">alertTitleTextFont</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">alertTitleTextFont</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)VSAlertController(py)alertDescriptionTextFont"></a>
+                    <a name="//apple_ref/objc/Property/alertDescriptionTextFont" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)VSAlertController(py)alertDescriptionTextFont">alertDescriptionTextFont</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The font of the alert message (description). The default value is the system font size 15 weight regular.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span>
+    <span class="n">UIFont</span> <span class="o">*</span><span class="n">alertDescriptionTextFont</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">alertDescriptionTextFont</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Configuring%20Interactive%20Alert%20Content"></a>
+                <a name="//apple_ref/objc/Section/Configuring Interactive Alert Content" class="dashAnchor"></a>
+                <a href="#/Configuring%20Interactive%20Alert%20Content">
+                  <h3 class="section-name">Configuring Interactive Alert Content</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -535,7 +437,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Add an action to the alert controller. See VSAlertAction&rsquo;s documentation for more information</p>
+                        <p>Add an action to an alert</p>
 
                       </div>
                       <div class="declaration">
@@ -563,7 +465,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The action to add to the controller</p>
+                                  <p>The action to add to the alert.</p>
                                 </div>
                               </td>
                             </tr>
@@ -586,19 +488,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Add a text field to the alert controller. Rather than instantiating the UITextField yourself, use the configuration block (which provides you an already initialized UITextField, and make your customizations there. Unlike in PMAlertController, you can re-assign the the UITextField&rsquo;s delegate property &ndash; VSAlertController does not make use of UITextField to infer when to dismiss and show the keyboard.</p>
+                        <p>Add a text field to the alert. Rather than instantiating a UITextField object yourself, VSAlertController instantiates one for you. You can configure it using the optional configuration block</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addTextField</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">_Nullable</span><span class="p">)(</span><span class="kt">int</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">))</span><span class="nv">configuration</span><span class="p">;</span></code></pre>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addTextField</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">_Nullable</span><span class="p">)(</span><span class="n">UITextField</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">))</span><span class="nv">configuration</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">addTextField</span><span class="p">(</span><span class="n">_</span> <span class="nv">configuration</span><span class="p">:</span> <span class="p">((</span><span class="kt">UnsafeMutablePointer</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">addTextField</span><span class="p">(</span><span class="n">_</span> <span class="nv">configuration</span><span class="p">:</span> <span class="p">((</span><span class="kt">UITextField</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -614,12 +516,133 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the block used to configure or style the textfield</p>
+                                  <p>The block used to configure the text field.</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Configure%20Alert%20Behavior"></a>
+                <a name="//apple_ref/objc/Section/Configure Alert Behavior" class="dashAnchor"></a>
+                <a href="#/Configure%20Alert%20Behavior">
+                  <h3 class="section-name">Configure Alert Behavior</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)VSAlertController(py)dismissOnBackgroundTap"></a>
+                    <a name="//apple_ref/objc/Property/dismissOnBackgroundTap" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)VSAlertController(py)dismissOnBackgroundTap">dismissOnBackgroundTap</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set to YES if you want the alert to dismiss itself when the user taps on the background of the alert. Default is NO.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">getter</span><span class="o">=</span><span class="n">shouldDismissOnBackgroundTap</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span>
+    <span class="n">BOOL</span> <span class="n">dismissOnBackgroundTap</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">shouldDismissOnBackgroundTap</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)VSAlertController(py)animationStyle"></a>
+                    <a name="//apple_ref/objc/Property/animationStyle" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)VSAlertController(py)animationStyle">animationStyle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Change the animation used when the alert is presented AND dismissed. Default is VSAlertControllerAnimationStyleRise.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span>
+    <span class="n"><a href="../Enums/VSAlertControllerAnimationStyle.html">VSAlertControllerAnimationStyle</a></span> <span class="n">animationStyle</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">animationStyle</span><span class="p">:</span> <span class="kt"><a href="../Enums/VSAlertControllerAnimationStyle.html">VSAlertControllerAnimationStyle</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Interacting%20With%20Alerts"></a>
+                <a name="//apple_ref/objc/Section/Interacting With Alerts" class="dashAnchor"></a>
+                <a href="#/Interacting%20With%20Alerts">
+                  <h3 class="section-name">Interacting With Alerts</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)VSAlertController(py)textFields"></a>
+                    <a name="//apple_ref/objc/Property/textFields" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)VSAlertController(py)textFields">textFields</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the array of text field objects that are displayed in the alert, so you can interact with the user&rsquo;s inputs.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span>
+    <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">UITextField</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">textFields</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">textFields</span><span class="p">:</span> <span class="p">[</span><span class="kt">UITextField</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>

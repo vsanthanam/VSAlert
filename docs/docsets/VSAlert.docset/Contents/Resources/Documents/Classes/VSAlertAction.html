@@ -14,7 +14,7 @@
     <a title="VSAlertAction Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">VSAlert Docs</a> (90% documented)</p>
+        <p><a href="../index.html">VSAlert Docs</a> (100% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -50,10 +50,16 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Functions.html">Functions</a>
+            <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Functions.html#/c:@F@NS_ENUM">NS_ENUM</a>
+                <a href="../Enums/VSAlertActionStyle.html">VSAlertActionStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/VSAlertControllerAnimationStyle.html">VSAlertControllerAnimationStyle</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/VSAlertControllerStyle.html">VSAlertControllerStyle</a>
               </li>
             </ul>
           </li>
@@ -65,22 +71,29 @@
             <h1>VSAlertAction</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">VSAlertAction</span></code></pre>
+                  <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">VSAlertAction</span> <span class="p">:</span> <span class="nc">UIButton</span> <span class="o">&lt;</span><span class="n">UIAppearance</span><span class="o">&gt;</span></code></pre>
 
                 </div>
               </div>
-            <p>VSAlertAction is a specialized subclass used to configure a VSAlertController.</p>
+            <p>VSAlertAction is a specialized subclass of UIButton that is used to populate and provide interactive controls to an instance of VSAlertController.</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Creating%20Actions"></a>
+                <a name="//apple_ref/objc/Section/Creating Actions" class="dashAnchor"></a>
+                <a href="#/Creating%20Actions">
+                  <h3 class="section-name">Creating Actions</h3>
+                </a>
+              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)VSAlertAction(cpy)actionTitleTextFont"></a>
-                    <a name="//apple_ref/objc/Property/actionTitleTextFont" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertAction(cpy)actionTitleTextFont">actionTitleTextFont</a>
+                    <a name="/c:objc(cs)VSAlertAction(cm)alertActionWithTitle:style:action:"></a>
+                    <a name="//apple_ref/objc/Method/+alertActionWithTitle:style:action:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)VSAlertAction(cm)alertActionWithTitle:style:action:">+alertActionWithTitle:style:action:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -88,21 +101,66 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The font used by alert actions that are not styled as <q>cancel</q>. If none is provided, the system font at regular weight and size 17.0f is used. (Class property, applies to all instances created after change)</p>
+                        <p>A factory method to create an instance of UIAlertAction. This is the prefered way to create alert actions.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">class</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">UIFont</span> <span class="o">*</span><span class="n">actionTitleTextFont</span></code></pre>
+                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span>
+<span class="nf">alertActionWithTitle</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">title</span>
+               <span class="nf">style</span><span class="p">:(</span><span class="n"><a href="../Enums/VSAlertActionStyle.html">VSAlertActionStyle</a></span><span class="p">)</span><span class="nv">style</span>
+              <span class="nf">action</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">_Nullable</span><span class="p">)(</span><span class="n">VSAlertAction</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">))</span><span class="nv">action</span><span class="p">;</span></code></pre>
 
                         </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="k">var</span> <span class="nv">actionTitleTextFont</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">Int32</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
-
-                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>title</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The title of the action</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>style</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The style of the action</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>action</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The block to be executed when the user interacts with the action, but before the alert is dismissed</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The instantiaed action</p>
                       </div>
                     </section>
                   </div>
@@ -110,9 +168,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)VSAlertAction(cpy)cancelActionTitleTextFont"></a>
-                    <a name="//apple_ref/objc/Property/cancelActionTitleTextFont" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertAction(cpy)cancelActionTitleTextFont">cancelActionTitleTextFont</a>
+                    <a name="/c:objc(cs)VSAlertAction(im)initWithTitle:style:action:"></a>
+                    <a name="//apple_ref/objc/Method/-initWithTitle:style:action:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)VSAlertAction(im)initWithTitle:style:action:">-initWithTitle:style:action:</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -120,31 +178,92 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The font used by alert actions that are styled as <q>cancel</q>. If none is provided, the system font at semibold weight and size 17.0f is used. (Class property, applies to all instances created after change)</p>
+                        <p>Create an instance of UIAlertAction</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">class</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">UIFont</span> <span class="o">*</span><span class="n">cancelActionTitleTextFont</span></code></pre>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span>
+<span class="nf">initWithTitle</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">title</span>
+        <span class="nf">style</span><span class="p">:(</span><span class="n"><a href="../Enums/VSAlertActionStyle.html">VSAlertActionStyle</a></span><span class="p">)</span><span class="nv">style</span>
+       <span class="nf">action</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">_Nullable</span><span class="p">)(</span><span class="n">VSAlertAction</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">))</span><span class="nv">action</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="k">var</span> <span class="nv">cancelActionTitleTextFont</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">Int32</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">title</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">style</span><span class="p">:</span> <span class="kt"><a href="../Enums/VSAlertActionStyle.html">VSAlertActionStyle</a></span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="p">((</span><span class="kt">VSAlertAction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>title</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The title of the action</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>style</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The style of the action</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>action</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The block to be executed when the user interacts with the action, but before the alert is dismissed</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The instantiaed action</p>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Configuring%20Action%20Appearance"></a>
+                <a name="//apple_ref/objc/Section/Configuring Action Appearance" class="dashAnchor"></a>
+                <a href="#/Configuring%20Action%20Appearance">
+                  <h3 class="section-name">Configuring Action Appearance</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)VSAlertAction(cpy)actionTextColor"></a>
+                    <a name="/c:objc(cs)VSAlertAction(py)actionTextColor"></a>
                     <a name="//apple_ref/objc/Property/actionTextColor" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertAction(cpy)actionTextColor">actionTextColor</a>
+                    <a class="token" href="#/c:objc(cs)VSAlertAction(py)actionTextColor">actionTextColor</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -152,19 +271,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The text color used by alert actinos that are not styled as <q>destructive</q>. If none is provided, UIColor&rsquo;s <code>+redColor</code> is used. (Class property, applies to all instances created after change).</p>
+                        <p>The color of the title text used in non-desctructive actions</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">class</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">actionTextColor</span></code></pre>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">actionTextColor</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="k">var</span> <span class="nv">actionTextColor</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">Int32</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">actionTextColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -174,9 +293,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)VSAlertAction(cpy)destructiveActionTextColor"></a>
+                    <a name="/c:objc(cs)VSAlertAction(py)destructiveActionTextColor"></a>
                     <a name="//apple_ref/objc/Property/destructiveActionTextColor" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertAction(cpy)destructiveActionTextColor">destructiveActionTextColor</a>
+                    <a class="token" href="#/c:objc(cs)VSAlertAction(py)destructiveActionTextColor">destructiveActionTextColor</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -184,25 +303,101 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The text color used by alert actions that are not styled as <q>destructive</q>. If none is provided, the button&rsquo;s <code>.tintColor</code> is used.</p>
+                        <p>The color of the title text used in destructive actions</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">class</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">destructiveActionTextColor</span></code></pre>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span>
+    <span class="n">UIColor</span> <span class="o">*</span><span class="n">destructiveActionTextColor</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="k">var</span> <span class="nv">destructiveActionTextColor</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">Int32</span><span class="o">&gt;</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">destructiveActionTextColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)VSAlertAction(py)actionTextFont"></a>
+                    <a name="//apple_ref/objc/Property/actionTextFont" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)VSAlertAction(py)actionTextFont">actionTextFont</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The font of the title used in non-cancel actions</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIFont</span> <span class="o">*</span><span class="n">actionTextFont</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">actionTextFont</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)VSAlertAction(py)cancelActionTextFont"></a>
+                    <a name="//apple_ref/objc/Property/cancelActionTextFont" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)VSAlertAction(py)cancelActionTextFont">cancelActionTextFont</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The font of the title used in cancel actions</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIFont</span> <span class="o">*</span><span class="n">cancelActionTextFont</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">cancelActionTextFont</span><span class="p">:</span> <span class="kt">UIFont</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Interacting%20With%20Actions"></a>
+                <a name="//apple_ref/objc/Section/Interacting With Actions" class="dashAnchor"></a>
+                <a href="#/Interacting%20With%20Actions">
+                  <h3 class="section-name">Interacting With Actions</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -216,19 +411,20 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The block to be executed when the action is selected by the user</p>
+                        <p>The block that will be executed when the user interacts with the action. The block is called on the main thread always, and begins executed before the alert is dismissed</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">VSAlertAction</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">)</span> <span class="n">action</span><span class="p">;</span></code></pre>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">VSAlertAction</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">)</span>
+    <span class="n">action</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">action</span><span class="p">:</span> <span class="p">((</span><span class="kt">VSAlertAction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">action</span><span class="p">:</span> <span class="p">((</span><span class="kt">VSAlertAction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -248,212 +444,21 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The the UI style of the action</p>
+                        <p>The display style of the alert</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">style</span><span class="p">;</span></code></pre>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Enums/VSAlertActionStyle.html">VSAlertActionStyle</a></span> <span class="n">style</span><span class="p">;</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">style</span><span class="p">:</span> <span class="kt">VSAlertAction</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">style</span><span class="p">:</span> <span class="kt"><a href="../Enums/VSAlertActionStyle.html">VSAlertActionStyle</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)VSAlertAction(cm)alertActionWithTitle:style:action:"></a>
-                    <a name="//apple_ref/objc/Method/+alertActionWithTitle:style:action:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertAction(cm)alertActionWithTitle:style:action:">+alertActionWithTitle:style:action:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Factory method to create an alert action</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span>
-<span class="nf">alertActionWithTitle</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">title</span>
-               <span class="nf">style</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">style</span>
-              <span class="nf">action</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">_Nullable</span><span class="p">)(</span><span class="n">VSAlertAction</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">))</span><span class="nv">action</span><span class="p">;</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>title</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Title of the action</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>style</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The style of the action</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>action</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The block to be executed when the user taps on an action</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The action</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)VSAlertAction(cm)resetStyleToDefaults"></a>
-                    <a name="//apple_ref/objc/Method/+resetStyleToDefaults" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertAction(cm)resetStyleToDefaults">+resetStyleToDefaults</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Reset class property customization to its default settings</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">resetStyleToDefaults</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">resetStyleToDefaults</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)VSAlertAction(im)initWithTitle:style:action:"></a>
-                    <a name="//apple_ref/objc/Method/-initWithTitle:style:action:" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertAction(im)initWithTitle:style:action:">-initWithTitle:style:action:</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Create an action</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span>
-<span class="nf">initWithTitle</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">title</span>
-        <span class="nf">style</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">style</span>
-       <span class="nf">action</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">_Nullable</span><span class="p">)(</span><span class="n">VSAlertAction</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">))</span><span class="nv">action</span><span class="p">;</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">title</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">style</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="p">((</span><span class="kt">VSAlertAction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>title</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>Title of the action</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>style</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The style of the action</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>action</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The block to be executed when the user taps on an action</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The action</p>
                       </div>
                     </section>
                   </div>

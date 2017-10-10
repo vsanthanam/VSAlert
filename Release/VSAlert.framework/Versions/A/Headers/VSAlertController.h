@@ -77,7 +77,6 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
     
 };
 
-
 /**
  VSAlertController is a drop-in replacement for UIAlertController with more features. It is created using the +alertControllerWithTitle:description:image:style: class method, and configured using instances of VSAlertAction. You can add text fields by calling -addTextField: on an instance of VSAlertController. Instantiate the controller, add your actions and textfieds. and any other configuration you might need. Present the controller modally using UIViewController's -presentViewController:animated:completion: method. VSAlertController respects the animation paramater of this call, and you configure the animation in question by setting your instances animationStyle property before presentation. You can also change this property in the handler of an action to use a different animation on dismissal.
  */
@@ -113,9 +112,24 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
  */
 
 /**
- The color of the alert title
+ The color of the alert title. The default value is black.
  */
-@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *titleTextColor UI_APPEARANCE_SELECTOR;
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *alertTitleTextColor UI_APPEARANCE_SELECTOR;
+
+/**
+ The color of the alert message (description). The default value is black.
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *alertDescriptionTextColor UI_APPEARANCE_SELECTOR;
+
+/**
+ The font of the alert title. The default value is the system font size 17 weight medium.
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIFont *alertTitleTextFont UI_APPEARANCE_SELECTOR;
+
+/**
+ The font of the alert message (description). The default value is the system font size 15 weight regular.
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIFont *alertDescriptionTextFont UI_APPEARANCE_SELECTOR;
 
 /**
  @name Configuring Interactive Alert Content

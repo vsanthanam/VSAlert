@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Classes  Reference</title>
+    <title>Enumerations  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,7 +10,7 @@
     
   </head>
   <body>
-    <a title="Classes  Reference"></a>
+    <a title="Enumerations  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">VSAlert Docs</a> (100% documented)</p>
@@ -20,7 +20,7 @@
       <p id="breadcrumbs">
         <a href="index.html">VSAlert Reference</a>
         <img id="carat" src="img/carat.png" />
-        Classes  Reference
+        Enumerations  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -67,8 +67,8 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Classes</h1>
-            <p>The following classes are available globally.</p>
+            <h1>Enumerations</h1>
+            <p>The following enumerations are available globally.</p>
 
           </section>
           <section class="section task-group-section">
@@ -77,9 +77,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)VSAlertAction"></a>
-                    <a name="//apple_ref/objc/Class/VSAlertAction" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertAction">VSAlertAction</a>
+                    <a name="/c:@E@VSAlertActionStyle"></a>
+                    <a name="//apple_ref/objc/Enum/VSAlertActionStyle" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@VSAlertActionStyle">VSAlertActionStyle</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -87,20 +87,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>VSAlertAction is a specialized subclass of UIButton that is used to populate and provide interactive controls to an instance of VSAlertController.</p>
+                        <p>An enumeration for the kinds of actions that can be created</p>
 
-                        <a href="Classes/VSAlertAction.html" class="slightly-smaller">See more</a>
+<ul>
+<li>VSAlertActionStyleDefault: A normal action</li>
+<li>VSAlertActionStyleCancel: An action that indicates to the user that the current process wil be cancelled</li>
+<li>VSAlertActionStyleDestructive: An action indicates to the user that an irreversible process is about to happen.</li>
+</ul>
+
+                        <a href="Enums/VSAlertActionStyle.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">VSAlertAction</span> <span class="p">:</span> <span class="nc">UIButton</span> <span class="o">&lt;</span><span class="n">UIAppearance</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">VSAlertActionStyle</span> <span class="p">{}</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">VSAlertAction</span> <span class="p">:</span> <span class="kt">UIButton</span><span class="p">,</span> <span class="kt">UIAppearance</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">enum</span> <span class="kt">VSAlertActionStyle</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>
@@ -114,9 +120,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)VSAlertController"></a>
-                    <a name="//apple_ref/objc/Class/VSAlertController" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertController">VSAlertController</a>
+                    <a name="/c:@E@VSAlertControllerStyle"></a>
+                    <a name="//apple_ref/objc/Enum/VSAlertControllerStyle" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@VSAlertControllerStyle">VSAlertControllerStyle</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -124,20 +130,66 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>VSAlertController is a drop-in replacement for UIAlertController with more features. It is created using the +alertControllerWithTitle:description:image:style: class method, and configured using instances of VSAlertAction. You can add text fields by calling -addTextField: on an instance of VSAlertController. Instantiate the controller, add your actions and textfieds. and any other configuration you might need. Present the controller modally using UIViewController&rsquo;s -presentViewController:animated:completion: method. VSAlertController respects the animation paramater of this call, and you configure the animation in question by setting your instances animationStyle property before presentation. You can also change this property in the handler of an action to use a different animation on dismissal.</p>
+                        <p>An enumeration describing the kinds of alerts that VSAlertController can display</p>
 
-                        <a href="Classes/VSAlertController.html" class="slightly-smaller">See more</a>
+<ul>
+<li>VSAlertControllerStyleAlert: A standard alert, 270pt wide, variable height. Supports text fields</li>
+<li>VSAlertControllerStyleWalkthroughAlert: A wider alert that stretches to the margins of the device - 18pt in either direction. Supports text fields, useful for onboarding.</li>
+<li>VSAlertControllerStyleActionSheet: An alert that appears at the bottom of the display, similar to Apple&rsquo;s action sheet stlye. Does NOT support text fields.</li>
+</ul>
+
+                        <a href="Enums/VSAlertControllerStyle.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">VSAlertController</span> <span class="p">:</span> <span class="nc">UIViewController</span></code></pre>
+                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">VSAlertControllerStyle</span> <span class="p">{}</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">VSAlertController</span> <span class="p">:</span> <span class="kt">UIViewController</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">enum</span> <span class="kt">VSAlertControllerStyle</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@VSAlertControllerAnimationStyle"></a>
+                    <a name="//apple_ref/objc/Enum/VSAlertControllerAnimationStyle" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@VSAlertControllerAnimationStyle">VSAlertControllerAnimationStyle</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An enumeration describing the kinds of animations that can be used to present and hide an alert</p>
+
+<ul>
+<li>VSAlertControllerAnimationStyleRise: The alert rises from the bottom of the screen and falls down when dismissed</li>
+<li>VSAlertControllerAnimationStyleFall: The alert falls from the top of the screen and rises up when dismissed</li>
+<li>VSAlertControllerAnimationStyleSlide: The alert slides from the left of the screen and slides to the right when dismissed</li>
+<li>VSAlertControllerAnimationStyleFlip: The alert flips from the right, and flips to the left when dismissed.</li>
+</ul>
+
+                        <a href="Enums/VSAlertControllerAnimationStyle.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">enum</span> <span class="n">VSAlertControllerAnimationStyle</span> <span class="p">{}</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">enum</span> <span class="kt">VSAlertControllerAnimationStyle</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
 
                         </div>
                       </div>

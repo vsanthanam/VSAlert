@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, VSAlertActionStyle) {
 /**
  VSAlertAction is a specialized subclass of UIButton that is used to populate and provide interactive controls to an instance of VSAlertController.
  */
-@interface VSAlertAction : UIButton
+@interface VSAlertAction : UIButton<UIAppearance>
 
 /**
  @name Creating Actions
@@ -63,6 +63,30 @@ typedef NS_ENUM(NSInteger, VSAlertActionStyle) {
 - (nullable instancetype)initWithTitle:(nonnull NSString *)title style:(VSAlertActionStyle)style action:(void (^_Nullable)(VSAlertAction *_Nonnull))action NS_DESIGNATED_INITIALIZER;
 
 /**
+ @name Configuring Action Appearance
+ */
+
+/**
+ The color of the title text used in non-desctructive actions
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *actionTextColor UI_APPEARANCE_SELECTOR;
+
+/**
+ The color of the title text used in destructive actions
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *destructiveActionTextColor UI_APPEARANCE_SELECTOR;
+
+/**
+ The font of the title used in non-cancel actions
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIFont *actionTextFont UI_APPEARANCE_SELECTOR;
+
+/**
+ The font of the title used in cancel actions
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIFont *cancelActionTextFont UI_APPEARANCE_SELECTOR;
+
+/**
  @name Interacting With Actions
  */
 
@@ -75,16 +99,5 @@ typedef NS_ENUM(NSInteger, VSAlertActionStyle) {
  The display style of the alert
  */
 @property (NS_NONATOMIC_IOSONLY, assign, readonly) VSAlertActionStyle style;
-
-/**
- @name Configuring Action Appearance
-*/
- 
-@property (class, strong, nullable) UIFont *cancelActionTitleTextFont;
-@property (class, strong, nullable) UIFont *actionTitleTextFont;
-@property (class, strong, nullable) UIColor *actionTextColor;
-@property (class, strong, nullable) UIColor *destructiveActionTextColor;
-
-+ (void)resetStyleToDefaults;
 
 @end
