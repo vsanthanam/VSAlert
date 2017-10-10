@@ -39,6 +39,26 @@ typedef NS_ENUM(NSInteger, VSAlertActionStyle) {
 @interface VSAlertAction : UIButton
 
 /**
+ The font used by alert actions that are not styled as "cancel". If none is provided, the system font at regular weight and size 17.0f is used. (Class property, applies to all instances created after change)
+ */
+@property (class, strong, nullable) UIFont *actionTitleTextFont;
+
+/**
+ The font used by alert actions that are styled as "cancel". If none is provided, the system font at semibold weight and size 17.0f is used. (Class property, applies to all instances created after change)
+ */
+@property (class, strong, nullable) UIFont *cancelActionTitleTextFont;
+
+/**
+ The text color used by alert actinos that are not styled as "destructive". If none is provided, UIColor's `+redColor` is used. (Class property, applies to all instances created after change).
+ */
+@property (class, strong, nullable) UIColor *actionTextColor;
+
+/**
+ The text color used by alert actions that are not styled as "destructive". If none is provided, the button's `.tintColor` is used.
+ */
+@property (class, strong, nullable) UIColor *destructiveActionTextColor;
+
+/**
  The block to be executed when the action is selected by the user
  */
 @property (NS_NONATOMIC_IOSONLY, copy, nullable) void (^action)(VSAlertAction * _Nonnull action);
@@ -57,6 +77,11 @@ typedef NS_ENUM(NSInteger, VSAlertActionStyle) {
  @return The action
  */
 + (nullable instancetype)alertActionWithTitle:(nonnull NSString *)title style:(VSAlertActionStyle)style action:(void (^_Nullable)(VSAlertAction * _Nonnull action))action;
+
+/**
+ Reset class property customization to its default settings
+ */
++ (void)resetStyleToDefaults;
 
 /**
  Create an action

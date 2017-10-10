@@ -10,8 +10,9 @@
 extern NSString * _Nonnull const VSAlertControllerTransitionAnimatorNotImplementedException;
 extern NSString * _Nonnull const VSAlertControllerTransitionAnimatorInvalidUsageException;
 
+/**
+ Project Header class -- not exposed in static framework. Used to handle custom modal transitions
+ */
 @interface VSAlertControllerTransitionAnimator : NSObject<UIViewControllerAnimatedTransitioning>
-
-//- (nullable instancetype)initWithDismissingActionStyle:(VSAlertActionStyle)dismissingActionStyle;
 
 @end

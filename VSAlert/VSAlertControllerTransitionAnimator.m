@@ -55,11 +55,11 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
             shadowView.layer.backgroundColor = [UIColor clearColor].CGColor;
             [transitionContext.containerView addSubview:shadowView];
             
-            if (alertController.presentAnimationStyle == VSAlertControllerPresentAnimationStyleRise || alertController.presentAnimationStyle == VSAlertControllerPresentAnimationStyleFall) {
+            if (alertController.animationStyle == VSAlertControllerAnimationStyleRise || alertController.animationStyle == VSAlertControllerAnimationStyleFall) {
             
                 // Rise & Fall Animations
                 
-                CGFloat dy = alertController.presentAnimationStyle == VSAlertControllerPresentAnimationStyleRise ? fromController.view.frame.size.height : -1.0f * fromController.view.frame.size.height;
+                CGFloat dy = alertController.animationStyle == VSAlertControllerAnimationStyleRise ? fromController.view.frame.size.height : -1.0f * fromController.view.frame.size.height;
                 
                 CGRect initialFrame = CGRectOffset(fromController.view.frame, 0.0f, dy);
                 
@@ -80,7 +80,7 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                                      
                                  }];
                 
-            } else if (alertController.presentAnimationStyle == VSAlertControllerPresentAnimationStyleSlide) {
+            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleSlide) {
                 
                 // Slide From Left Animation
                 
@@ -99,9 +99,42 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                                  }
                                  completion:^(BOOL finished) {
                                      
+
                                      [transitionContext completeTransition:finished];
                                      
                                  }];
+                
+            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleFlip) {
+                
+                // Flip Animation
+                
+                alertController.view.alpha = 0.0f;
+                [transitionContext.containerView addSubview:alertController.view];
+                
+                NSTimeInterval flipDuration = [self transitionDuration:transitionContext] - 0.1f;
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                   
+                        [UIView transitionWithView:alertController.view
+                                          duration:flipDuration
+                                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                                        animations:^{
+                                            
+                                            shadowView.layer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f].CGColor;
+                                            alertController.view.alpha = 1.0f;
+                                            
+                                        }
+                                        completion:^(BOOL finished) {
+                                            
+                                            [transitionContext completeTransition:finished];
+                                            
+                                        }];
+                        
+                    });
+                    
+                });
                 
             } else {
                 
@@ -142,11 +175,11 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
             // Find Shadow
             UIView *shadowView = transitionContext.containerView.subviews[0];
             
-            if (alertController.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleFall || alertController.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleRise) {
+            if (alertController.animationStyle == VSAlertControllerAnimationStyleRise || alertController.animationStyle == VSAlertControllerAnimationStyleFall) {
             
                 // Fall & Rise Animation
                 
-                CGFloat dy = alertController.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleFall ? toController.view.frame.size.height : -1.0f * toController.view.frame.size.height;
+                CGFloat dy = alertController.animationStyle == VSAlertControllerAnimationStyleRise ? toController.view.frame.size.height : -1.0f * toController.view.frame.size.height;
                 
                 CGRect destinationFrame = CGRectOffset(toController.view.frame, 0.0f, dy);
                 [UIView animateWithDuration:[self transitionDuration:transitionContext]
@@ -164,7 +197,7 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                                      
                                  }];
                 
-            } else if (alertController.dismissAnimationStyle == VSAlertControllerPresentAnimationStyleSlide) {
+            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleSlide) {
                 
                 // Slide To Right Animation
                 
@@ -185,6 +218,27 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                                      
                                  }];
                 
+            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleFlip) {
+            
+                // Flip Animation
+                
+                [UIView transitionWithView:alertController.view
+                                  duration:[self transitionDuration:transitionContext]
+                                   options:UIViewAnimationOptionTransitionFlipFromRight
+                                animations:^{
+                                
+                                    alertController.view.alpha = 0.0f;
+                                    shadowView.layer.backgroundColor = [UIColor clearColor].CGColor;
+                                    
+                                }
+                                completion:^(BOOL finished) {
+                                   
+                                    [alertController.view removeFromSuperview];
+                                    [shadowView removeFromSuperview];
+                                    [transitionContext completeTransition:finished];
+                                    
+                                }];
+                
             } else {
                 
                 [transitionContext completeTransition:NO];
@@ -201,8 +255,40 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
     
-    return 0.3f;
+    UIViewController *toController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIViewController *fromController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
+    VSAlertController *controller;
+    
+    if (toController.isBeingPresented) {
+        
+        controller = (VSAlertController *)toController;
+        
+        if (controller.animationStyle == VSAlertControllerAnimationStyleFlip) {
+            
+            return 0.5f;
+            
+        }
+        
+        return 0.3f;
+        
+    } else if (fromController.isBeingDismissed) {
+        
+        controller = (VSAlertController *)fromController;
+        
+        if (controller.animationStyle == VSAlertControllerAnimationStyleFlip) {
+            
+            return 0.4f;
+            
+        }
+        
+        return 0.3f;
+        
+    }
+    
+    return 0.0f;
+               
+               
 }
 
 @end

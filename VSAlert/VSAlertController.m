@@ -32,6 +32,7 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 @property (NS_NONATOMIC_IOSONLY, readonly) CGFloat alertStackViewHeight;
 @property (NS_NONATOMIC_IOSONLY, readonly) BOOL hasTextFieldAdded;
 
+// Re-designate initializers so you can call 'super'
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_DESIGNATED_INITIALIZER;
 
@@ -58,7 +59,7 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     
 }
 
-// Class Variables
+// Class variables
 static UIColor *_titleTextColor;
 static UIColor *_textColor;
 static UIFont *_titleTextFont;
@@ -66,8 +67,7 @@ static UIFont *_textFont;
 
 // Explicitly synthesize Ivars from header
 @synthesize textFields = _textFields;
-@synthesize presentAnimationStyle = _presentAnimationStyle;
-@synthesize dismissAnimationStyle = _dismissAnimationStyle;
+@synthesize animationStyle = _animationStyle;
 
 // Explicitly synthesize Ivars from extension
 @synthesize alertMaskBackground = _alertMaskBackground;
@@ -96,69 +96,6 @@ static UIFont *_textFont;
     self.titleTextColor = nil;
     self.textFont = [UIFont systemFontOfSize:15.0f];
     self.titleTextFont = [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold];
-    
-}
-
-#pragma mark - Public Class Methods
-
-+ (instancetype)alertControllerWithTitle:(NSString *)title description:(NSString *)description image:(UIImage *)image style:(VSAlertControllerStyle)style {
-    
-    VSAlertController *alertController = [[self alloc] initWithTitle:title
-                                                         description:description
-                                                               image:image
-                                                               style:style];
-
-    return alertController;
-    
-}
-
-#pragma mark - Overridden Instance Methods
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    
-    self = [super initWithCoder:aDecoder];
-    
-    if (self) {
-        
-        // Basic setup
-        [self _setUpAlertController];
-        
-        // Set instance property defaults
-        self.presentAnimationStyle = VSAlertControllerPresentAnimationStyleRise;
-        self.dismissAnimationStyle = VSAlertControllerDismissAnimationStyleFall;
-        
-        // Store default params for use in -viewDidLoad
-        _title = @"";
-        _description = @"";
-        _style = VSAlertControllerStyleAlert;
-
-    }
-    
-    return self;
-    
-}
-
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    
-    if (self) {
-        
-        // Basic setup
-        [self _setUpAlertController];
-        
-        // Set instance property defaults
-        self.presentAnimationStyle = VSAlertControllerPresentAnimationStyleRise;
-        self.dismissAnimationStyle = VSAlertControllerDismissAnimationStyleFall;
-        
-        // Store default params for use in -viewDidLoad
-        _title = @"";
-        _description = @"";
-        _style = VSAlertControllerStyleAlert;
-        
-    }
-    
-    return self;
     
 }
 
@@ -209,6 +146,67 @@ static UIFont *_textFont;
 + (void)setTitleTextFont:(UIFont *)titleTextFont {
     
     _titleTextFont = titleTextFont;
+    
+}
+
+#pragma mark - Public Class Methods
+
++ (instancetype)alertControllerWithTitle:(NSString *)title description:(NSString *)description image:(UIImage *)image style:(VSAlertControllerStyle)style {
+    
+    VSAlertController *alertController = [[self alloc] initWithTitle:title
+                                                         description:description
+                                                               image:image
+                                                               style:style];
+    
+    return alertController;
+    
+}
+
+#pragma mark - Overridden Instance Methods
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        
+        // Basic setup
+        [self _setUpAlertController];
+        
+        // Set instance property defaults
+        self.animationStyle = VSAlertControllerAnimationStyleRise;
+        
+        // Store default params for use in -viewDidLoad
+        _title = @"";
+        _description = @"";
+        _style = VSAlertControllerStyleAlert;
+
+    }
+    
+    return self;
+    
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if (self) {
+        
+        // Basic setup
+        [self _setUpAlertController];
+        
+        // Set instance property defaults
+        self.animationStyle = VSAlertControllerAnimationStyleRise;
+        
+        // Store default params for use in -viewDidLoad
+        _title = @"";
+        _description = @"";
+        _style = VSAlertControllerStyleAlert;
+        
+    }
+    
+    return self;
     
 }
 
@@ -331,8 +329,7 @@ static UIFont *_textFont;
         [self _setUpAlertController];
         
         // Set instance property defaults
-        self.presentAnimationStyle = VSAlertControllerPresentAnimationStyleRise;
-        self.dismissAnimationStyle = VSAlertControllerDismissAnimationStyleFall;
+        self.animationStyle = VSAlertControllerAnimationStyleRise;
         
         // Store initializer params for use in -viewDidLoad
         _title = title;
@@ -735,9 +732,9 @@ static UIFont *_textFont;
     
 }
 
-- (void)_dismissAlertController:(VSAlertAction *)sender {
+- (void)_dismissAlertControllerFromAction:(VSAlertAction *)sender {
     
-    // handle action specific dismissal
+    // Do action specific things
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -762,87 +759,6 @@ static UIFont *_textFont;
     self.alertActionStackView.axis = UILayoutConstraintAxisVertical;
     
 }
-
-//- (void)_animateBuildWithCompletionHandler:(void (^)(void))completion {
-//
-////    if (self.buildAnimationStyle == VSAlertControllerBuildAnimationStyleNone) {
-////
-////        return;
-////
-////    } else if (self.buildAnimationStyle == VSAlertControllerBuildAnimationStyleRise) {
-////
-////        [self.view layoutIfNeeded];
-////        [UIView animateWithDuration:0.2f
-////                              delay:0.0f
-////                            options:UIViewAnimationOptionCurveEaseIn
-////                         animations:^{
-////
-////                             self.alertViewCenterYConstraint.constant = 0.0f;
-////                             [self.view layoutIfNeeded];
-////
-////                         }
-////                         completion:^(BOOL finished) {
-////
-////                             if (completion) {
-////
-////                                 completion();
-////
-////                             }
-////
-////                         }];
-////    }
-//
-//}
-//
-//- (void)_animateDismissForActionStyle:(VSAlertActionStyle)style {
-//
-////    if (self.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleNone) {
-////
-////        return;
-////
-////    } else {
-////
-////        // Create Animator
-////        _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-////
-////        if (self.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleFall || self.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleDirectionalFall) {
-////
-////            // Gravity Animation
-////            UIGravityBehavior *gravityBehavior = [[UIGravityBehavior alloc] initWithItems:@[self.alertView]];
-////            gravityBehavior.gravityDirection = CGVectorMake(0.0f, 10.0f);
-////
-////            [_animator addBehavior:gravityBehavior];
-////
-////            if (self.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleDirectionalFall) {
-////
-////                // Add Rotation
-////                double radian = (style == VSAlertActionStyleCancel) ? (-2.0f * M_PI) : (2.0f * M_PI);
-////
-////                UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.alertView]];
-////                [itemBehavior addAngularVelocity:radian forItem:self.alertView];
-////
-////                [_animator addBehavior:itemBehavior];
-////
-////            }
-////
-////        } else if (self.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleSlide) {
-////
-////            UIPushBehavior *pushBehavior = [[UIPushBehavior alloc] initWithItems:@[self.alertView] mode:UIPushBehaviorModeInstantaneous];
-////            CGFloat dx = ([UIScreen mainScreen].bounds.size.width - self.alertView.frame.size.width)/2.0f;
-////            dx = (style == VSAlertActionStyleCancel && _style != VSAlertControllerStyleActionSheet) ? dx * -1.0f : dx * 1.0f;
-////            pushBehavior.pushDirection = CGVectorMake(dx, 0.0f);
-////
-////            [_animator addBehavior:pushBehavior];
-////
-////        } else {
-////
-////            [NSException raise:VSAlertControllerNotImplementedException format:@"Attempted to animation using an animation style that hasn't been implemented yet"];
-////
-////        }
-////
-////    }
-//
-//}
 
 - (void)_keyboardWillShow:(NSNotification *)notif {
 
@@ -1028,7 +944,7 @@ static UIFont *_textFont;
         
     }
     
-    [self _dismissAlertController:sender];
+    [self _dismissAlertControllerFromAction:sender];
     
 }
 

@@ -11,6 +11,7 @@
 
 @property (NS_NONATOMIC_IOSONLY, strong) UIImageView *separator;
 
+// Redesignate initializers so you can call 'super'
 - (instancetype)initWithFrame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
@@ -18,10 +19,74 @@
 
 @implementation VSAlertAction
 
+// Class variables
+static UIFont *_actionTitleTextFont;
+static UIFont *_cancelActionTitleTextFont;
+static UIColor *_actionTextColor;
+static UIColor *_destructiveActionTextColor;
+
+// Explicitly synthesize ivars from header
 @synthesize style = _style;
 @synthesize action = _action;
 
+// Explicitly syenthesize ivars from extension
 @synthesize separator = _separator;
+
+#pragma mark - Overridden Class Methods
+
++ (void)initialize {
+    
+}
+
+#pragma mark - Class Property Access Methods
+
++ (UIFont *)actionTitleTextFont {
+    
+    return _actionTitleTextFont;
+    
+}
+
++ (void)setActionTitleTextFont:(UIFont *)actionTitleTextFont {
+    
+    _actionTitleTextFont = actionTitleTextFont;
+    
+}
+
++ (UIFont *)cancelActionTitleTextFont {
+    
+    return _cancelActionTitleTextFont;
+    
+}
+
++ (void)setCancelActionTitleTextFont:(UIFont *)cancelActionTitleTextFont {
+    
+    _cancelActionTitleTextFont = cancelActionTitleTextFont;
+    
+}
+
++ (UIColor *)actionTextColor {
+    
+    return _actionTextColor;
+    
+}
+
++ (void)setActionTextColor:(UIColor *)actionTextColor {
+    
+    _actionTextColor = actionTextColor;
+    
+}
+
++ (UIColor *)destructiveActionTextColor {
+    
+    return _destructiveActionTextColor;
+    
+}
+
++ (void)setDestructiveActionTextColor:(UIColor *)destructiveActionTextColor {
+    
+    _destructiveActionTextColor = destructiveActionTextColor;
+    
+}
 
 #pragma mark - Public Class Methods
 
@@ -30,6 +95,15 @@
     return [[self alloc] initWithTitle:title
                                  style:style
                                 action:action];
+    
+}
+
++ (void)resetStyleToDefaults {
+    
+    self.actionTitleTextFont = nil;
+    self.cancelActionTitleTextFont = nil;
+    self.actionTextColor = nil;
+    self.destructiveActionTextColor = nil;
     
 }
 
@@ -63,8 +137,14 @@
         _action = action;
         
         [self setTitle:title forState:UIControlStateNormal];
-        [self setTitleColor:self.style == VSAlertActionStyleDestructive ? [UIColor redColor] : self.tintColor forState:UIControlStateNormal];
-        self.titleLabel.font = self.style == VSAlertActionStyleCancel ? [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold] : [UIFont systemFontOfSize:17.0f weight:UIFontWeightRegular];
+        
+        UIColor *color = [self class].actionTextColor ? [self class].actionTextColor : self.tintColor;
+        UIColor *destructiveColor = [self class].destructiveActionTextColor ? [self class].destructiveActionTextColor : [UIColor redColor];
+        [self setTitleColor:self.style == VSAlertActionStyleDestructive ? destructiveColor : color forState:UIControlStateNormal];
+        
+        UIFont *font = [self class].actionTitleTextFont ? [self class].actionTitleTextFont : [UIFont systemFontOfSize:17.0f weight:UIFontWeightRegular];
+        UIFont *cancelFont = [self class].cancelActionTitleTextFont ? [self class].cancelActionTitleTextFont : [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold];
+        self.titleLabel.font = self.style == VSAlertActionStyleCancel ? cancelFont : font;
         
         [self _addSeparator];
         

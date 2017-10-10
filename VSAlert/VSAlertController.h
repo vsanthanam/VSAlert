@@ -44,19 +44,35 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
     
 };
 
-typedef NS_ENUM(NSInteger, VSAlertControllerPresentAnimationStyle) {
-    
-    VSAlertControllerPresentAnimationStyleRise,
-    VSAlertControllerPresentAnimationStyleFall,
-    VSAlertControllerPresentAnimationStyleSlide
-    
-};
+/**
+ An enumeration for the various animation styles
 
-typedef NS_ENUM(NSInteger, VSAlertControllerDismissAnimationStyle) {
+ - VSAlertControllerPresentAnimationStyleRise: The alert rises from the bottom of the device
+ - VSAlertControllerPresentAnimationStyleFall: The alert falls from the top of the device
+ - VSAlertControllerPresentAnimationStyleSlide: The alert slides in from the left of the device
+ - VSAlertControllerPresentAnimationStyleFlip: The alert flips from the left
+ */
+typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
     
-    VSAlertControllerDismissAnimationStyleFall,
-    VSAlertControllerDismissAnimationStyleRise,
-    VSAlertControllerDismissAnimationStyleSlide
+    /**
+     The alert rises from the bottom of the device
+     */
+    VSAlertControllerAnimationStyleRise,
+    
+    /**
+     The alert falls from the top of the device
+     */
+    VSAlertControllerAnimationStyleFall,
+    
+    /**
+     The alert slides in from the left of the device
+     */
+    VSAlertControllerAnimationStyleSlide,
+    
+    /**
+     The alert flips from the left
+     */
+    VSAlertControllerAnimationStyleFlip
     
 };
 
@@ -98,8 +114,15 @@ The color of the title text used by alert controllers. The default value is nil.
  */
 @property (NS_NONATOMIC_IOSONLY, strong, readonly, nonnull) NSArray<UITextField *> *textFields;
 
-@property (NS_NONATOMIC_IOSONLY, assign) VSAlertControllerPresentAnimationStyle presentAnimationStyle;
-@property (NS_NONATOMIC_IOSONLY, assign) VSAlertControllerDismissAnimationStyle dismissAnimationStyle;
+/**
+ YES if the alert controller should dismiss itself when the background is tapped, otherwise NO (default is no)
+ */
+@property (NS_NONATOMIC_IOSONLY, assign, getter=shouldDismissOnBackgroundTap) BOOL dismissOnBackgroundTap;
+
+/**
+ The animation style to use when the alert is presented
+ */
+@property (NS_NONATOMIC_IOSONLY, assign) VSAlertControllerAnimationStyle animationStyle;
 
 /**
  @name Class Methods
