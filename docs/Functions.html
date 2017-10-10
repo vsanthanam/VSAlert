@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Classes  Reference</title>
+    <title>Functions  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,7 +10,7 @@
     
   </head>
   <body>
-    <a title="Classes  Reference"></a>
+    <a title="Functions  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">VSAlert Docs</a> (90% documented)</p>
@@ -20,7 +20,7 @@
       <p id="breadcrumbs">
         <a href="index.html">VSAlert Reference</a>
         <img id="carat" src="img/carat.png" />
-        Classes  Reference
+        Functions  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -61,8 +61,8 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Classes</h1>
-            <p>The following classes are available globally.</p>
+            <h1>Functions</h1>
+            <p>The following functions are available globally.</p>
 
           </section>
           <section class="section task-group-section">
@@ -71,9 +71,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:objc(cs)VSAlertAction"></a>
-                    <a name="//apple_ref/objc/Class/VSAlertAction" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertAction">VSAlertAction</a>
+                    <a name="/c:@F@NS_ENUM"></a>
+                    <a name="//apple_ref/objc/Function/NS_ENUM" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@F@NS_ENUM">NS_ENUM</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -81,57 +81,25 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>VSAlertAction is a specialized subclass used to configure a VSAlertController.</p>
+                        <p>An enuration for the various UI styles of VSAlertAction</p>
 
-                        <a href="Classes/VSAlertAction.html" class="slightly-smaller">See more</a>
+<ul>
+<li>VSAlertActionStyleDefault: Standard action UI</li>
+<li>VSAlertActionStyleCancel: Slightly bolder action UI, use for actions that will <q>cancel</q></li>
+<li>VSAlertActionStyleDestructive: Red action UI, use for actions that will break or ireversably cahgne something</li>
+</ul>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">VSAlertAction</span></code></pre>
+                          <pre class="highlight"><code><span class="kt">int</span> <span class="n">NS_ENUM</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">,</span> <span class="n">VSAlertActionStyle</span><span class="p">)</span></code></pre>
 
                         </div>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">VSAlertAction</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:objc(cs)VSAlertController"></a>
-                    <a name="//apple_ref/objc/Class/VSAlertController" class="dashAnchor"></a>
-                    <a class="token" href="#/c:objc(cs)VSAlertController">VSAlertController</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>VSAlertController is a drop-in replacement for UIAlertController with a bit more customization and better looks. It&rsquo;s largely based on Codeido&rsquo;s PMAlertController, but has been re-written in Objective-C rather than Swift, and supports a few more features like dynamically sorted alert actions and a <q>destructive</q> action style that was missing in PMAlertController. It doesn&rsquo;t requrie a separate XIB file for better potability, and uses the system font by default for a more vanilla look. VSAlertController can can be customized at the class level, so you can make any/all UI changes once.</p>
-
-                        <a href="Classes/VSAlertController.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Objective-C</p>
-                          <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">VSAlertController</span></code></pre>
-
-                        </div>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">class</span> <span class="kt">VSAlertController</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="kt">NS_ENUM</span><span class="p">(</span><span class="n">_</span> <span class="kt">NSInteger</span><span class="p">:</span> <span class="kt">Int32</span><span class="p">,</span> <span class="n">_</span> <span class="kt">VSAlertActionStyle</span><span class="p">:</span> <span class="kt">Int32</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Int32</span></code></pre>
 
                         </div>
                       </div>
