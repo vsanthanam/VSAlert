@@ -386,8 +386,7 @@ static os_log_t example_log;
         [alertController addAction:action3];
     }
     
-//    alertController.presentAnimationStyle = VSAlertControllerPresentAnimationStyleFlip;
-//    alertController.dismissAnimationStyle = VSAlertControllerDismissAnimationStyleFlip;
+    alertController.animationStyle = VSAlertControllerAnimationStyleSticker;
     
     [self presentViewController:alertController
                        animated:YES

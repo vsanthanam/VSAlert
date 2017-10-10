@@ -136,6 +136,39 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                     
                 });
                 
+            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleSticker) {
+                
+                // Sticker Animation
+                
+                UIView *body = [alertController valueForKey:@"alertView"];
+                body.alpha = 0.0f;
+                [transitionContext.containerView addSubview:alertController.view];
+                
+                NSTimeInterval stickerDuration = [self transitionDuration:transitionContext] - 0.1f;
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                       
+                        [UIView transitionWithView:body
+                                          duration:stickerDuration
+                                           options:UIViewAnimationOptionTransitionCurlDown
+                                        animations:^{
+                                           
+                                            shadowView.layer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f].CGColor;
+                                            body.alpha = 1.0f;
+                                            
+                                        }
+                                        completion:^(BOOL finished) {
+                                            
+                                            [transitionContext completeTransition:finished];
+                                            
+                                        }];
+                        
+                    });
+                    
+                });
+                
             } else {
                 
                 [transitionContext completeTransition:NO];
@@ -200,7 +233,7 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
             } else if (alertController.animationStyle == VSAlertControllerAnimationStyleSlide) {
                 
                 // Slide To Right Animation
-                
+
                 CGRect destinationFrame = CGRectOffset(toController.view.frame, toController.view.frame.size.width, 0.0f);
                 
                 [UIView animateWithDuration:[self transitionDuration:transitionContext]
@@ -239,6 +272,29 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                                     
                                 }];
                 
+            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleSticker) {
+                
+                // Sticker animation
+                
+                UIView *body = [alertController valueForKey:@"alertView"];
+                
+                [UIView transitionWithView:body
+                                  duration:[self transitionDuration:transitionContext]
+                                   options:UIViewAnimationOptionTransitionCurlUp
+                                animations:^{
+                                
+                                    body.alpha = 0.0f;
+                                    shadowView.layer.backgroundColor = [UIColor clearColor].CGColor;
+                                    
+                                }
+                                completion:^(BOOL finished) {
+                                   
+                                    [alertController.view removeFromSuperview];
+                                    [shadowView removeFromSuperview];
+                                    [transitionContext completeTransition:YES];
+                                    
+                                }];
+                
             } else {
                 
                 [transitionContext completeTransition:NO];
@@ -268,6 +324,10 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
             
             return 0.5f;
             
+        } else if (controller.animationStyle == VSAlertControllerAnimationStyleSticker) {
+            
+            return 0.6f;
+            
         }
         
         return 0.3f;
@@ -279,6 +339,10 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
         if (controller.animationStyle == VSAlertControllerAnimationStyleFlip) {
             
             return 0.4f;
+            
+        } else if (controller.animationStyle == VSAlertControllerAnimationStyleSticker) {
+            
+            return 0.5f;
             
         }
         
