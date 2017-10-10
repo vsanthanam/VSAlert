@@ -59,12 +59,6 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     
 }
 
-// Class variables
-static UIColor *_titleTextColor;
-static UIColor *_textColor;
-static UIFont *_titleTextFont;
-static UIFont *_textFont;
-
 // Explicitly synthesize Ivars from header
 @synthesize textFields = _textFields;
 @synthesize animationStyle = _animationStyle;
@@ -81,73 +75,6 @@ static UIFont *_textFont;
 @synthesize alertActionStackView = _alertActionStackView;
 @synthesize alertStackViewHeightConstraint = _alertStackViewHeightConstraint;
 @synthesize tapRecognizer = _tapRecognizer;
-
-#pragma mark - Overridden Class Methods
-
-+ (void)initialize {
-    
-    [self resetStyleToDefaults];
-    
-}
-
-+ (void)resetStyleToDefaults {
-    
-    self.textColor = [UIColor blackColor];
-    self.titleTextColor = nil;
-    self.textFont = [UIFont systemFontOfSize:15.0f];
-    self.titleTextFont = [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold];
-    
-}
-
-#pragma mark - Class Property Access Methods
-
-+ (UIColor *)textColor {
-    
-    return _textColor;
-    
-}
-
-+ (void)setTextColor:(UIColor *)textColor {
-    
-    _textColor = textColor;
-    
-}
-
-+ (UIColor *)titleTextColor {
-    
-    return _titleTextColor;
-    
-}
-
-+ (void)setTitleTextColor:(UIColor *)titleTextColor {
-    
-    _titleTextColor = titleTextColor;
-    
-}
-
-+ (UIFont *)textFont {
-    
-    return _textFont;
-    
-}
-
-+ (void)setTextFont:(UIFont *)textFont {
-    
-    _textFont = textFont;
-    
-}
-
-+ (UIFont *)titleTextFont {
-    
-    return _titleTextFont;
-    
-}
-
-+ (void)setTitleTextFont:(UIFont *)titleTextFont {
-    
-    _titleTextFont = titleTextFont;
-    
-}
 
 #pragma mark - Public Class Methods
 
@@ -382,7 +309,11 @@ static UIFont *_textFont;
         forControlEvents:UIControlEventEditingDidEndOnExit];
     
     // Perform configuration block on textfeild
-    configuration(textField);
+    if (configuration) {
+        
+        configuration(textField);
+        
+    }
     
     // Store textfield for use in -viewDidLoad
     _textFields = [_textFields arrayByAddingObject:textField];
@@ -603,8 +534,8 @@ static UIFont *_textFont;
 - (void)_setUpAlertTitle {
  
     self.alertTitle = [[UILabel alloc] init];
-    self.alertTitle.font = [self class].titleTextFont;
-    self.alertTitle.textColor = [self class].titleTextColor ? [self class].titleTextColor : [self class].textColor;
+    self.alertTitle.font = [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold];
+    self.alertTitle.textColor = [UIColor blackColor];
     self.alertTitle.numberOfLines = 0;
     self.alertTitle.textAlignment = NSTextAlignmentCenter;
     self.alertTitle.translatesAutoresizingMaskIntoConstraints = NO;
@@ -645,8 +576,8 @@ static UIFont *_textFont;
 - (void)_setUpAlertDescription {
     
     self.alertDescription = [[UILabel alloc] init];
-    self.alertDescription.font = [self class].textFont;
-    self.alertDescription.textColor = [self class].textColor;
+    self.alertDescription.font = [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
+    self.alertDescription.textColor = [UIColor redColor];
     self.alertDescription.numberOfLines = 0;
     self.alertDescription.textAlignment = NSTextAlignmentCenter;
     self.alertDescription.translatesAutoresizingMaskIntoConstraints = NO;

@@ -8,133 +8,146 @@
 @import UIKit;
 
 #import "VSAlertAction.h"
+
 /**
- An exception thrown when an unimplemented feature is used at runtime.
+ An exception thrown when an unimplemented feature is encountered at runtime.
  */
 extern NSString * _Nonnull const VSAlertControllerNotImplementedException;
 
 /**
- An exceptino thrown when a textfield is added in an alertcontroller style which doesn't support text fields
+ An exception thrown when a text field is added to an alert controller which doesn't support text fields
  */
 extern NSString * _Nonnull const VSAlertControllerTextFieldInvalidException;
 
 /**
- An enuration for the various UI styles of VSAlertController
+ An enumeration describing the kinds of alerts that VSAlertController can display
 
- - VSAlertControllerStyleAlert: A pop up alert that displays at 270px wide (like Apple's UIAlertController)
- - VSAlertControllerStyleWalkthroughAlert: A wider popup that stretches it's to fit the width of the device (minus some padding)
- - VSAlertControllerStyleActionSheet: A bottom of the screen alert, similar to Apple's Action Sheet style
+ - VSAlertControllerStyleAlert: A standard alert, 270pt wide, variable height. Supports text fields
+ - VSAlertControllerStyleWalkthroughAlert: A wider alert that stretches to the margins of the device - 18pt in either direction. Supports text fields, useful for onboarding.
+ - VSAlertControllerStyleActionSheet: An alert that appears at the bottom of the display, similar to Apple's action sheet stlye. Does NOT support text fields.
  */
 typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
 
     /**
-     A pop up alert that displays at 270px wide (like Apple's UIAlertController)
+     A standard alert, 270pt wide, variable height. Supports text fields
      */
     VSAlertControllerStyleAlert,
     
     /**
-     A wider popup that stretches it's to fit the width of the device (minus some padding)
+     A wider alert that stretches to the margins of the device - 18pt in either direction. Supports text fields, useful for onboarding.
      */
     VSAlertControllerStyleWalkthroughAlert,
     
     /**
-     A bottom of the screen alert, similar to Apple's Action Sheet style
+     An alert that appears at the bottom of the display, similar to Apple's action sheet stlye. Does NOT support text fields.
      */
     VSAlertControllerStyleActionSheet
     
 };
 
 /**
- VSAlertController is a drop-in replacement for UIAlertController with a bit more customization and better looks. It's largely based on Codeido's PMAlertController, but has been re-written in Objective-C rather than Swift, and supports a few more features like dynamically sorted alert actions and a "destructive" action style that was missing in PMAlertController. It doesn't requrie a separate XIB file for better potability, and uses the system font by default for a more vanilla look. VSAlertController can can be customized at the class level, so you can make any/all UI changes once.
+ An enumeration describing the kinds of animations that can be used to present and hide an alert
+
+ - VSAlertControllerAnimationStyleRise: The alert rises from the bottom of the screen and falls down when dismissed
+ - VSAlertControllerAnimationStyleFall: The alert falls from the top of the screen and rises up when dismissed
+ - VSAlertControllerAnimationStyleSlide: The alert slides from the left of the screen and slides to the right when dismissed
+ - VSAlertControllerAnimationStyleFlip: The alert flips from the right, and flips to the left when dismissed.
+ */
+typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
+    
+    /**
+     The alert rises from the bottom of the screen and falls down when dismissed
+     */
+    VSAlertControllerAnimationStyleRise,
+    
+    /**
+     The alert falls from the top of the screen and rises up when dismissed
+     */
+    VSAlertControllerAnimationStyleFall,
+    
+    /**
+     The alert slides from the left of the screen and slides to the right when dismissed
+     */
+    VSAlertControllerAnimationStyleSlide,
+    
+    /**
+     The alert flips from the right, and flips to the left when dismissed.
+     */
+    VSAlertControllerAnimationStyleFlip
+    
+};
+
+
+/**
+ VSAlertController is a drop-in replacement for UIAlertController with more features. It is created using the +alertControllerWithTitle:description:image:style: class method, and configured using instances of VSAlertAction. You can add text fields by calling -addTextField: on an instance of VSAlertController. Instantiate the controller, add your actions and textfieds. and any other configuration you might need. Present the controller modally using UIViewController's -presentViewController:animated:completion: method. VSAlertController respects the animation paramater of this call, and you configure the animation in question by setting your instances animationStyle property before presentation. You can also change this property in the handler of an action to use a different animation on dismissal.
  */
 @interface VSAlertController : UIViewController
 
 /**
- @name Class Properties
+ @name Creating Alerts
  */
 
 /**
-The color of the title text used by alert controllers. The default value is nil. If nil is specified when an alert controller is displayed, VSAlertController.textColor's value is used instead. (Class property, applies to all instances created after change)
-*/
-@property (class, strong, nullable) UIColor *titleTextColor;
+ A factory method to create an instance of VSAlertController. This is the preffered way to instantiate alerts
 
-/**
- The color of the text used by alert controllers. (Class property, applies to all instances created after change)
- */
-@property (class, strong, nonnull) UIColor *textColor;
-
-/**
- The font of the title used by alert controllers. The default value is the system font at size 17.0f. (Class property, applies to all instances created after change)
- */
-@property (class, strong, nonnull) UIFont *titleTextFont;
-
-/**
- The font of the text used by alert controllers. The default value is the the system font at size 15.0f (Class property, applies to all instances created after change)
- */
-@property (class, strong, nonnull) UIFont *textFont;
-
-/**
- @name Instance Properties
- */
-
-/**
- An array of UITextFields visible on the alert
- */
-@property (NS_NONATOMIC_IOSONLY, strong, readonly, nonnull) NSArray<UITextField *> *textFields;
-
-
-/**
- The background view of the alert. It's default image is set to nil, and its default background color is set to #FFFFFF with an alpha component of 0.5. You can change it's background color or assign an image if you prefer an different background for your alert.
- */
-@property (NS_NONATOMIC_IOSONLY, strong, readonly, nonnull) UIImageView *alertMaskBackground;
-
-/**
- @name Class Methods
- */
-
-/**
- A factory method to create a new alert. The alert is dynamically sized based on your initialization paramaters
-
- @param title The title of the alert.
- @param description The message or body of the alert.
- @param image The image to show on the alert, if any. See the provided image template for details.
- @param style The UI style of the alert
- @return The initialized alert controller.
+ @param title The title of the alert
+ @param description The description (message) of the alert
+ @param image The image to be displayed in the header of the alert.
+ @param style The style of the alert
+ @return The instantiated alert object
  */
 + (nullable instancetype)alertControllerWithTitle:(nullable NSString *)title description:(nullable NSString *)description image:(nullable UIImage *)image style:(VSAlertControllerStyle)style;
 
-/**
- Reset class property customization to its default settings
+/** Create an instance of VSAlertController
+ 
+ @param title The title of the alert
+ @param description The description (message) of the alert
+ @param image The image to be displayed in the header of the alert.
+ @param style The style of the alert
+ @return The instantiated alert object
  */
-+ (void)resetStyleToDefaults;
+- (nullable instancetype)initWithTitle:(nullable NSString *)title description:(nullable NSString *)description image:(nullable UIImage *)image style:(VSAlertControllerStyle)style NS_DESIGNATED_INITIALIZER;
 
 /**
- @name Instance Methods
+ @name Configuring Interactive Alert Content
  */
 
 /**
- Create a new alert controller
+ Add an action to an alert
 
- @param title The title of the alert.
- @param description The message or body of the alert.
- @param image The image to show on the alert, if any. See the provided image template for details.
- @param style The UI style of the alert
- @return The initialized alert controller.
- */
-- (nullable instancetype)initWithTitle:(nullable NSString *)title description:(nullable NSString *)description image:(nullable UIImage *)image style:(VSAlertControllerStyle)style;
-
-/**
- Add an action to the alert controller. See VSAlertAction's documentation for more information
-
- @param alertAction The action to add to the controller
+ @param alertAction The action to add to the alert.
  */
 - (void)addAction:(nonnull VSAlertAction *)alertAction;
 
 /**
- Add a text field to the alert controller. Rather than instantiating the UITextField yourself, use the configuration block (which provides you an already initialized UITextField, and make your customizations there. Unlike in PMAlertController, you can re-assign the the UITextField's delegate property -- VSAlertController does not make use of UITextField to infer when to dismiss and show the keyboard.
+ Add a text field to the alert. Rather than instantiating a UITextField object yourself, VSAlertController instantiates one for you. You can configure it using the optional configuration block
 
- @param configuration the block used to configure or style the textfield
+ @param configuration The block used to configure the text field.
  */
 - (void)addTextField:(void (^_Nullable)(UITextField * _Nonnull textField))configuration;
+
+/**
+ @name Configure Alert Behavior
+ */
+
+/**
+ Set to YES if you want the alert to dismiss itself when the user taps on the background of the alert. Default is NO.
+ */
+@property (NS_NONATOMIC_IOSONLY, assign, getter=shouldDismissOnBackgroundTap) BOOL dismissOnBackgroundTap;
+
+/**
+ Change the animation used when the alert is presented AND dismissed. Default is VSAlertControllerAnimationStyleRise.
+ */
+@property (NS_NONATOMIC_IOSONLY, assign) VSAlertControllerAnimationStyle animationStyle;
+
+/**
+ @name Interacting With Alerts
+ */
+
+/**
+ Returns the array of text field objects that are displayed in the alert, so you can interact with the user's inputs.
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, readonly, nonnull) NSArray<UITextField *> *textFields;
+
 
 @end
