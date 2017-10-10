@@ -8,16 +8,18 @@
 @import CoreGraphics;
 
 #import "VSAlertController.h"
+#import "VSAlertControllerTransitionAnimator.h"
 
 NSString * const VSAlertControllerNotImplementedException = @"VSAlertControllerNotImplementedException";
 NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControllerTextFieldInvalidException";
 
-@interface VSAlertController ()
+@interface VSAlertController ()<UIViewControllerTransitioningDelegate>
 
+@property (NS_NONATOMIC_IOSONLY, strong) UIImageView *alertMaskBackground;
 @property (NS_NONATOMIC_IOSONLY, strong) UIView *alertView;
 @property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertViewWidthConstraint;
-@property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertViewCenterYConstraint;
 @property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertViewBottomConstraint;
+@property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertViewCenterYConstraint;
 @property (NS_NONATOMIC_IOSONLY, strong) UIView *headerView;
 @property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *headerViewHeightConstraint;
 @property (NS_NONATOMIC_IOSONLY, strong) UIImageView *alertImage;
@@ -29,6 +31,9 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 
 @property (NS_NONATOMIC_IOSONLY, readonly) CGFloat alertStackViewHeight;
 @property (NS_NONATOMIC_IOSONLY, readonly) BOOL hasTextFieldAdded;
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_DESIGNATED_INITIALIZER;
 
 @end
 
@@ -61,10 +66,11 @@ static UIFont *_textFont;
 
 // Explicitly synthesize Ivars from header
 @synthesize textFields = _textFields;
-@synthesize alertMaskBackground = _alertMaskBackground;
-@synthesize animationStyle = _animationStyle;
+@synthesize presentAnimationStyle = _presentAnimationStyle;
+@synthesize dismissAnimationStyle = _dismissAnimationStyle;
 
 // Explicitly synthesize Ivars from extension
+@synthesize alertMaskBackground = _alertMaskBackground;
 @synthesize alertView = _alertView;
 @synthesize alertViewWidthConstraint = _alertViewWidthConstraint;
 @synthesize headerView = _headerView;
@@ -103,6 +109,56 @@ static UIFont *_textFont;
                                                                style:style];
 
     return alertController;
+    
+}
+
+#pragma mark - Overridden Instance Methods
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        
+        // Basic setup
+        [self _setUpAlertController];
+        
+        // Set instance property defaults
+        self.presentAnimationStyle = VSAlertControllerPresentAnimationStyleRise;
+        self.dismissAnimationStyle = VSAlertControllerDismissAnimationStyleFall;
+        
+        // Store default params for use in -viewDidLoad
+        _title = @"";
+        _description = @"";
+        _style = VSAlertControllerStyleAlert;
+
+    }
+    
+    return self;
+    
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if (self) {
+        
+        // Basic setup
+        [self _setUpAlertController];
+        
+        // Set instance property defaults
+        self.presentAnimationStyle = VSAlertControllerPresentAnimationStyleRise;
+        self.dismissAnimationStyle = VSAlertControllerDismissAnimationStyleFall;
+        
+        // Store default params for use in -viewDidLoad
+        _title = @"";
+        _description = @"";
+        _style = VSAlertControllerStyleAlert;
+        
+    }
+    
+    return self;
     
 }
 
@@ -175,9 +231,9 @@ static UIFont *_textFont;
     _description = nil;
     
     // Configure Constraints
-    self.headerViewHeightConstraint.constant = (BOOL)self.alertImage.image ? self.headerViewHeightConstraint.constant : 0.0f;
+    self.headerViewHeightConstraint.constant = (BOOL)self.alertImage.image ? 180.0f : 0.0f;
     self.alertViewWidthConstraint.constant = _style == VSAlertControllerStyleAlert ? 270.0f : [UIScreen mainScreen].bounds.size.width - 36.0f;
-    _style == VSAlertControllerStyleActionSheet ? [self.view addConstraint:self.alertViewBottomConstraint] : [self.view addConstraint:self.alertViewCenterYConstraint];
+     _style == VSAlertControllerStyleActionSheet ? [self.view addConstraint:self.alertViewBottomConstraint] : [self.view addConstraint:self.alertViewCenterYConstraint];
     
     // Set Up Background Tap Gesture Recognizer
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -205,6 +261,7 @@ static UIFont *_textFont;
                                              selector:@selector(_keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -232,7 +289,33 @@ static UIFont *_textFont;
 - (CGFloat)alertStackViewHeight {
     
     // Shortenend Stack for iPhone 4 / 4s
-    return [UIScreen mainScreen].bounds.size.height < 580.0f ? 40.0f : 62.0f;
+    return [UIScreen mainScreen].bounds.size.height < 480.0f ? 40.0f : 62.0f;
+    
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    
+    return [[VSAlertControllerTransitionAnimator alloc] init];
+    
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    
+    return [[VSAlertControllerTransitionAnimator alloc] init];
+    
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator {
+    
+    return nil;
+    
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator {
+    
+    return nil;
     
 }
 
@@ -240,23 +323,16 @@ static UIFont *_textFont;
 
 - (instancetype)initWithTitle:(NSString *)title description:(NSString *)description image:(UIImage *)image style:(VSAlertControllerStyle)style {
     
-    self = [super init];
+    self = [super initWithNibName:nil bundle:nil];
     
     if (self) {
         
+        // Basic setup
         [self _setUpAlertController];
         
-        // Set instance ivar defaults
-        _keyboardHasBeenShown = NO;
-        _defaultActions = [[NSArray<VSAlertAction *> alloc] init];
-        _destructiveActions = [[NSArray<VSAlertAction *> alloc] init];
-        _cancelActions = [[NSArray<VSAlertAction *> alloc] init];
-        _tempFrameOrigin = CGPointMake(0.0f, 0.0f);
-        _textFields = [[NSArray<UITextField *> alloc] init];
-        _dismissOnBackgroundTap = NO;
-        
-        // Set up instance property defaults
-        self.animationStyle = VSAlertControllerAnimationStyleGravityFall;
+        // Set instance property defaults
+        self.presentAnimationStyle = VSAlertControllerPresentAnimationStyleRise;
+        self.dismissAnimationStyle = VSAlertControllerDismissAnimationStyleFall;
         
         // Store initializer params for use in -viewDidLoad
         _title = title;
@@ -321,8 +397,19 @@ static UIFont *_textFont;
 - (void)_setUpAlertController {
     
     // Prepare for proper modal use
-    self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    self.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    
+    // Take Over Transition Process
+    self.transitioningDelegate = self;
+    
+    // Set instance ivar defaults
+    _keyboardHasBeenShown = NO;
+    _defaultActions = [[NSArray<VSAlertAction *> alloc] init];
+    _destructiveActions = [[NSArray<VSAlertAction *> alloc] init];
+    _cancelActions = [[NSArray<VSAlertAction *> alloc] init];
+    _tempFrameOrigin = CGPointMake(0.0f, 0.0f);
+    _textFields = [[NSArray<UITextField *> alloc] init];
+    _dismissOnBackgroundTap = NO;
     
 }
 
@@ -341,8 +428,8 @@ static UIFont *_textFont;
 
 - (void)_setUpAlertMaskBackground {
     
-    _alertMaskBackground = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.alertMaskBackground.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];
+    self.alertMaskBackground = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.alertMaskBackground.backgroundColor = [UIColor clearColor];
     self.alertMaskBackground.translatesAutoresizingMaskIntoConstraints = NO;
     self.alertMaskBackground.userInteractionEnabled = YES;
     
@@ -471,7 +558,7 @@ static UIFont *_textFont;
                                                                       toItem:nil
                                                                    attribute:NSLayoutAttributeHeight
                                                                   multiplier:0.0f
-                                                                    constant:180.0f];
+                                                                    constant:0.0f];
     
     [self.alertView addConstraint:self.headerViewHeightConstraint];
     
@@ -650,7 +737,8 @@ static UIFont *_textFont;
 
 - (void)_dismissAlertController:(VSAlertAction *)sender {
     
-    [self _animateDismissForActionStyle:sender.style];
+    // handle action specific dismissal
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -663,7 +751,6 @@ static UIFont *_textFont;
         
     }
     
-    [self _animateDismissForActionStyle:VSAlertActionStyleCancel];
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -676,65 +763,86 @@ static UIFont *_textFont;
     
 }
 
-- (void)_animateDismissForActionStyle:(VSAlertActionStyle)style {
-    
-    if (self.animationStyle == VSAlertControllerAnimationStyleNone) {
-        
-        return;
-        
-    } else {
-        
-        // Create Animator
-        _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-        
-        if (self.animationStyle == VSAlertControllerAnimationStyleGravityFall) {
-        
-            // Gravity Animation
-            
-            UIGravityBehavior *gravityBehavior = [[UIGravityBehavior alloc] initWithItems:@[self.alertView]];
-            gravityBehavior.gravityDirection = CGVectorMake(0.0f, 10.0f);
-        
-            [_animator addBehavior:gravityBehavior];
-        
-            if (_style != VSAlertControllerStyleActionSheet) {
-            
-                // rotaional gravity for non actionsheets
-                double radian = (style == VSAlertActionStyleCancel) ? (-2.0f * M_PI) : (2.0f * M_PI);
-            
-                UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.alertView]];
-                [itemBehavior addAngularVelocity:radian forItem:self.alertView];
-                [_animator addBehavior:itemBehavior];
-            
-            }
-            
-        } else if (self.animationStyle == VSAlertControllerAnimationStylePushDown) {
-            
-            // Push Animation
-            
-            UIPushBehavior *pushBehavior = [[UIPushBehavior alloc] initWithItems:@[self.alertView] mode:UIPushBehaviorModeInstantaneous];
-            CGFloat dy = [UIScreen mainScreen].bounds.size.height - (self.alertView.frame.origin.y + self.alertView.frame.size.height);
-            pushBehavior.pushDirection = CGVectorMake(0.0f, dy);
-            
-            [_animator addBehavior:pushBehavior];
-            
-        } else if (self.animationStyle == VSAlertControllerAnimationStylePushLeftRight) {
-            
-            UIPushBehavior *pushBehavior = [[UIPushBehavior alloc] initWithItems:@[self.alertView] mode:UIPushBehaviorModeInstantaneous];
-            CGFloat dx = ([UIScreen mainScreen].bounds.size.width - self.alertView.frame.size.width)/2.0f;
-            dx = (style == VSAlertActionStyleCancel && _style != VSAlertControllerStyleActionSheet) ? dx * -1.0f : dx * 1.0f;
-            pushBehavior.pushDirection = CGVectorMake(dx, 0.0f);
-            
-            [_animator addBehavior:pushBehavior];
-            
-        } else {
-            
-            [NSException raise:VSAlertControllerNotImplementedException format:@"Attempted to animation using an animation style that hasn't been implemented yet"]
-            
-        }
-        
-    }
-    
-}
+//- (void)_animateBuildWithCompletionHandler:(void (^)(void))completion {
+//
+////    if (self.buildAnimationStyle == VSAlertControllerBuildAnimationStyleNone) {
+////
+////        return;
+////
+////    } else if (self.buildAnimationStyle == VSAlertControllerBuildAnimationStyleRise) {
+////
+////        [self.view layoutIfNeeded];
+////        [UIView animateWithDuration:0.2f
+////                              delay:0.0f
+////                            options:UIViewAnimationOptionCurveEaseIn
+////                         animations:^{
+////
+////                             self.alertViewCenterYConstraint.constant = 0.0f;
+////                             [self.view layoutIfNeeded];
+////
+////                         }
+////                         completion:^(BOOL finished) {
+////
+////                             if (completion) {
+////
+////                                 completion();
+////
+////                             }
+////
+////                         }];
+////    }
+//
+//}
+//
+//- (void)_animateDismissForActionStyle:(VSAlertActionStyle)style {
+//
+////    if (self.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleNone) {
+////
+////        return;
+////
+////    } else {
+////
+////        // Create Animator
+////        _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+////
+////        if (self.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleFall || self.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleDirectionalFall) {
+////
+////            // Gravity Animation
+////            UIGravityBehavior *gravityBehavior = [[UIGravityBehavior alloc] initWithItems:@[self.alertView]];
+////            gravityBehavior.gravityDirection = CGVectorMake(0.0f, 10.0f);
+////
+////            [_animator addBehavior:gravityBehavior];
+////
+////            if (self.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleDirectionalFall) {
+////
+////                // Add Rotation
+////                double radian = (style == VSAlertActionStyleCancel) ? (-2.0f * M_PI) : (2.0f * M_PI);
+////
+////                UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.alertView]];
+////                [itemBehavior addAngularVelocity:radian forItem:self.alertView];
+////
+////                [_animator addBehavior:itemBehavior];
+////
+////            }
+////
+////        } else if (self.dismissAnimationStyle == VSAlertControllerDismissAnimationStyleSlide) {
+////
+////            UIPushBehavior *pushBehavior = [[UIPushBehavior alloc] initWithItems:@[self.alertView] mode:UIPushBehaviorModeInstantaneous];
+////            CGFloat dx = ([UIScreen mainScreen].bounds.size.width - self.alertView.frame.size.width)/2.0f;
+////            dx = (style == VSAlertActionStyleCancel && _style != VSAlertControllerStyleActionSheet) ? dx * -1.0f : dx * 1.0f;
+////            pushBehavior.pushDirection = CGVectorMake(dx, 0.0f);
+////
+////            [_animator addBehavior:pushBehavior];
+////
+////        } else {
+////
+////            [NSException raise:VSAlertControllerNotImplementedException format:@"Attempted to animation using an animation style that hasn't been implemented yet"];
+////
+////        }
+////
+////    }
+//
+//}
 
 - (void)_keyboardWillShow:(NSNotification *)notif {
 

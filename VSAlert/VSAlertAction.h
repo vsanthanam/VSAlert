@@ -66,7 +66,6 @@ typedef NS_ENUM(NSInteger, VSAlertActionStyle) {
  @param action The block to be executed when the user taps on an action
  @return The action
  */
-- (nullable instancetype)initWithTitle:(nonnull NSString *)title style:(VSAlertActionStyle)style action:(void (^_Nullable)(VSAlertAction *_Nonnull))action;
-
+- (nullable instancetype)initWithTitle:(nonnull NSString *)title style:(VSAlertActionStyle)style action:(void (^_Nullable)(VSAlertAction *_Nonnull))action NS_DESIGNATED_INITIALIZER;
 
 @end

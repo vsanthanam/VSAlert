@@ -44,35 +44,19 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
     
 };
 
-/**
- An enumeration for the various ways that the alerd can animate off screen
+typedef NS_ENUM(NSInteger, VSAlertControllerPresentAnimationStyle) {
+    
+    VSAlertControllerPresentAnimationStyleRise,
+    VSAlertControllerPresentAnimationStyleFall,
+    VSAlertControllerPresentAnimationStyleSlide
+    
+};
 
- - VSAlertControllerAnimationStyleNone: No Animation
- - VSAlertControllerAnimationStyleGravityFall: Fall downwards with gravity
- - VSAlertControllerAnimationStylePushDown: Push down linear
- - VSAlertControllerAnimationStylePushLeftRight: Push left or right linear
- */
-typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
+typedef NS_ENUM(NSInteger, VSAlertControllerDismissAnimationStyle) {
     
-    /**
-     No Animation
-     */
-    VSAlertControllerAnimationStyleNone,
-    
-    /**
-     Fall downwards with gravity
-     */
-    VSAlertControllerAnimationStyleGravityFall,
-    
-    /**
-     Push down linear
-     */
-    VSAlertControllerAnimationStylePushDown,
-    
-    /**
-     Push left or right linear
-     */
-    VSAlertControllerAnimationStylePushLeftRight,
+    VSAlertControllerDismissAnimationStyleFall,
+    VSAlertControllerDismissAnimationStyleRise,
+    VSAlertControllerDismissAnimationStyleSlide
     
 };
 
@@ -114,16 +98,8 @@ The color of the title text used by alert controllers. The default value is nil.
  */
 @property (NS_NONATOMIC_IOSONLY, strong, readonly, nonnull) NSArray<UITextField *> *textFields;
 
-
-/**
- The background view of the alert. It's default image is set to nil, and its default background color is set to #FFFFFF with an alpha component of 0.5. You can change it's background color or assign an image if you prefer an different background for your alert.
- */
-@property (NS_NONATOMIC_IOSONLY, strong, readonly, nonnull) UIImageView *alertMaskBackground;
-
-/**
- The style of the animation when the alert disappears. The default selection is "gravity fall"
- */
-@property (NS_NONATOMIC_IOSONLY, assign) VSAlertControllerAnimationStyle animationStyle;
+@property (NS_NONATOMIC_IOSONLY, assign) VSAlertControllerPresentAnimationStyle presentAnimationStyle;
+@property (NS_NONATOMIC_IOSONLY, assign) VSAlertControllerDismissAnimationStyle dismissAnimationStyle;
 
 /**
  @name Class Methods
@@ -158,7 +134,7 @@ The color of the title text used by alert controllers. The default value is nil.
  @param style The UI style of the alert
  @return The initialized alert controller.
  */
-- (nullable instancetype)initWithTitle:(nullable NSString *)title description:(nullable NSString *)description image:(nullable UIImage *)image style:(VSAlertControllerStyle)style;
+- (nullable instancetype)initWithTitle:(nullable NSString *)title description:(nullable NSString *)description image:(nullable UIImage *)image style:(VSAlertControllerStyle)style NS_DESIGNATED_INITIALIZER;
 
 /**
  Add an action to the alert controller. See VSAlertAction's documentation for more information

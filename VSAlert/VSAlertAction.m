@@ -9,7 +9,10 @@
 
 @interface VSAlertAction ()
 
-@property (nonatomic, strong) UIImageView *separator;
+@property (NS_NONATOMIC_IOSONLY, strong) UIImageView *separator;
+
+- (instancetype)initWithFrame:(CGRect)frame NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 
 @end
 
@@ -30,11 +33,29 @@
     
 }
 
+#pragma mark - Overridden Instance Methods
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    
+    self = [super initWithFrame:frame];
+    
+    return self;
+    
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    
+    self = [super initWithCoder:aDecoder];
+    
+    return self;
+    
+}
+
 #pragma mark - Public Instance Methods
 
 - (instancetype)initWithTitle:(NSString *)title style:(VSAlertActionStyle)style action:(void (^)(VSAlertAction * _Nonnull))action {
     
-    self = [super init];
+    self = [super initWithFrame:CGRectZero];
     
     if (self) {
         

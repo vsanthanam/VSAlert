@@ -21,7 +21,8 @@ typedef NS_ENUM(NSInteger, AlertExampleViewControllerExampleType) {
     AlertExampleViewControllerExampleTypeLogIn,
     AlertExampleViewControllerExampleTypeImageAlert,
     AlertExampleViewControllerExampleTypeChangedCustomized,
-    AlertExampleViewControllerExampleTypeActionSheet
+    AlertExampleViewControllerExampleTypeActionSheet,
+    AlertExampleViewControllerExampleTypeComplexActionSheet
     
 };
 
@@ -52,7 +53,8 @@ static os_log_t example_log;
                       @(AlertExampleViewControllerExampleTypeLogIn),
                       @(AlertExampleViewControllerExampleTypeImageAlert),
                       @(AlertExampleViewControllerExampleTypeChangedCustomized),
-                      @(AlertExampleViewControllerExampleTypeActionSheet)];
+                      @(AlertExampleViewControllerExampleTypeActionSheet),
+                      @(AlertExampleViewControllerExampleTypeComplexActionSheet)];
     
 }
 
@@ -145,6 +147,12 @@ static os_log_t example_log;
     if (exampleType == AlertExampleViewControllerExampleTypeActionSheet) {
         
         cell.textLabel.text = NSLocalizedString(@"Action Sheet", nil);
+        
+    }
+    
+    if (exampleType == AlertExampleViewControllerExampleTypeComplexActionSheet) {
+        
+        cell.textLabel.text = NSLocalizedString(@"Complex Action Sheet", nil);
         
     }
     
@@ -362,6 +370,34 @@ static os_log_t example_log;
         [alertController addAction:action];
         
     }
+    
+    if (type == AlertExampleViewControllerExampleTypeComplexActionSheet) {
+        
+        alertController = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Action Sheet", nil)
+                                                          description:NSLocalizedString(@"Complex Action Sheet", nil)
+                                                                image:nil
+                                                                style:VSAlertControllerStyleActionSheet];
+        VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
+                                                              style:VSAlertActionStyleCancel
+                                                             action:nil];
+        VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Choice 1", nil)
+                                                               style:VSAlertActionStyleDefault
+                                                              action:nil];
+        VSAlertAction *action2 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Choice 2", nil)
+                                                               style:VSAlertActionStyleDefault
+                                                              action:nil];
+        VSAlertAction *action3 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Dangerous Action", nil)
+                                                               style:VSAlertActionStyleDestructive
+                                                              action:nil];
+        
+        [alertController addAction:action];
+        [alertController addAction:action1];
+        [alertController addAction:action2];
+        [alertController addAction:action3];
+    }
+    
+    alertController.presentAnimationStyle = VSAlertControllerPresentAnimationStyleSlide;
+    alertController.dismissAnimationStyle = VSAlertControllerDismissAnimationStyleSlide;
     
     [self presentViewController:alertController
                        animated:YES
