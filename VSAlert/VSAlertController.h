@@ -78,7 +78,12 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
     /**
      The alert page flips from the top, then again from the bottom when dismissed.
      */
-    VSAlertControllerAnimationStyleSticker
+    VSAlertControllerAnimationStyleSticker,
+    
+    /**
+     The alert page fades in, then fades out dismissed.
+     */
+    VSAlertControllerAnimationStyleCrossDisolve
     
 };
 

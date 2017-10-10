@@ -386,7 +386,7 @@ static os_log_t example_log;
         [alertController addAction:action3];
     }
     
-    alertController.animationStyle = VSAlertControllerAnimationStyleSticker;
+//    alertController.animationStyle = VSAlertControllerAnimationStyleRise;
     
     [self presentViewController:alertController
                        animated:YES

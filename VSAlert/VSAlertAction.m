@@ -187,7 +187,7 @@
     [self setTitle:self.title forState:UIControlStateNormal];
     
     [self setTitleColor:self.style == VSAlertActionStyleDestructive ? _destructiveActionTextColor : _actionTextColor forState:UIControlStateNormal];
-    [self setTitleColor:self.state == VSAlertActionStyleDestructive ? [_destructiveActionTextColor colorWithAlphaComponent:0.5f] : [_actionTextColor colorWithAlphaComponent:0.5f] forState:UIControlStateHighlighted];
+    [self setTitleColor:self.state == VSAlertActionStyleDestructive ? [_destructiveActionTextColor colorWithAlphaComponent:0.5f] : [_destructiveActionTextColor colorWithAlphaComponent:0.5f] forState:UIControlStateHighlighted];
 
     self.titleLabel.font = self.style == VSAlertActionStyleCancel ? [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold] : _actionTextFont;
     

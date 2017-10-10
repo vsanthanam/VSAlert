@@ -56,7 +56,7 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
             [transitionContext.containerView addSubview:shadowView];
             
             if (alertController.animationStyle == VSAlertControllerAnimationStyleRise || alertController.animationStyle == VSAlertControllerAnimationStyleFall) {
-            
+                
                 // Rise & Fall Animations
                 
                 CGFloat dy = alertController.animationStyle == VSAlertControllerAnimationStyleRise ? fromController.view.frame.size.height : -1.0f * fromController.view.frame.size.height;
@@ -92,14 +92,14 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                 
                 [UIView animateWithDuration:[self transitionDuration:transitionContext]
                                  animations:^{
-                                    
+                                     
                                      alertController.view.frame = fromController.view.frame;
                                      shadowView.layer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f].CGColor;
                                      
                                  }
                                  completion:^(BOOL finished) {
                                      
-
+                                     
                                      [transitionContext completeTransition:finished];
                                      
                                  }];
@@ -116,7 +116,7 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
-                   
+                        
                         [UIView transitionWithView:alertController.view
                                           duration:flipDuration
                                            options:UIViewAnimationOptionTransitionFlipFromLeft
@@ -149,14 +149,46 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
-                       
+                        
                         [UIView transitionWithView:body
                                           duration:stickerDuration
                                            options:UIViewAnimationOptionTransitionCurlDown
                                         animations:^{
-                                           
+                                            
                                             shadowView.layer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f].CGColor;
                                             body.alpha = 1.0f;
+                                            
+                                        }
+                                        completion:^(BOOL finished) {
+                                            
+                                            [transitionContext completeTransition:finished];
+                                            
+                                        }];
+                        
+                    });
+                    
+                });
+                
+            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleCrossDisolve) {
+                
+                // Fade Disolve
+                
+                alertController.view.alpha = 0.0f;
+                [transitionContext.containerView addSubview:alertController.view];
+                
+                NSTimeInterval fadeDuration = [self transitionDuration:transitionContext] - 0.1f;
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [UIView transitionWithView:alertController.view
+                                          duration:fadeDuration
+                                           options:UIViewAnimationOptionTransitionCrossDissolve
+                                        animations:^{
+                                            
+                                            shadowView.layer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f].CGColor;
+                                            alertController.view.alpha = 1.0f;
                                             
                                         }
                                         completion:^(BOOL finished) {
@@ -295,6 +327,25 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                                     
                                 }];
                 
+            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleCrossDisolve) {
+                
+                [UIView transitionWithView:alertController.view
+                                  duration:[self transitionDuration:transitionContext]
+                                   options:UIViewAnimationOptionTransitionCrossDissolve
+                                animations:^{
+                                    
+                                    alertController.view.alpha = 0.0f;
+                                    shadowView.layer.backgroundColor = [UIColor clearColor].CGColor;
+                                    
+                                }
+                                completion:^(BOOL finished) {
+                                    
+                                    [alertController.view removeFromSuperview];
+                                    [shadowView removeFromSuperview];
+                                    [transitionContext completeTransition:finished];
+                                    
+                                }];
+                
             } else {
                 
                 [transitionContext completeTransition:NO];
@@ -328,6 +379,10 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
             
             return 0.6f;
             
+        } else if (controller.animationStyle == VSAlertControllerAnimationStyleCrossDisolve) {
+            
+            return 0.4f;
+            
         }
         
         return 0.3f;
@@ -351,8 +406,19 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
     }
     
     return 0.0f;
-               
-               
+
+}
+
+- (VSAlertControllerAnimationStyle)_automaticPresentationStyleForController:(VSAlertController *)controller {
+    
+    return VSAlertControllerAnimationStyleRise;
+    
+}
+
+- (VSAlertControllerAnimationStyle)_automaticDismissalStyleForController:(VSAlertController *)controller {
+    
+    return VSAlertControllerAnimationStyleRise;
+    
 }
 
 @end
