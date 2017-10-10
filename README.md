@@ -1,5 +1,5 @@
 # VSAlertController
-An drop-in replacement for UIAlertController that looks a hell of a lot better, built in Objective-C. Based on Codedio's aweomse Swift library, PMAlertController (https://github.com/Codeido/PMAlertController).
+An drop-in replacement for UIAlertController that looks a hell of a lot better, built in Objective-C. Based on Codedio's aweomse Swift library, [PMAlertController](https://github.com/Codeido/PMAlertController).
 
 Like PMAlertController, VSAlertController builds on the functionality of UIAlertController by adding:
 
@@ -58,7 +58,7 @@ The included Xcode project allows you to build the static library and an example
 @end
 ```
 
-Full documentation is available at https://vsanthanam.github.io/VSAlertController/docs
+Full documentation is [here](https://vsanthanam.github.io/VSAlertController/docs)
 
 ## Image Template
 
