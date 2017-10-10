@@ -9,6 +9,7 @@
 
 @interface VSAlertAction ()
 
+@property (NS_NONATOMIC_IOSONLY, strong) NSString *title;
 @property (NS_NONATOMIC_IOSONLY, strong) UIImageView *separator;
 
 // Redesignate initializers so you can call 'super'
@@ -28,6 +29,7 @@
 @synthesize action = _action;
 
 // Explicitly syenthesize ivars from extension
+@synthesize title = _title;
 @synthesize separator = _separator;
 
 #pragma mark - Public Class Methods
@@ -46,6 +48,16 @@
     
     self = [super initWithFrame:frame];
     
+    if (self) {
+        
+        _style = VSAlertActionStyleDefault;
+        _action = nil;
+        _title = nil;
+        
+        [self _setUpAlertAction];
+        
+    }
+    
     return self;
     
 }
@@ -53,6 +65,16 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     
     self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        
+        _style = VSAlertActionStyleDefault;
+        _action = nil;
+        _title = nil;
+        
+        [self _setUpAlertAction];
+        
+    }
     
     return self;
     
@@ -142,17 +164,9 @@
         
         _style = style;
         _action = action;
+        _title = title;
         
-        _actionTextColor = self.tintColor;
-        _destructiveActionTextColor = [UIColor redColor];
-        _actionTextFont = [UIFont systemFontOfSize:17.0f weight:UIFontWeightRegular];
-        
-        [self setTitle:title forState:UIControlStateNormal];
-        
-        [self setTitleColor:self.style == VSAlertActionStyleDestructive ? _destructiveActionTextColor : _actionTextColor forState:UIControlStateNormal];
-        self.titleLabel.font = self.style == VSAlertActionStyleCancel ? [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold] : _actionTextFont;
-        
-        [self _addSeparator];
+        [self _setUpAlertAction];
         
     }
     
@@ -161,6 +175,21 @@
 }
 
 #pragma mark - Private Instance Methods
+
+- (void)_setUpAlertAction {
+    
+    _actionTextColor = self.tintColor;
+    _destructiveActionTextColor = [UIColor redColor];
+    _actionTextFont = [UIFont systemFontOfSize:17.0f weight:UIFontWeightRegular];
+    
+    [self setTitle:self.title forState:UIControlStateNormal];
+    
+    [self setTitleColor:self.style == VSAlertActionStyleDestructive ? _destructiveActionTextColor : _actionTextColor forState:UIControlStateNormal];
+    self.titleLabel.font = self.style == VSAlertActionStyleCancel ? [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold] : _actionTextFont;
+    
+    [self _addSeparator];
+    
+}
 
 - (void)_addSeparator {
     

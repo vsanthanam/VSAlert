@@ -47,11 +47,9 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     VSAlertControllerStyle _style;
     
     // General Ivars
-    UIDynamicAnimator *_animator;
     NSArray<VSAlertAction *> *_defaultActions;
     NSArray<VSAlertAction *> *_destructiveActions;
     NSArray<VSAlertAction *> *_cancelActions;
-    BOOL _dismissOnBackgroundTap; // will become configurable in a future update
     
     // Keyboard Ivars
     CGPoint _tempFrameOrigin;
@@ -63,6 +61,7 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 @synthesize alertTitleTextColor = _alertTitleTextColor;
 @synthesize textFields = _textFields;
 @synthesize animationStyle = _animationStyle;
+@synthesize dismissOnBackgroundTap = _dismissOnBackgroundTap;
 
 // Explicitly synthesize Ivars from extension
 @synthesize alertMaskBackground = _alertMaskBackground;
@@ -251,39 +250,6 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     return nil;
     
 }
-
-#pragma mark - UIAppearance
-
-// TODO
-
-+ (instancetype)appearance {
-    
-    return nil;
-    
-}
-
-+ (instancetype)appearanceForTraitCollection:(UITraitCollection *)trait {
-    
-    return nil;
-
-}
-
-+ (instancetype)appearanceWhenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes {
-    
-    return nil;
-    
-}
-
-+ (instancetype)appearanceForTraitCollection:(UITraitCollection *)trait whenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes {
-    
-    return nil;
-    
-}
-
-#pragma mark - UIAppearanceContainer
-
-// TODO
-
 #pragma mark - Public Instance Methods
 
 - (instancetype)initWithTitle:(NSString *)title description:(NSString *)description image:(UIImage *)image style:(VSAlertControllerStyle)style {
@@ -374,13 +340,13 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     _cancelActions = [[NSArray<VSAlertAction *> alloc] init];
     _tempFrameOrigin = CGPointMake(0.0f, 0.0f);
     _textFields = [[NSArray<UITextField *> alloc] init];
-    _dismissOnBackgroundTap = NO;
     
     // Set instance properties without accessors
     _alertTitleTextColor = [UIColor blackColor];
     
     // Set instance property defaults
     self.animationStyle = VSAlertControllerAnimationStyleRise;
+    self.dismissOnBackgroundTap = NO;
     
 }
 
