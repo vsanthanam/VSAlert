@@ -94,7 +94,8 @@
     
     if (self.style != VSAlertActionStyleDestructive) {
         
-        [self setTitleColor:_actionTextColor forState:UIControlStateNormal];
+        [self setTitleColor:self.actionTextColor forState:UIControlStateNormal];
+        [self setTitleColor:[self.actionTextColor colorWithAlphaComponent:0.5f] forState:UIControlStateHighlighted];
         
     }
     
@@ -112,7 +113,8 @@
     
     if (self.style == VSAlertActionStyleDestructive) {
         
-        [self setTitleColor:_destructiveActionTextColor forState:UIControlStateNormal];
+        [self setTitleColor:self.destructiveActionTextColor forState:UIControlStateNormal];
+        [self setTitleColor:[self.destructiveActionTextColor colorWithAlphaComponent:0.5f] forState:UIControlStateNormal];
         
     }
     
@@ -185,6 +187,8 @@
     [self setTitle:self.title forState:UIControlStateNormal];
     
     [self setTitleColor:self.style == VSAlertActionStyleDestructive ? _destructiveActionTextColor : _actionTextColor forState:UIControlStateNormal];
+    [self setTitleColor:self.state == VSAlertActionStyleDestructive ? [_destructiveActionTextColor colorWithAlphaComponent:0.5f] : [_actionTextColor colorWithAlphaComponent:0.5f] forState:UIControlStateHighlighted];
+
     self.titleLabel.font = self.style == VSAlertActionStyleCancel ? [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold] : _actionTextFont;
     
     [self _addSeparator];

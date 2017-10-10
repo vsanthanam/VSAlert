@@ -59,6 +59,9 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 
 // Explicitly synthesize Ivars from header
 @synthesize alertTitleTextColor = _alertTitleTextColor;
+@synthesize alertDescriptionTextColor = _alertDescriptionTextColor;
+@synthesize alertTitleTextFont = _alertTitleTextFont;
+@synthesize alertDescriptionTextFont = _alertDescriptionTextFont;
 @synthesize textFields = _textFields;
 @synthesize animationStyle = _animationStyle;
 @synthesize dismissOnBackgroundTap = _dismissOnBackgroundTap;
@@ -212,6 +215,45 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     
 }
 
+- (UIFont *)alertTitleTextFont {
+    
+    return _alertTitleTextFont;
+    
+}
+
+- (void)setAlertTitleTextFont:(UIFont *)alertTitleTextFont {
+    
+    _alertTitleTextFont = alertTitleTextFont;
+    self.alertTitle.font = self.alertTitleTextFont;
+    
+}
+
+- (UIColor *)alertDescriptionTextColor {
+    
+    return _alertDescriptionTextColor;
+    
+}
+
+- (void)setAlertDescriptionTextColor:(UIColor *)alertDescriptionTextColor {
+    
+    _alertDescriptionTextColor = alertDescriptionTextColor;
+    self.alertDescription.textColor = self.alertDescriptionTextColor;
+    
+}
+
+- (UIFont *)alertDescriptionTextFont {
+    
+    return _alertDescriptionTextFont;
+    
+}
+
+- (void)setAlertDescriptionTextFont:(UIFont *)alertDescriptionTextFont {
+    
+    _alertDescriptionTextFont = alertDescriptionTextFont;
+    self.alertDescription.font = self.alertDescriptionTextFont;
+    
+}
+
 - (BOOL)hasTextFieldAdded {
     
     return self.textFields.count > 0;
@@ -343,6 +385,9 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     
     // Set instance properties without accessors
     _alertTitleTextColor = [UIColor blackColor];
+    _alertTitleTextFont = [UIFont systemFontOfSize:17.0f weight:UIFontWeightMedium];
+    _alertDescriptionTextColor = [UIColor blackColor];
+    _alertDescriptionTextFont = [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
     
     // Set instance property defaults
     self.animationStyle = VSAlertControllerAnimationStyleRise;
@@ -543,7 +588,7 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 - (void)_setUpAlertTitle {
     
     self.alertTitle = [[UILabel alloc] init];
-    self.alertTitle.font = [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold];
+    self.alertTitle.font = self.alertTitleTextFont;
     self.alertTitle.textColor = self.alertTitleTextColor;
     self.alertTitle.numberOfLines = 0;
     self.alertTitle.textAlignment = NSTextAlignmentCenter;
@@ -585,8 +630,8 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 - (void)_setUpAlertDescription {
     
     self.alertDescription = [[UILabel alloc] init];
-    self.alertDescription.font = [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
-    self.alertDescription.textColor = [UIColor blackColor];
+    self.alertDescription.font = self.alertDescriptionTextFont;
+    self.alertDescription.textColor = self.alertDescriptionTextColor;
     self.alertDescription.numberOfLines = 0;
     self.alertDescription.textAlignment = NSTextAlignmentCenter;
     self.alertDescription.translatesAutoresizingMaskIntoConstraints = NO;
