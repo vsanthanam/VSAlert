@@ -888,19 +888,7 @@ static UIFont *_defaultDescriptionTextFont;
     for (VSAlertAction *alertAction in _defaultActions) {
         
         [self.alertActionStackView addArrangedSubview:alertAction];
-        
-//        if (self.alertActionStackView.arrangedSubviews.count > 2 || self.hasTextFieldAdded) {
-//
-//            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight * ((CGFloat)self.alertActionStackView.arrangedSubviews.count);
-//            self.alertActionStackView.axis = UILayoutConstraintAxisVertical;
-//
-//        } else {
-//
-//            self.alertStackViewHeightConstraint.constant= self.alertStackViewHeight;
-//            self.alertActionStackView.axis = UILayoutConstraintAxisHorizontal;
-//
-//        }
-        
+
         [alertAction addTarget:self
                         action:@selector(_tappedAction:)
               forControlEvents:UIControlEventTouchUpInside];
@@ -915,22 +903,8 @@ static UIFont *_defaultDescriptionTextFont;
 - (void)_processDestructiveActions {
     
     for (VSAlertAction *alertAction in _destructiveActions) {
-      
-//        [self _configureStack];
         
         [self.alertActionStackView addArrangedSubview:alertAction];
-//
-//        if (self.alertActionStackView.arrangedSubviews.count > 2 || self.hasTextFieldAdded) {
-//
-//            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight * ((CGFloat)self.alertActionStackView.arrangedSubviews.count);
-//            self.alertActionStackView.axis = UILayoutConstraintAxisVertical;
-//
-//        } else {
-//
-//            self.alertStackViewHeightConstraint.constant= self.alertStackViewHeight;
-//            self.alertActionStackView.axis = UILayoutConstraintAxisHorizontal;
-//
-//        }
         
         [alertAction addTarget:self
                         action:@selector(_tappedAction:)
@@ -948,20 +922,6 @@ static UIFont *_defaultDescriptionTextFont;
     for (VSAlertAction *alertAction in _cancelActions) {
         
         [self.alertActionStackView addArrangedSubview:alertAction];
-        
-//        [self _configureStack];
-        
-//        if (self.alertActionStackView.arrangedSubviews.count > 2 || self.hasTextFieldAdded) {
-//
-//            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight * ((CGFloat)self.alertActionStackView.arrangedSubviews.count);
-//            self.alertActionStackView.axis = UILayoutConstraintAxisVertical;
-//
-//        } else {
-//
-//            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight;
-//            self.alertActionStackView.axis = UILayoutConstraintAxisHorizontal;
-//
-//        }
         
         [alertAction addTarget:self
                         action:@selector(_tappedAction:)
