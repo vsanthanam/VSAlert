@@ -48,25 +48,28 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
 /**
  An enumeration describing the kinds of animations that can be used to present and hide an alert
 
- - VSAlertControllerAnimationStyleRise: The alert rises from the bottom of the screen and falls down when dismissed
- - VSAlertControllerAnimationStyleFall: The alert falls from the top of the screen and rises up when dismissed
- - VSAlertControllerAnimationStyleSlide: The alert slides from the left of the screen and slides to the right when dismissed
+ - VSAlertControllerAnimationStyleRise: The alert rises from the bottom of the screen and falls down when dismissed.
+ - VSAlertControllerAnimationStyleFall: The alert falls from the top of the screen and rises up when dismissed.
+ - VSAlertControllerAnimationStyleSlide: The alert slides from the left of the screen and slides to the right when dismissed.
  - VSAlertControllerAnimationStyleFlip: The alert flips from the right, and flips to the left when dismissed.
+ - VSAlertControllerAnimationStyleSticker: The alert page flips from the top, then again from the bottom when dismissed.
+ - VSAlertControllerAnimationStyleCrossDisolve: The alert page fades in, then fades out dismissed.
+ = VSAlertControllerAnimationStyleAutomatic: The alert chooses its presentation and dismissal styles automatically.
  */
 typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
     
     /**
-     The alert rises from the bottom of the screen and falls down when dismissed
+     The alert rises from the bottom of the screen and falls down when dismissed.
      */
     VSAlertControllerAnimationStyleRise,
     
     /**
-     The alert falls from the top of the screen and rises up when dismissed
+     The alert falls from the top of the screen and rises up when dismissed.
      */
     VSAlertControllerAnimationStyleFall,
     
     /**
-     The alert slides from the left of the screen and slides to the right when dismissed
+     The alert slides from the left of the screen and slides to the right when dismissed.
      */
     VSAlertControllerAnimationStyleSlide,
     
@@ -83,7 +86,12 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
     /**
      The alert page fades in, then fades out dismissed.
      */
-    VSAlertControllerAnimationStyleCrossDisolve
+    VSAlertControllerAnimationStyleCrossDisolve,
+    
+    /**
+     The alert chooses its presentation and dismissal styles automatically.
+     */
+    VSAlertControllerAnimationStyleAutomatic
     
 };
 

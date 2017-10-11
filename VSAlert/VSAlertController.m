@@ -40,13 +40,18 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 
 @implementation VSAlertController {
     
-    // General Ivars
+    // Actions
     NSArray<VSAlertAction *> *_defaultActions;
     NSArray<VSAlertAction *> *_destructiveActions;
     NSArray<VSAlertAction *> *_cancelActions;
     
+    // Keyboard Show / Hide
     CGPoint _tempFrameOrigin;
     BOOL _keyboardHasBeenShown;
+    
+    // Transition
+    VSAlertControllerTransitionAnimator *_presentAnimator;
+    VSAlertControllerTransitionAnimator *_dismissAnimator;
     
 }
 
@@ -138,16 +143,23 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     self.alertViewWidthConstraint.constant = _style == VSAlertControllerStyleAlert ? 270.0f : [UIScreen mainScreen].bounds.size.width - 36.0f;
     self.style == VSAlertControllerStyleActionSheet ? [self.view addConstraint:self.alertViewBottomConstraint] : [self.view addConstraint:self.alertViewCenterYConstraint];
     
-    // Set Up Background Tap Gesture Recognizer
-    self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                 action:@selector(_dismissAlertControllerFromBackgroundTap)];
-    [self.alertMaskBackground addGestureRecognizer:self.tapRecognizer];
+    // Set Up Background Tap Gesture Recognizer If Needed
+    if (self.dismissOnBackgroundTap) {
+        
+        self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                     action:@selector(_dismissAlertControllerFromBackgroundTap)];
+        [self.alertMaskBackground addGestureRecognizer:self.tapRecognizer];
+        
+    }
     
     // Process Text Fields
     [self _processTextFields];
     
     // Process Actions
     [self _processActions];
+    
+    // Configure Stack
+    [self _configureStack];
     
 }
 
@@ -252,13 +264,13 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     
-    return [[VSAlertControllerTransitionAnimator alloc] init];
+    return _presentAnimator;
     
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
     
-    return [[VSAlertControllerTransitionAnimator alloc] init];
+    return _dismissAnimator;
     
 }
 
@@ -358,15 +370,17 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     // Take Over Transition Process
     self.transitioningDelegate = self;
     
-    // Set instance ivar defaults
+    // Set ivar defaults
     _keyboardHasBeenShown = NO;
     _defaultActions = [[NSArray<VSAlertAction *> alloc] init];
     _destructiveActions = [[NSArray<VSAlertAction *> alloc] init];
     _cancelActions = [[NSArray<VSAlertAction *> alloc] init];
     _tempFrameOrigin = CGPointMake(0.0f, 0.0f);
     _textFields = [[NSArray<UITextField *> alloc] init];
+    _presentAnimator = [[VSAlertControllerTransitionAnimator alloc] init];
+    _dismissAnimator = [[VSAlertControllerTransitionAnimator alloc] init];
     
-    // Set instance properties without accessors
+    // Set instance properties without accessors (to respect UIAppearance)
     _alertTitleTextColor = [UIColor blackColor];
     _alertTitleTextFont = [UIFont systemFontOfSize:17.0f weight:UIFontWeightMedium];
     _alertDescriptionTextColor = [UIColor blackColor];
@@ -707,20 +721,16 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 
 - (void)_dismissAlertControllerFromAction:(VSAlertAction *)sender {
     
-    // Do action specific things
-    
+    // Pass action style to animator
+    _dismissAnimator = [[VSAlertControllerTransitionAnimator alloc] initWithActionStyle:sender.style];
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
 - (void)_dismissAlertControllerFromBackgroundTap {
     
-    if (!_dismissOnBackgroundTap) {
-        
-        return;
-        
-    }
-    
+    // Pass "cancel" style to animator
+    _dismissAnimator = [[VSAlertControllerTransitionAnimator alloc] initWithActionStyle:VSAlertActionStyleCancel];
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -728,8 +738,7 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 - (void)_addTextField:(UITextField *)textField {
     
     [self.alertActionStackView addArrangedSubview:textField];
-    self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight * ((CGFloat)self.alertActionStackView.arrangedSubviews.count);
-    self.alertActionStackView.axis = UILayoutConstraintAxisVertical;
+    [self _configureStack];
     
 }
 
@@ -823,17 +832,17 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
         
         [self.alertActionStackView addArrangedSubview:alertAction];
         
-        if (self.alertActionStackView.arrangedSubviews.count > 2 || self.hasTextFieldAdded) {
-            
-            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight * ((CGFloat)self.alertActionStackView.arrangedSubviews.count);
-            self.alertActionStackView.axis = UILayoutConstraintAxisVertical;
-            
-        } else {
-            
-            self.alertStackViewHeightConstraint.constant= self.alertStackViewHeight;
-            self.alertActionStackView.axis = UILayoutConstraintAxisHorizontal;
-            
-        }
+//        if (self.alertActionStackView.arrangedSubviews.count > 2 || self.hasTextFieldAdded) {
+//
+//            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight * ((CGFloat)self.alertActionStackView.arrangedSubviews.count);
+//            self.alertActionStackView.axis = UILayoutConstraintAxisVertical;
+//
+//        } else {
+//
+//            self.alertStackViewHeightConstraint.constant= self.alertStackViewHeight;
+//            self.alertActionStackView.axis = UILayoutConstraintAxisHorizontal;
+//
+//        }
         
         [alertAction addTarget:self
                         action:@selector(_tappedAction:)
@@ -849,20 +858,22 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 - (void)_processDestructiveActions {
     
     for (VSAlertAction *alertAction in _destructiveActions) {
+      
+//        [self _configureStack];
         
         [self.alertActionStackView addArrangedSubview:alertAction];
-        
-        if (self.alertActionStackView.arrangedSubviews.count > 2 || self.hasTextFieldAdded) {
-            
-            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight * ((CGFloat)self.alertActionStackView.arrangedSubviews.count);
-            self.alertActionStackView.axis = UILayoutConstraintAxisVertical;
-            
-        } else {
-            
-            self.alertStackViewHeightConstraint.constant= self.alertStackViewHeight;
-            self.alertActionStackView.axis = UILayoutConstraintAxisHorizontal;
-            
-        }
+//
+//        if (self.alertActionStackView.arrangedSubviews.count > 2 || self.hasTextFieldAdded) {
+//
+//            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight * ((CGFloat)self.alertActionStackView.arrangedSubviews.count);
+//            self.alertActionStackView.axis = UILayoutConstraintAxisVertical;
+//
+//        } else {
+//
+//            self.alertStackViewHeightConstraint.constant= self.alertStackViewHeight;
+//            self.alertActionStackView.axis = UILayoutConstraintAxisHorizontal;
+//
+//        }
         
         [alertAction addTarget:self
                         action:@selector(_tappedAction:)
@@ -881,17 +892,19 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
         
         [self.alertActionStackView addArrangedSubview:alertAction];
         
-        if (self.alertActionStackView.arrangedSubviews.count > 2 || self.hasTextFieldAdded) {
-            
-            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight * ((CGFloat)self.alertActionStackView.arrangedSubviews.count);
-            self.alertActionStackView.axis = UILayoutConstraintAxisVertical;
-            
-        } else {
-            
-            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight;
-            self.alertActionStackView.axis = UILayoutConstraintAxisHorizontal;
-            
-        }
+//        [self _configureStack];
+        
+//        if (self.alertActionStackView.arrangedSubviews.count > 2 || self.hasTextFieldAdded) {
+//
+//            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight * ((CGFloat)self.alertActionStackView.arrangedSubviews.count);
+//            self.alertActionStackView.axis = UILayoutConstraintAxisVertical;
+//
+//        } else {
+//
+//            self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight;
+//            self.alertActionStackView.axis = UILayoutConstraintAxisHorizontal;
+//
+//        }
         
         [alertAction addTarget:self
                         action:@selector(_tappedAction:)
@@ -901,6 +914,22 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     
     // Remove duplicate references
     _cancelActions = nil;
+    
+}
+
+- (void)_configureStack {
+    
+    if (self.alertActionStackView.arrangedSubviews.count > 2 || self.hasTextFieldAdded || self.style == VSAlertControllerStyleActionSheet) {
+        
+        self.alertStackViewHeightConstraint.constant = self.alertStackViewHeight * ((CGFloat)self.alertActionStackView.arrangedSubviews.count);
+        self.alertActionStackView.axis = UILayoutConstraintAxisVertical;
+        
+    } else {
+        
+        self.alertStackViewHeightConstraint.constant= self.alertStackViewHeight;
+        self.alertActionStackView.axis = UILayoutConstraintAxisHorizontal;
+        
+    }
     
 }
 

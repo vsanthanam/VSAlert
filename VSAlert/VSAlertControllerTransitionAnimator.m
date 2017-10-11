@@ -14,9 +14,23 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
 
 @interface VSAlertControllerTransitionAnimator ()
 
+@property (NS_NONATOMIC_IOSONLY, assign) VSAlertActionStyle actionStyle;
+
 @end
 
 @implementation VSAlertControllerTransitionAnimator
+
+@synthesize actionStyle = _actionStyle;
+
+#pragma mark - Overridden Instance Methods
+
+- (instancetype)init {
+    
+    self = [self initWithActionStyle:VSAlertActionStyleDefault];
+    
+    return self;
+    
+}
 
 #pragma mark - UIViewControllerContextTransitioning
 
@@ -57,11 +71,13 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
             shadowView.layer.backgroundColor = [UIColor clearColor].CGColor;
             [transitionContext.containerView addSubview:shadowView];
             
-            if (alertController.animationStyle == VSAlertControllerAnimationStyleRise || alertController.animationStyle == VSAlertControllerAnimationStyleFall) {
+            VSAlertControllerAnimationStyle animationStyle = alertController.animationStyle == VSAlertControllerAnimationStyleAutomatic ? [self _automaticPresentationStyleForController:alertController] : alertController.animationStyle;
+            
+            if (animationStyle == VSAlertControllerAnimationStyleRise || animationStyle == VSAlertControllerAnimationStyleFall) {
                 
                 // Rise & Fall Animations
                 
-                CGFloat dy = alertController.animationStyle == VSAlertControllerAnimationStyleRise ? fromController.view.frame.size.height : -1.0f * fromController.view.frame.size.height;
+                CGFloat dy = animationStyle == VSAlertControllerAnimationStyleRise ? fromController.view.frame.size.height : -1.0f * fromController.view.frame.size.height;
                 
                 CGRect initialFrame = CGRectOffset(fromController.view.frame, 0.0f, dy);
                 
@@ -82,7 +98,7 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                                      
                                  }];
                 
-            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleSlide) {
+            } else if (animationStyle == VSAlertControllerAnimationStyleSlide) {
                 
                 // Slide From Left Animation
                 
@@ -106,7 +122,7 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                                      
                                  }];
                 
-            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleFlip) {
+            } else if (animationStyle == VSAlertControllerAnimationStyleFlip) {
                 
                 // Flip Animation
                 
@@ -138,11 +154,11 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                     
                 });
                 
-            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleSticker) {
+            } else if (animationStyle == VSAlertControllerAnimationStyleSticker) {
                 
                 // Sticker Animation
                 
-                UIView *body = [alertController valueForKey:@"alertView"];
+                UIView *body = (UIView *)[alertController valueForKey:@"alertView"];
                 body.alpha = 0.0f;
                 [transitionContext.containerView addSubview:alertController.view];
                 
@@ -171,7 +187,7 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                     
                 });
                 
-            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleCrossDisolve) {
+            } else if (animationStyle == VSAlertControllerAnimationStyleCrossDisolve) {
                 
                 // Fade Disolve
                 
@@ -242,11 +258,29 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
             // Find Shadow
             UIView *shadowView = transitionContext.containerView.subviews[0];
             
-            if (alertController.animationStyle == VSAlertControllerAnimationStyleRise || alertController.animationStyle == VSAlertControllerAnimationStyleFall) {
+            VSAlertControllerAnimationStyle animationStyle = alertController.animationStyle == VSAlertControllerAnimationStyleAutomatic ? [self _automaticDismissalStyleForController:alertController] : alertController.animationStyle;
+            
+            if (animationStyle == VSAlertControllerAnimationStyleRise || animationStyle == VSAlertControllerAnimationStyleFall) {
             
                 // Fall & Rise Animation
                 
-                CGFloat dy = alertController.animationStyle == VSAlertControllerAnimationStyleRise ? toController.view.frame.size.height : -1.0f * toController.view.frame.size.height;
+                CGFloat dy = animationStyle == VSAlertControllerAnimationStyleRise ? toController.view.frame.size.height : -1.0f * toController.view.frame.size.height;
+                
+                if (animationStyle == VSAlertControllerAnimationStyleRise && alertController.style != VSAlertControllerStyleActionSheet) {
+                    
+                    CABasicAnimation* rotationAnimation;
+                    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+                    CGFloat rotations = self.actionStyle == VSAlertActionStyleCancel ? -0.45f : 0.45f;
+                    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 * rotations * [self transitionDuration:transitionContext]];
+                    rotationAnimation.duration = [self transitionDuration:transitionContext];
+                    rotationAnimation.cumulative = YES;
+                    rotationAnimation.repeatCount = 0;
+                    
+                    UIView *body = (UIView *)[alertController valueForKey:@"alertView"];
+                    
+                    [body.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+                    
+                }
                 
                 CGRect destinationFrame = CGRectOffset(toController.view.frame, 0.0f, dy);
                 [UIView animateWithDuration:[self transitionDuration:transitionContext]
@@ -264,7 +298,7 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                                      
                                  }];
                 
-            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleSlide) {
+            } else if (animationStyle == VSAlertControllerAnimationStyleSlide) {
                 
                 // Slide To Right Animation
 
@@ -285,7 +319,7 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                                      
                                  }];
                 
-            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleFlip) {
+            } else if (animationStyle == VSAlertControllerAnimationStyleFlip) {
             
                 // Flip Animation
                 
@@ -306,11 +340,11 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                                     
                                 }];
                 
-            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleSticker) {
+            } else if (animationStyle == VSAlertControllerAnimationStyleSticker) {
                 
                 // Sticker animation
                 
-                UIView *body = [alertController valueForKey:@"alertView"];
+                UIView *body = (UIView *)[alertController valueForKey:@"alertView"];
                 
                 [UIView transitionWithView:body
                                   duration:[self transitionDuration:transitionContext]
@@ -329,7 +363,7 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
                                     
                                 }];
                 
-            } else if (alertController.animationStyle == VSAlertControllerAnimationStyleCrossDisolve) {
+            } else if (animationStyle == VSAlertControllerAnimationStyleCrossDisolve) {
                 
                 [UIView transitionWithView:alertController.view
                                   duration:[self transitionDuration:transitionContext]
@@ -411,11 +445,33 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
 
 }
 
+#pragma mark - Public Instance Methods
+
+- (instancetype)initWithActionStyle:(VSAlertActionStyle)actionStyle {
+    
+    self = [super init];
+    
+    if (self) {
+        
+        self.actionStyle = actionStyle;
+        
+    }
+    
+    return self;
+    
+}
+
 #pragma mark - Private Instance Methods
 
 - (VSAlertControllerAnimationStyle)_automaticPresentationStyleForController:(VSAlertController *)controller {
     
-    return VSAlertControllerAnimationStyleRise;
+    if (controller.style == VSAlertControllerStyleActionSheet) {
+        
+        return VSAlertControllerAnimationStyleRise;
+        
+    }
+    
+    return VSAlertControllerAnimationStyleCrossDisolve;
     
 }
 
