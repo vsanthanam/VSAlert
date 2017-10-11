@@ -14,11 +14,11 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
 
 @interface VSAlertControllerTransitionAnimator ()
 
-@property (NS_NONATOMIC_IOSONLY, weak) id<UIViewControllerContextTransitioning> transitionContext;
-
 @end
 
 @implementation VSAlertControllerTransitionAnimator
+
+#pragma mark - UIViewControllerContextTransitioning
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext {
     
@@ -52,6 +52,8 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
             
             // Create Shadow
             UIView *shadowView = [[UIView alloc] initWithFrame:transitionContext.containerView.frame];
+            shadowView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleWidth);
+            shadowView.translatesAutoresizingMaskIntoConstraints = YES;
             shadowView.layer.backgroundColor = [UIColor clearColor].CGColor;
             [transitionContext.containerView addSubview:shadowView];
             
@@ -408,6 +410,8 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
     return 0.0f;
 
 }
+
+#pragma mark - Private Instance Methods
 
 - (VSAlertControllerAnimationStyle)_automaticPresentationStyleForController:(VSAlertController *)controller {
     

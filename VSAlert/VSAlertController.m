@@ -40,18 +40,11 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 
 @implementation VSAlertController {
     
-    // Initialization Ivars
-    NSString *_title;
-    NSString *_description;
-    UIImage *_image;
-    VSAlertControllerStyle _style;
-    
     // General Ivars
     NSArray<VSAlertAction *> *_defaultActions;
     NSArray<VSAlertAction *> *_destructiveActions;
     NSArray<VSAlertAction *> *_cancelActions;
     
-    // Keyboard Ivars
     CGPoint _tempFrameOrigin;
     BOOL _keyboardHasBeenShown;
     
@@ -65,6 +58,9 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 @synthesize textFields = _textFields;
 @synthesize animationStyle = _animationStyle;
 @synthesize dismissOnBackgroundTap = _dismissOnBackgroundTap;
+@synthesize style = _style;
+@synthesize description = _description;
+@synthesize image = _image;
 
 // Explicitly synthesize Ivars from extension
 @synthesize alertMaskBackground = _alertMaskBackground;
@@ -102,11 +98,6 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
         
         // Basic setup
         [self _setUpAlertController];
-        
-        // Store default params for use in -viewDidLoad
-        _title = @"";
-        _description = @"";
-        _style = VSAlertControllerStyleAlert;
 
     }
     
@@ -123,11 +114,6 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
         // Basic setup
         [self _setUpAlertController];
         
-        // Store default params for use in -viewDidLoad
-        _title = @"";
-        _description = @"";
-        _style = VSAlertControllerStyleAlert;
-        
     }
     
     return self;
@@ -141,21 +127,16 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     [self _setUpAlertControllerUI];
     
     // Configure Text
-    self.alertTitle.text = _title;
-    self.alertDescription.text = _description;
+    self.alertTitle.text = self.title;
+    self.alertDescription.text = self.description;
     
     // Configure Image
-    self.alertImage.image = _image;
-    
-    // Remove Duplicate References
-    _image = nil;
-    _title = nil;
-    _description = nil;
+    self.alertImage.image = self.image;
     
     // Configure Constraints
     self.headerViewHeightConstraint.constant = (BOOL)self.alertImage.image ? 180.0f : 0.0f;
     self.alertViewWidthConstraint.constant = _style == VSAlertControllerStyleAlert ? 270.0f : [UIScreen mainScreen].bounds.size.width - 36.0f;
-    _style == VSAlertControllerStyleActionSheet ? [self.view addConstraint:self.alertViewBottomConstraint] : [self.view addConstraint:self.alertViewCenterYConstraint];
+    self.style == VSAlertControllerStyleActionSheet ? [self.view addConstraint:self.alertViewBottomConstraint] : [self.view addConstraint:self.alertViewCenterYConstraint];
     
     // Set Up Background Tap Gesture Recognizer
     self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -303,8 +284,10 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
         // Basic setup
         [self _setUpAlertController];
         
-        // Store initializer params for use in -viewDidLoad
-        _title = title;
+        // Assign title
+        self.title = title;
+        
+        // Assign read-only properties
         _description = description;
         _image = image;
         _style = style;
@@ -388,6 +371,11 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     _alertTitleTextFont = [UIFont systemFontOfSize:17.0f weight:UIFontWeightMedium];
     _alertDescriptionTextColor = [UIColor blackColor];
     _alertDescriptionTextFont = [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
+    
+    // Set instance read-only properties
+    _style = VSAlertControllerStyleAlert;
+    _description = @"";
+    _image = nil;
     
     // Set instance property defaults
     self.animationStyle = VSAlertControllerAnimationStyleRise;
