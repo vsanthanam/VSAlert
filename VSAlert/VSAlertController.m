@@ -5,7 +5,7 @@
 //  Created by Varun Santhanam on 10/8/17.
 //
 
-@import CoreGraphics;
+#import <os/log.h>
 
 #import "VSAlertController.h"
 #import "VSAlertControllerTransitionAnimator.h"
@@ -55,6 +55,12 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     
 }
 
+// Static class vars
+static UIColor *_defaultTitleTextColor;
+static UIColor *_defaultDescriptionTextColor;
+static UIFont *_defaultTitleTextFont;
+static UIFont *_defaultDescriptionTextFont;
+
 // Explicitly synthesize Ivars from header
 @synthesize alertTitleTextColor = _alertTitleTextColor;
 @synthesize alertDescriptionTextColor = _alertDescriptionTextColor;
@@ -66,6 +72,7 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 @synthesize style = _style;
 @synthesize description = _description;
 @synthesize image = _image;
+@synthesize delegate = _delegate;
 
 // Explicitly synthesize Ivars from extension
 @synthesize alertMaskBackground = _alertMaskBackground;
@@ -90,6 +97,56 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
                                                                style:style];
     
     return alertController;
+    
+}
+
+#pragma mark - Class Property Access Methods
+
++ (UIColor *)defaultTitleTextColor {
+    
+    return _defaultTitleTextColor;
+    
+}
+
++ (void)setDefaultTitleTextColor:(UIColor *)defaultTitleTextColor {
+    
+    _defaultTitleTextColor = defaultTitleTextColor;
+    
+}
+
++ (UIColor *)defaultDescriptionTextColor {
+    
+    return _defaultDescriptionTextColor;
+    
+}
+
++ (void)setDefaultDescriptionTextColor:(UIColor *)defaultDescriptionTextColor {
+    
+    _defaultDescriptionTextColor = defaultDescriptionTextColor;
+    
+}
+
++ (UIFont *)defaultTitleTextFont {
+    
+    return _defaultTitleTextFont;
+    
+}
+
++ (void)setDefaultTitleTextFont:(UIFont *)defaultTitleTextFont {
+    
+    _defaultTitleTextFont = defaultTitleTextFont;
+    
+}
+
++ (UIFont *)defaultDescriptionTextFont {
+    
+    return _defaultDescriptionTextFont;
+    
+}
+
++ (void)setDefaultDescriptionTextFont:(UIFont *)defaultDescriptionTextFont {
+    
+    _defaultDescriptionTextFont = defaultDescriptionTextFont;
     
 }
 
@@ -380,10 +437,10 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     _presentAnimator = [[VSAlertControllerTransitionAnimator alloc] init];
     _dismissAnimator = [[VSAlertControllerTransitionAnimator alloc] init];
     
-    // Set instance properties without accessors (to respect UIAppearance)
-    _alertTitleTextColor = [UIColor blackColor];
-    _alertTitleTextFont = [UIFont systemFontOfSize:17.0f weight:UIFontWeightMedium];
-    _alertDescriptionTextColor = [UIColor blackColor];
+    // Set instance properties without accessors (to respect UIAppearance) [Use class defaults for now, as this class doesn't actually work with UIAppearance]
+    _alertTitleTextColor = [self class].defaultTitleTextColor ? [self class].defaultTitleTextColor : [UIColor blackColor];
+    _alertTitleTextFont = [self class].defaultTitleTextFont ? [self class].defaultTitleTextFont : [UIFont systemFontOfSize:17.0f weight:UIFontWeightMedium];
+    _alertDescriptionTextColor = [self class].defaultDescriptionTextColor ? [self class].defaultDescriptionTextColor : [UIColor blackColor];
     _alertDescriptionTextFont = [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
     
     // Set instance read-only properties
@@ -392,7 +449,7 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     _image = nil;
     
     // Set instance property defaults
-    self.animationStyle = VSAlertControllerAnimationStyleRise;
+    self.animationStyle = VSAlertControllerAnimationStyleAutomatic;
     self.dismissOnBackgroundTap = NO;
     
 }
@@ -934,6 +991,18 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 }
 
 - (void)_tappedAction:(VSAlertAction *)sender {
+    
+    // Check for delegate and inform on main thread
+    if ([self.delegate respondsToSelector:@selector(alertController:didSelectAction:)]) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+           
+            [self.delegate alertController:self
+                           didSelectAction:sender];
+            
+        });
+        
+    }
     
     // Check if action has block and perform on main thread in-case of UI animations
     if (sender.action) {

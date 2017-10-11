@@ -5,6 +5,8 @@
 //  Created by Varun Santhanam on 10/9/17.
 //
 
+@import CoreGraphics;
+
 #import "VSAlertControllerTransitionAnimator.h"
 
 #import "VSAlertController.h"
