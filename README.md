@@ -1,7 +1,7 @@
-# VSAler
+# VSAlert
 An drop-in replacement for UIAlertController that looks a hell of a lot better, built in Objective-C. Based on Codedio's aweomse Swift library, [PMAlertController](https://github.com/Codeido/PMAlertController).
 
-Like PMAlertController, VSAlertController builds on the functionality of UIAlertController by adding:
+Like PMAlertController, VSAlert builds on the functionality of UIAlertController by adding:
 
 * Built-in support for images in the heading of the alert
 * Much better animation
