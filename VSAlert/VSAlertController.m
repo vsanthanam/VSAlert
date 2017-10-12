@@ -17,9 +17,6 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 
 @property (NS_NONATOMIC_IOSONLY, strong) UIImageView *alertMaskBackground;
 @property (NS_NONATOMIC_IOSONLY, strong) UIView *alertView;
-@property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertViewWidthConstraint;
-@property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertViewBottomConstraint;
-@property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertViewCenterYConstraint;
 @property (NS_NONATOMIC_IOSONLY, strong) UIView *headerView;
 @property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *headerViewHeightConstraint;
 @property (NS_NONATOMIC_IOSONLY, strong) UIImageView *alertImage;
@@ -77,7 +74,6 @@ static UIFont *_defaultDescriptionTextFont;
 // Explicitly synthesize Ivars from extension
 @synthesize alertMaskBackground = _alertMaskBackground;
 @synthesize alertView = _alertView;
-@synthesize alertViewWidthConstraint = _alertViewWidthConstraint;
 @synthesize headerView = _headerView;
 @synthesize headerViewHeightConstraint = _headerViewHeightConstraint;
 @synthesize alertImage = _alertImage;
@@ -195,10 +191,8 @@ static UIFont *_defaultDescriptionTextFont;
     // Configure Image
     self.alertImage.image = self.image;
     
-    // Configure Constraints
+    // Update Constraints
     self.headerViewHeightConstraint.constant = (BOOL)self.alertImage.image ? 180.0f : 0.0f;
-    self.alertViewWidthConstraint.constant = _style == VSAlertControllerStyleAlert ? 270.0f : [UIScreen mainScreen].bounds.size.width - 36.0f;
-    self.style == VSAlertControllerStyleActionSheet ? [self.view addConstraint:self.alertViewBottomConstraint] : [self.view addConstraint:self.alertViewCenterYConstraint];
     
     // Set Up Background Tap Gesture Recognizer If Needed
     if (self.dismissOnBackgroundTap) {
@@ -449,6 +443,7 @@ static UIFont *_defaultDescriptionTextFont;
     _image = nil;
     
     // Set instance property defaults
+    self.title = nil;
     self.animationStyle = VSAlertControllerAnimationStyleAutomatic;
     self.dismissOnBackgroundTap = NO;
     
@@ -521,6 +516,8 @@ static UIFont *_defaultDescriptionTextFont;
     self.alertView.layer.shadowRadius = 8.0f;
     self.alertView.layer.shadowOpacity = 0.3f;
     
+    CGFloat width = self.style == VSAlertControllerStyleAlert ? 270.0f : [UIScreen mainScreen].bounds.size.width - 36.0f;
+    
     [self.view addConstraints:@[[NSLayoutConstraint constraintWithItem:self.alertView
                                                              attribute:NSLayoutAttributeCenterX
                                                              relatedBy:NSLayoutRelationEqual
@@ -534,33 +531,36 @@ static UIFont *_defaultDescriptionTextFont;
                                                                 toItem:nil
                                                              attribute:NSLayoutAttributeHeight
                                                             multiplier:0.0f
-                                                              constant:100.0f]]];
+                                                              constant:100.0f],
+                                [NSLayoutConstraint constraintWithItem:self.alertView
+                                                             attribute:NSLayoutAttributeWidth
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:nil
+                                                             attribute:NSLayoutAttributeWidth
+                                                            multiplier:0.0f
+                                                              constant:width]]];
     
-    self.alertViewWidthConstraint = [NSLayoutConstraint constraintWithItem:self.alertView
-                                                                 attribute:NSLayoutAttributeWidth
-                                                                 relatedBy:NSLayoutRelationEqual
-                                                                    toItem:nil
-                                                                 attribute:NSLayoutAttributeWidth
-                                                                multiplier:0.0f
-                                                                  constant:357.0f];
-    
-    [self.view addConstraint:self.alertViewWidthConstraint];
-    
-    self.alertViewCenterYConstraint = [NSLayoutConstraint constraintWithItem:self.alertView
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.view
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                  multiplier:1.0f
-                                                                    constant:0.0f];
-    
-    self.alertViewBottomConstraint = [NSLayoutConstraint constraintWithItem:self.alertView
-                                                                  attribute:NSLayoutAttributeBottom
-                                                                  relatedBy:NSLayoutRelationEqual
-                                                                     toItem:self.view
-                                                                  attribute:NSLayoutAttributeBottom
-                                                                 multiplier:1.0f
-                                                                   constant:-18.0f];
+    if (self.style == VSAlertControllerStyleActionSheet) {
+        
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.alertView
+                                                              attribute:NSLayoutAttributeBottom
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeBottom
+                                                             multiplier:1.0f
+                                                               constant:-18.0f]];
+        
+    } else {
+        
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.alertView
+                                                              attribute:NSLayoutAttributeCenterY
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:self.view
+                                                              attribute:NSLayoutAttributeCenterY
+                                                             multiplier:1.0f
+                                                               constant:0.0f]];
+        
+    }
     
 }
 
@@ -724,7 +724,7 @@ static UIFont *_defaultDescriptionTextFont;
                                                                      toItem:nil
                                                                   attribute:NSLayoutAttributeHeight
                                                                  multiplier:0.0f
-                                                                   constant:21.0f]]];
+                                                                   constant:0.0f]]];
     
 }
 

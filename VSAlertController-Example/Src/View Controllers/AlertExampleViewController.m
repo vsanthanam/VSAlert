@@ -26,13 +26,51 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 1;
+    return 3;
     
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [AlertExample sharedExample].examples.count;
+    if (section == 0) {
+        
+        return [AlertExample sharedExample].alertExamples.count;
+        
+    } else if (section == 1) {
+        
+        return [AlertExample sharedExample].walkthroughExamples.count;
+        
+    } else if (section == 2) {
+        
+        return [AlertExample sharedExample].actionSheetExamples.count;
+        
+    }
+    
+    return 0;
+    
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    if (section == 0) {
+        
+        return NSLocalizedString(@"Normal Alerts", nil);
+        
+    }
+    
+    if (section == 1) {
+        
+        return NSLocalizedString(@"Walkthrough Alerts", nil);
+        
+    }
+    
+    if (section == 2) {
+        
+        return NSLocalizedString(@"Action Sheets", nil);
+        
+    }
+    
+    return @"";
     
 }
 
@@ -48,7 +86,25 @@
         
     }
     
-    AlertExampleType example = (AlertExampleType)[AlertExample sharedExample].examples[indexPath.row].integerValue;
+    AlertExampleType example;
+    
+    if (indexPath.section == 0) {
+     
+        example = (AlertExampleType)[AlertExample sharedExample].alertExamples[indexPath.row].integerValue;
+        
+    } else if (indexPath.section == 1) {
+        
+        example = (AlertExampleType)[AlertExample sharedExample].walkthroughExamples[indexPath.row].integerValue;
+
+    } else if (indexPath.section == 2) {
+        
+        example = (AlertExampleType)[AlertExample sharedExample].actionSheetExamples[indexPath.row].integerValue;
+        
+    } else {
+        
+        example = AlertExampleTypeBasic;
+        
+    }
     
     cell.textLabel.text = [[AlertExample sharedExample] exampleNameForExampleType:example];
     
@@ -60,7 +116,25 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    AlertExampleType example = (AlertExampleType)[AlertExample sharedExample].examples[indexPath.row].integerValue;
+    AlertExampleType example;
+    
+    if (indexPath.section == 0) {
+        
+        example = (AlertExampleType)[AlertExample sharedExample].alertExamples[indexPath.row].integerValue;
+        
+    } else if (indexPath.section == 1) {
+        
+        example = (AlertExampleType)[AlertExample sharedExample].walkthroughExamples[indexPath.row].integerValue;
+        
+    } else if (indexPath.section == 2) {
+        
+        example = (AlertExampleType)[AlertExample sharedExample].actionSheetExamples[indexPath.row].integerValue;
+        
+    } else {
+        
+        example = AlertExampleTypeBasic;
+        
+    }
     
     [[AlertExample sharedExample] presentAlertForExampleType:example onViewController:self];
     

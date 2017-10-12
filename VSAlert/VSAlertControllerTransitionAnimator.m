@@ -58,8 +58,11 @@ NSString * const VSAlertControllerTransitionAnimatorInvalidUsageException = @"VS
         if (!transitionContext.animated) {
          
             // No animation needed, dismiss immediately
+\
             [transitionContext.containerView addSubview:toController.view];
             [transitionContext completeTransition:YES];
+            
+            return;
 
         } else {
          
