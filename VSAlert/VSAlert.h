@@ -13,3 +13,6 @@
 
 #import <VSAlert/VSAlertController.h>
 #import <VSAlert/VSAlertAction.h>
+
+#import <VSAlert/VSAlertController+Templates.h>
+#import <VSAlert/VSAlertAction+Templates.h>

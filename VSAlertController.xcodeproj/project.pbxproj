@@ -51,6 +51,12 @@
 		077741361F8EA46C00ADF3D5 /* AlertExampleSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 077741351F8EA46C00ADF3D5 /* AlertExampleSettingsViewController.m */; };
 		07A7C4061F8D655100A71580 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A7C4051F8D655100A71580 /* Foundation.framework */; };
 		07A7C4081F8D655700A71580 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A7C4071F8D655700A71580 /* UIKit.framework */; };
+		07D533FE1F8F2841000734CD /* VSAlertAction+Templates.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D533FC1F8F2841000734CD /* VSAlertAction+Templates.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07D533FF1F8F2841000734CD /* VSAlertAction+Templates.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D533FD1F8F2841000734CD /* VSAlertAction+Templates.m */; };
+		07D534001F8F2841000734CD /* VSAlertAction+Templates.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D533FD1F8F2841000734CD /* VSAlertAction+Templates.m */; };
+		07D534031F8F29E4000734CD /* VSAlertController+Templates.h in Headers */ = {isa = PBXBuildFile; fileRef = 07D534011F8F29E4000734CD /* VSAlertController+Templates.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07D534041F8F29E4000734CD /* VSAlertController+Templates.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D534021F8F29E4000734CD /* VSAlertController+Templates.m */; };
+		07D534051F8F29E4000734CD /* VSAlertController+Templates.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D534021F8F29E4000734CD /* VSAlertController+Templates.m */; };
 		07F00EE81F8A96F4006FAC96 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F00EE71F8A96F4006FAC96 /* AppDelegate.m */; };
 		07F00EEE1F8A96F4006FAC96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07F00EEC1F8A96F4006FAC96 /* Main.storyboard */; };
 		07F00EF01F8A96F4006FAC96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F00EEF1F8A96F4006FAC96 /* Assets.xcassets */; };
@@ -102,6 +108,10 @@
 		077741351F8EA46C00ADF3D5 /* AlertExampleSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertExampleSettingsViewController.m; sourceTree = "<group>"; };
 		07A7C4051F8D655100A71580 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		07A7C4071F8D655700A71580 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		07D533FC1F8F2841000734CD /* VSAlertAction+Templates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VSAlertAction+Templates.h"; sourceTree = "<group>"; };
+		07D533FD1F8F2841000734CD /* VSAlertAction+Templates.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "VSAlertAction+Templates.m"; sourceTree = "<group>"; };
+		07D534011F8F29E4000734CD /* VSAlertController+Templates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VSAlertController+Templates.h"; sourceTree = "<group>"; };
+		07D534021F8F29E4000734CD /* VSAlertController+Templates.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "VSAlertController+Templates.m"; sourceTree = "<group>"; };
 		07F00EE31F8A96F4006FAC96 /* VSAlertController-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VSAlertController-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F00EE61F8A96F4006FAC96 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		07F00EE71F8A96F4006FAC96 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -228,6 +238,10 @@
 				0710F9C51F8B1E1000C6D084 /* VSAlertController.m */,
 				074538151F8C437700092DAF /* VSAlertControllerTransitionAnimator.h */,
 				074538161F8C437700092DAF /* VSAlertControllerTransitionAnimator.m */,
+				07D534011F8F29E4000734CD /* VSAlertController+Templates.h */,
+				07D534021F8F29E4000734CD /* VSAlertController+Templates.m */,
+				07D533FC1F8F2841000734CD /* VSAlertAction+Templates.h */,
+				07D533FD1F8F2841000734CD /* VSAlertAction+Templates.m */,
 			);
 			name = Src;
 			sourceTree = "<group>";
@@ -298,8 +312,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0710F9C71F8B1E2000C6D084 /* VSAlertAction.h in Headers */,
+				07D533FE1F8F2841000734CD /* VSAlertAction+Templates.h in Headers */,
 				074538171F8C437700092DAF /* VSAlertControllerTransitionAnimator.h in Headers */,
 				0710F9C81F8B1E2200C6D084 /* VSAlertController.h in Headers */,
+				07D534031F8F29E4000734CD /* VSAlertController+Templates.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,8 +475,10 @@
 				077741361F8EA46C00ADF3D5 /* AlertExampleSettingsViewController.m in Sources */,
 				07F00EF61F8A96F4006FAC96 /* main.m in Sources */,
 				074538181F8C437700092DAF /* VSAlertControllerTransitionAnimator.m in Sources */,
+				07D533FF1F8F2841000734CD /* VSAlertAction+Templates.m in Sources */,
 				072400451F8E826700BEA4CD /* AlertExample.m in Sources */,
 				07F00EE81F8A96F4006FAC96 /* AppDelegate.m in Sources */,
+				07D534041F8F29E4000734CD /* VSAlertController+Templates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,8 +487,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0710F9C91F8B1E3500C6D084 /* VSAlertAction.m in Sources */,
+				07D534001F8F2841000734CD /* VSAlertAction+Templates.m in Sources */,
 				074538191F8C437700092DAF /* VSAlertControllerTransitionAnimator.m in Sources */,
 				0710F9CA1F8B1E3700C6D084 /* VSAlertController.m in Sources */,
+				07D534051F8F29E4000734CD /* VSAlertController+Templates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
