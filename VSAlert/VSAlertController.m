@@ -52,6 +52,9 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
     
 }
 
+// Log
+static os_log_t alert_log;
+
 // Static class vars
 static UIColor *_defaultTitleTextColor;
 static UIColor *_defaultDescriptionTextColor;
@@ -82,6 +85,14 @@ static UIFont *_defaultDescriptionTextFont;
 @synthesize alertActionStackView = _alertActionStackView;
 @synthesize alertStackViewHeightConstraint = _alertStackViewHeightConstraint;
 @synthesize tapRecognizer = _tapRecognizer;
+
+#pragma mark - Overridden Class Methods
+
++ (void)initialize {
+    
+    alert_log = os_log_create("com.varunsanthanam.VSAlert", "VSAlert");
+    
+}
 
 #pragma mark - Public Class Methods
 
@@ -864,6 +875,12 @@ static UIFont *_defaultDescriptionTextFont;
 }
 
 - (void)_processActions {
+    
+    if (_cancelActions.count > 1) {
+        
+        os_log_info(alert_log, "WARNING: Alerts with more than 1 ""Cancel"" action are not advisable");
+        
+    }
     
     NSInteger totalActions = _cancelActions.count + _destructiveActions.count + _defaultActions.count + self.textFields.count;
     
