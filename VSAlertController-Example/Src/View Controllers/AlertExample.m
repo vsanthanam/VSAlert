@@ -5,12 +5,22 @@
 //  Created by Varun Santhanam on 10/11/17.
 //
 
+#import <os/log.h>
+
 #import "AlertExample.h"
 
 @implementation AlertExample
 
 @synthesize animationStyle = _animationStyle;
 @synthesize dismissOnBackgroundTap = _dismissOnBackgroundTap;
+
+static os_log_t example_alert;
+
++ (void)initialize {
+    
+    example_alert = os_log_create("com.varunsanthanam.VSAlertController-Example", "AlertExample");
+    
+}
 
 #pragma mark - Public Class Methods
 
@@ -309,7 +319,7 @@
                                                                style:VSAlertActionStyleDefault
                                                               action:^(VSAlertAction *action) {
                                                                   
-                                                                  NSLog(@"%@", controller.textFields[0].text);
+                                                                  os_log_info(example_alert, "%@", controller.textFields[0].text);
                                                                   
                                                               }];
         [controller addAction:action1];
@@ -342,8 +352,8 @@
                                                                style:VSAlertActionStyleDefault
                                                               action:^(VSAlertAction *action) {
                                                                   
-                                                                  NSLog(@"Email: %@", controller.textFields[0].text);
-                                                                  NSLog(@"Password: %@", controller.textFields[1].text);
+                                                                  os_log_info(example_alert, "Email: %@", controller.textFields[0].text);
+                                                                  os_log_info(example_alert, "Password: %@", controller.textFields[1].text);
                                                                   
                                                               }];
         [controller addAction:action1];
@@ -472,7 +482,7 @@
                                                                style:VSAlertActionStyleDefault
                                                               action:^(VSAlertAction *action) {
                                                                   
-                                                                  NSLog(@"%@", controller.textFields[0].text);
+                                                                  os_log_info(example_alert, "%@", controller.textFields[0].text);
                                                                   
                                                               }];
         [controller addAction:action1];
@@ -505,8 +515,8 @@
                                                                style:VSAlertActionStyleDefault
                                                               action:^(VSAlertAction *action) {
                                                                   
-                                                                  NSLog(@"Email: %@", controller.textFields[0].text);
-                                                                  NSLog(@"Password: %@", controller.textFields[1].text);
+                                                                  os_log_info(example_alert, "Email: %@", controller.textFields[0].text);
+                                                                  os_log_info(example_alert, "Password: %@", controller.textFields[1].text);
                                                                   
                                                               }];
         [controller addAction:action1];
