@@ -21,7 +21,7 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 @property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *headerViewHeightConstraint;
 @property (NS_NONATOMIC_IOSONLY, strong) UIImageView *alertImage;
 @property (NS_NONATOMIC_IOSONLY, strong) UILabel *alertTitle;
-@property (NS_NONATOMIC_IOSONLY, strong) UILabel *alertDescription;
+@property (NS_NONATOMIC_IOSONLY, strong) UILabel *alertMessage;
 @property (NS_NONATOMIC_IOSONLY, strong) UIStackView *alertActionStackView;
 @property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertStackViewHeightConstraint;
 @property (NS_NONATOMIC_IOSONLY, strong) UITapGestureRecognizer *tapRecognizer;
@@ -57,20 +57,20 @@ static os_log_t alert_log;
 
 // Static class vars
 static UIColor *_defaultTitleTextColor;
-static UIColor *_defaultDescriptionTextColor;
+static UIColor *_defaultMessageTextColor;
 static UIFont *_defaultTitleTextFont;
-static UIFont *_defaultDescriptionTextFont;
+static UIFont *_defaultMessageTextFont;
 
 // Explicitly synthesize Ivars from header
 @synthesize alertTitleTextColor = _alertTitleTextColor;
-@synthesize alertDescriptionTextColor = _alertDescriptionTextColor;
+@synthesize alertMessageTextColor = _alertMessageTextColor;
 @synthesize alertTitleTextFont = _alertTitleTextFont;
-@synthesize alertDescriptionTextFont = _alertDescriptionTextFont;
+@synthesize alertMessageTextFont = _alertMessageTextFont;
 @synthesize textFields = _textFields;
 @synthesize animationStyle = _animationStyle;
 @synthesize dismissOnBackgroundTap = _dismissOnBackgroundTap;
 @synthesize style = _style;
-@synthesize description = _description;
+@synthesize message = _message;
 @synthesize image = _image;
 @synthesize delegate = _delegate;
 
@@ -81,7 +81,7 @@ static UIFont *_defaultDescriptionTextFont;
 @synthesize headerViewHeightConstraint = _headerViewHeightConstraint;
 @synthesize alertImage = _alertImage;
 @synthesize alertTitle = _alertTitle;
-@synthesize alertDescription = _alertDescription;
+@synthesize alertMessage = _alertMessage;
 @synthesize alertActionStackView = _alertActionStackView;
 @synthesize alertStackViewHeightConstraint = _alertStackViewHeightConstraint;
 @synthesize tapRecognizer = _tapRecognizer;
@@ -96,11 +96,22 @@ static UIFont *_defaultDescriptionTextFont;
 
 #pragma mark - Public Class Methods
 
-+ (instancetype)alertControllerWithTitle:(NSString *)title description:(NSString *)description image:(UIImage *)image style:(VSAlertControllerStyle)style {
++ (instancetype)alertControllerWithTitle:(NSString *)title message:(NSString *)message image:(UIImage *)image style:(VSAlertControllerStyle)style {
     
     VSAlertController *alertController = [[self alloc] initWithTitle:title
-                                                         description:description
+                                                             message:message
                                                                image:image
+                                                               style:style];
+    
+    return alertController;
+    
+}
+
++ (instancetype)alertControllerWithTitle:(NSString *)title message:(NSString *)message style:(VSAlertControllerStyle)style {
+    
+    VSAlertController *alertController = [[self alloc] initWithTitle:title
+                                                             message:message
+                                                               image:nil
                                                                style:style];
     
     return alertController;
@@ -121,15 +132,15 @@ static UIFont *_defaultDescriptionTextFont;
     
 }
 
-+ (UIColor *)defaultDescriptionTextColor {
++ (UIColor *)defaultMessageTextColor {
     
-    return _defaultDescriptionTextColor;
+    return _defaultMessageTextColor;
     
 }
 
-+ (void)setDefaultDescriptionTextColor:(UIColor *)defaultDescriptionTextColor {
++ (void)setDefaultMessageTextColor:(UIColor *)defaultMessageTextColor {
     
-    _defaultDescriptionTextColor = defaultDescriptionTextColor;
+    _defaultMessageTextColor = defaultMessageTextColor;
     
 }
 
@@ -145,15 +156,15 @@ static UIFont *_defaultDescriptionTextFont;
     
 }
 
-+ (UIFont *)defaultDescriptionTextFont {
++ (UIFont *)defaultMessageTextFont {
     
-    return _defaultDescriptionTextFont;
+    return _defaultMessageTextFont;
     
 }
 
-+ (void)setDefaultDescriptionTextFont:(UIFont *)defaultDescriptionTextFont {
++ (void)setDefaultMessageTextFont:(UIFont *)defaultMessageTextFont {
     
-    _defaultDescriptionTextFont = defaultDescriptionTextFont;
+    _defaultMessageTextFont = defaultMessageTextFont;
     
 }
 
@@ -197,7 +208,7 @@ static UIFont *_defaultDescriptionTextFont;
     
     // Configure Text
     self.alertTitle.text = self.title;
-    self.alertDescription.text = self.description;
+    self.alertMessage.text = self.message;
     
     // Configure Image
     self.alertImage.image = self.image;
@@ -283,29 +294,29 @@ static UIFont *_defaultDescriptionTextFont;
     
 }
 
-- (UIColor *)alertDescriptionTextColor {
+- (UIColor *)alertMessageTextColor {
     
-    return _alertDescriptionTextColor;
-    
-}
-
-- (void)setAlertDescriptionTextColor:(UIColor *)alertDescriptionTextColor {
-    
-    _alertDescriptionTextColor = alertDescriptionTextColor;
-    self.alertDescription.textColor = self.alertDescriptionTextColor;
+    return _alertMessageTextColor;
     
 }
 
-- (UIFont *)alertDescriptionTextFont {
+- (void)setAlertMessageTextColor:(UIColor *)alertMessageTextColor {
     
-    return _alertDescriptionTextFont;
+    _alertMessageTextColor = alertMessageTextColor;
+    self.alertMessage.textColor = self.alertMessageTextColor;
     
 }
 
-- (void)setAlertDescriptionTextFont:(UIFont *)alertDescriptionTextFont {
+- (UIFont *)alertMessageTextFont {
     
-    _alertDescriptionTextFont = alertDescriptionTextFont;
-    self.alertDescription.font = self.alertDescriptionTextFont;
+    return _alertMessageTextFont;
+    
+}
+
+- (void)setAlertMessageTextFont:(UIFont *)alertMessageTextFont {
+    
+    _alertMessageTextFont = alertMessageTextFont;
+    self.alertMessage.font = self.alertMessageTextFont;
     
 }
 
@@ -349,7 +360,7 @@ static UIFont *_defaultDescriptionTextFont;
 }
 #pragma mark - Public Instance Methods
 
-- (instancetype)initWithTitle:(NSString *)title description:(NSString *)description image:(UIImage *)image style:(VSAlertControllerStyle)style {
+- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message image:(UIImage *)image style:(VSAlertControllerStyle)style {
     
     self = [super initWithNibName:nil bundle:nil];
     
@@ -362,7 +373,7 @@ static UIFont *_defaultDescriptionTextFont;
         self.title = title;
         
         // Assign read-only properties
-        _description = description;
+        _message = message;
         _image = image;
         _style = style;
         
@@ -445,12 +456,12 @@ static UIFont *_defaultDescriptionTextFont;
     // Set instance properties without accessors (to respect UIAppearance) [Use class defaults for now, as this class doesn't actually work with UIAppearance]
     _alertTitleTextColor = [self class].defaultTitleTextColor ? [self class].defaultTitleTextColor : [UIColor blackColor];
     _alertTitleTextFont = [self class].defaultTitleTextFont ? [self class].defaultTitleTextFont : [UIFont systemFontOfSize:17.0f weight:UIFontWeightMedium];
-    _alertDescriptionTextColor = [self class].defaultDescriptionTextColor ? [self class].defaultDescriptionTextColor : [UIColor blackColor];
-    _alertDescriptionTextFont = [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
+    _alertMessageTextColor = [self class].defaultMessageTextColor ? [self class].defaultMessageTextColor : [UIColor blackColor];
+    _alertMessageTextFont = [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
     
     // Set instance read-only properties
     _style = VSAlertControllerStyleAlert;
-    _description = @"";
+    _message = @"";
     _image = nil;
     
     // Set instance property defaults
@@ -468,7 +479,7 @@ static UIFont *_defaultDescriptionTextFont;
     [self _setUpHeaderView];
     [self _setUpAlertImage];
     [self _setUpAlertTitle];
-    [self _setUpAlertDescription];
+    [self _setUpAlertMessage];
     [self _setUpAlertActionStackView];
     
 }
@@ -697,39 +708,39 @@ static UIFont *_defaultDescriptionTextFont;
     
 }
 
-- (void)_setUpAlertDescription {
+- (void)_setUpAlertMessage {
     
-    self.alertDescription = [[UILabel alloc] init];
-    self.alertDescription.font = self.alertDescriptionTextFont;
-    self.alertDescription.textColor = self.alertDescriptionTextColor;
-    self.alertDescription.numberOfLines = 0;
-    self.alertDescription.textAlignment = NSTextAlignmentCenter;
-    self.alertDescription.translatesAutoresizingMaskIntoConstraints = NO;
+    self.alertMessage = [[UILabel alloc] init];
+    self.alertMessage.font = self.alertMessageTextFont;
+    self.alertMessage.textColor = self.alertMessageTextColor;
+    self.alertMessage.numberOfLines = 0;
+    self.alertMessage.textAlignment = NSTextAlignmentCenter;
+    self.alertMessage.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self.alertView addSubview:self.alertDescription];
+    [self.alertView addSubview:self.alertMessage];
     
-    [self.alertView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.alertDescription
+    [self.alertView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.alertMessage
                                                                   attribute:NSLayoutAttributeTop
                                                                   relatedBy:NSLayoutRelationEqual
                                                                      toItem:self.alertTitle
                                                                   attribute:NSLayoutAttributeBottom
                                                                  multiplier:1.0f
                                                                    constant:8.0f],
-                                     [NSLayoutConstraint constraintWithItem:self.alertDescription
+                                     [NSLayoutConstraint constraintWithItem:self.alertMessage
                                                                   attribute:NSLayoutAttributeLeft
                                                                   relatedBy:NSLayoutRelationEqual
                                                                      toItem:self.alertView
                                                                   attribute:NSLayoutAttributeLeft
                                                                  multiplier:1.0f
                                                                    constant:8.0f],
-                                     [NSLayoutConstraint constraintWithItem:self.alertDescription
+                                     [NSLayoutConstraint constraintWithItem:self.alertMessage
                                                                   attribute:NSLayoutAttributeRight
                                                                   relatedBy:NSLayoutRelationEqual
                                                                      toItem:self.alertView
                                                                   attribute:NSLayoutAttributeRight
                                                                  multiplier:1.0f
                                                                    constant:-8.0f],
-                                     [NSLayoutConstraint constraintWithItem:self.alertDescription
+                                     [NSLayoutConstraint constraintWithItem:self.alertMessage
                                                                   attribute:NSLayoutAttributeHeight
                                                                   relatedBy:NSLayoutRelationGreaterThanOrEqual
                                                                      toItem:nil
@@ -750,7 +761,7 @@ static UIFont *_defaultDescriptionTextFont;
     [self.alertView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.alertActionStackView
                                                                   attribute:NSLayoutAttributeTop
                                                                   relatedBy:NSLayoutRelationEqual
-                                                                     toItem:self.alertDescription
+                                                                     toItem:self.alertMessage
                                                                   attribute:NSLayoutAttributeBottom
                                                                  multiplier:1.0f
                                                                    constant:8.0f],

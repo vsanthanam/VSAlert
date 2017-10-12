@@ -242,7 +242,7 @@ static os_log_t example_alert;
     if (exampleType == AlertExampleTypeBasic) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Basic Alert", nil)
-                                                     description:NSLocalizedString(@"Nothing but a title, a messagege, and a button.", nil)
+                                                         message:NSLocalizedString(@"Nothing but a title, a messagege, and a button.", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleAlert];
         VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
@@ -253,7 +253,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeCancel) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Would you like to continue?", nil)
-                                                     description:NSLocalizedString(@"You can change your mind at any time", nil)
+                                                         message:NSLocalizedString(@"You can change your mind at any time", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleAlert];
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
@@ -268,7 +268,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeDestructive) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Would you like to continue?", nil)
-                                                     description:NSLocalizedString(@"This change is permenant", nil)
+                                                         message:NSLocalizedString(@"This change is permenant", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleAlert];
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
@@ -283,7 +283,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeMultiChoice) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Make a Choice", nil)
-                                                     description:NSLocalizedString(@"Some are better than others", nil)
+                                                         message:NSLocalizedString(@"Some are better than others", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleAlert];
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
@@ -306,7 +306,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeTextField1) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Enter Zipcode", nil)
-                                                     description:NSLocalizedString(@"Some featuers are only available in certain areas", nil)
+                                                         message:NSLocalizedString(@"Some featuers are only available in certain areas", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleAlert];
         [controller addTextField:^(UITextField *textfield) {
@@ -331,7 +331,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeTextField2) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Log In", nil)
-                                                     description:nil
+                                                     message:nil
                                                            image:nil
                                                            style:VSAlertControllerStyleAlert];
         [controller addTextField:^(UITextField *textfield) {
@@ -366,7 +366,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeImage) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Subscription Required", nil)
-                                                     description:NSLocalizedString(@"Visit our website for available plan information.", nil)
+                                                         message:NSLocalizedString(@"Visit our website for available plan information.", nil)
                                                            image:[UIImage imageNamed:@"news-alert"]
                                                            style:VSAlertControllerStyleAlert];
         VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
@@ -377,16 +377,16 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeStyled) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Locate your device", nil)
-                                                     description:NSLocalizedString(@"Enables access to your location: discover what you can do when you're traveling and what is available near you.", nil)
+                                                         message:NSLocalizedString(@"Enables access to your location: discover what you can do when you're traveling and what is available near you.", nil)
                                                            image:[UIImage imageNamed:@"flag.png"]
                                                            style:VSAlertControllerStyleAlert];
         controller.alertTitleTextColor = [UIColor colorWithRed:0.929f green:0.596f blue:0.082f alpha:1.0f];
         controller.alertTitleTextFont = [UIFont fontWithName:@"Avenir-Roman" size:17.0f];
-        controller.alertDescriptionTextColor = [UIColor colorWithRed:1.0f/3.0f
+        controller.alertMessageTextColor = [UIColor colorWithRed:1.0f/3.0f
                                                                green:1.0f/3.0f
                                                                 blue:1.0f/3.0f
                                                                alpha:1.0f];
-        controller.alertDescriptionTextFont = [UIFont fontWithName:@"Avenir-Medium" size:15.0f];
+        controller.alertMessageTextFont = [UIFont fontWithName:@"Avenir-Medium" size:15.0f];
         
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
                                                                style:VSAlertActionStyleCancel
@@ -405,7 +405,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeWalkthroughBasic) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Walkthrough Alert", nil)
-                                                     description:NSLocalizedString(@"Like a basic alert, but wider. Basic alerts are 270pt wide, walkthrough alerts stretch to fill the display. They can be useful for onboarding and set-up screen.", nil)
+                                                         message:NSLocalizedString(@"Like a basic alert, but wider. Basic alerts are 270pt wide, walkthrough alerts stretch to fill the display. They can be useful for onboarding and set-up screen.", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleWalkthroughAlert];
         VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
@@ -416,7 +416,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeWalkthroughCancel) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Would you like to continue?", nil)
-                                                     description:NSLocalizedString(@"You can change your mind at any time", nil)
+                                                         message:NSLocalizedString(@"You can change your mind at any time", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleWalkthroughAlert];
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
@@ -431,7 +431,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeWalkthroughDestructive) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Would you like to continue?", nil)
-                                                     description:NSLocalizedString(@"This change is permenant", nil)
+                                                         message:NSLocalizedString(@"This change is permenant", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleWalkthroughAlert];
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
@@ -446,7 +446,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeWalkthroughMultiChoice) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Make a Choice", nil)
-                                                     description:NSLocalizedString(@"Some are better than others", nil)
+                                                         message:NSLocalizedString(@"Some are better than others", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleWalkthroughAlert];
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
@@ -469,7 +469,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeWalkthroughTextField1) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Enter Zipcode", nil)
-                                                     description:NSLocalizedString(@"Some featuers are only available in certain areas", nil)
+                                                         message:NSLocalizedString(@"Some featuers are only available in certain areas", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleWalkthroughAlert];
         [controller addTextField:^(UITextField *textfield) {
@@ -494,7 +494,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeWalkthroughTextField2) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Log In", nil)
-                                                     description:nil
+                                                         message:nil
                                                            image:nil
                                                            style:VSAlertControllerStyleWalkthroughAlert];
         [controller addTextField:^(UITextField *textfield) {
@@ -529,7 +529,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeWalkthroughImage) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Subscription Required", nil)
-                                                     description:NSLocalizedString(@"Visit our website for available plan information.", nil)
+                                                         message:NSLocalizedString(@"Visit our website for available plan information.", nil)
                                                            image:[UIImage imageNamed:@"news-alert"]
                                                            style:VSAlertControllerStyleWalkthroughAlert];
         VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
@@ -540,16 +540,16 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeWalkthroughStyled) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Locate your device", nil)
-                                                     description:NSLocalizedString(@"Enables access to your location: discover what you can do when you're traveling and what is available near you.", nil)
+                                                         message:NSLocalizedString(@"Enables access to your location: discover what you can do when you're traveling and what is available near you.", nil)
                                                            image:[UIImage imageNamed:@"flag.png"]
                                                            style:VSAlertControllerStyleWalkthroughAlert];
         controller.alertTitleTextColor = [UIColor colorWithRed:0.929f green:0.596f blue:0.082f alpha:1.0f];
         controller.alertTitleTextFont = [UIFont fontWithName:@"Avenir-Roman" size:17.0f];
-        controller.alertDescriptionTextColor = [UIColor colorWithRed:1.0f/3.0f
+        controller.alertMessageTextColor = [UIColor colorWithRed:1.0f/3.0f
                                                                green:1.0f/3.0f
                                                                 blue:1.0f/3.0f
                                                                alpha:1.0f];
-        controller.alertDescriptionTextFont = [UIFont fontWithName:@"Avenir-Medium" size:15.0f];
+        controller.alertMessageTextFont = [UIFont fontWithName:@"Avenir-Medium" size:15.0f];
         
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
                                                                style:VSAlertActionStyleCancel
@@ -568,7 +568,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeActionSheetBasic) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Action Sheet", nil)
-                                                     description:NSLocalizedString(@"These alerts fire from the bottom of the screen. They're useful for having a user make a choice", nil)
+                                                         message:NSLocalizedString(@"These alerts fire from the bottom of the screen. They're useful for having a user make a choice", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleActionSheet];
         VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
@@ -579,7 +579,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeActionSheetCancel) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Would you like to continue?", nil)
-                                                     description:NSLocalizedString(@"You can change your mind at any time", nil)
+                                                         message:NSLocalizedString(@"You can change your mind at any time", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleActionSheet];
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
@@ -594,7 +594,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeActionSheetDestructive) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Would you like to continue?", nil)
-                                                     description:NSLocalizedString(@"This change is permenant", nil)
+                                                         message:NSLocalizedString(@"This change is permenant", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleActionSheet];
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
@@ -609,7 +609,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeActionSheetMultiChoice) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Make a Choice", nil)
-                                                     description:NSLocalizedString(@"Some are better than others", nil)
+                                                         message:NSLocalizedString(@"Some are better than others", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleActionSheet];
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
@@ -632,7 +632,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeActionSheetImage) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Subscription Required", nil)
-                                                     description:NSLocalizedString(@"Visit our website for available plan information.", nil)
+                                                         message:NSLocalizedString(@"Visit our website for available plan information.", nil)
                                                            image:[UIImage imageNamed:@"news-alert"]
                                                            style:VSAlertControllerStyleActionSheet];
         VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
@@ -643,16 +643,16 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeActionSheetStyled) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Locate your device", nil)
-                                                     description:NSLocalizedString(@"Enables access to your location: discover what you can do when you're traveling and what is available near you.", nil)
+                                                         message:NSLocalizedString(@"Enables access to your location: discover what you can do when you're traveling and what is available near you.", nil)
                                                            image:[UIImage imageNamed:@"flag.png"]
                                                            style:VSAlertControllerStyleActionSheet];
         controller.alertTitleTextColor = [UIColor colorWithRed:0.929f green:0.596f blue:0.082f alpha:1.0f];
         controller.alertTitleTextFont = [UIFont fontWithName:@"Avenir-Roman" size:17.0f];
-        controller.alertDescriptionTextColor = [UIColor colorWithRed:1.0f/3.0f
+        controller.alertMessageTextColor = [UIColor colorWithRed:1.0f/3.0f
                                                                green:1.0f/3.0f
                                                                 blue:1.0f/3.0f
                                                                alpha:1.0f];
-        controller.alertDescriptionTextFont = [UIFont fontWithName:@"Avenir-Medium" size:15.0f];
+        controller.alertMessageTextFont = [UIFont fontWithName:@"Avenir-Medium" size:15.0f];
         
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
                                                                style:VSAlertActionStyleCancel

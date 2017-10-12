@@ -87,7 +87,7 @@ typedef NS_ENUM(NSInteger, VSAlertActionStyle) {
 @property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIFont *cancelActionTextFont UI_APPEARANCE_SELECTOR;
 
 /**
- @name Interacting With Actions
+ @name Interacting with Actions
  */
 
 /**
