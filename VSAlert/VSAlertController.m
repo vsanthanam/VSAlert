@@ -293,27 +293,43 @@ static os_log_t alert_log;
 
 + (instancetype)appearance {
     
-    return [VSAlertControllerAppearanceProxy appearance];
+    return (VSAlertController *)[VSAlertControllerAppearanceProxy appearance];
     
 }
 
 + (instancetype)appearanceForTraitCollection:(UITraitCollection *)trait {
     
-    return [VSAlertControllerAppearanceProxy appearanceForTraitCollection:trait];
+    return (VSAlertController *)[VSAlertControllerAppearanceProxy appearanceForTraitCollection:trait];
     
 }
 
 + (instancetype)appearanceForTraitCollection:(UITraitCollection *)trait whenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes {
     
-    return [VSAlertControllerAppearanceProxy appearanceForTraitCollection:trait whenContainedInInstancesOfClasses:containerTypes];
+    return (VSAlertController *)[VSAlertControllerAppearanceProxy appearanceForTraitCollection:trait whenContainedInInstancesOfClasses:containerTypes];
     
 }
 
 + (instancetype)appearanceWhenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes {
     
-    return [VSAlertControllerAppearanceProxy appearanceWhenContainedInInstancesOfClasses:containerTypes];
+    return (VSAlertController *)[VSAlertControllerAppearanceProxy appearanceWhenContainedInInstancesOfClasses:containerTypes];
     
 }
+
++ (nonnull instancetype)appearanceForTraitCollection:(nonnull UITraitCollection *)trait whenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... {
+    
+    return nil;
+    
+}
+
+
++ (nonnull instancetype)appearanceWhenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... {
+    
+    return nil;
+    
+}
+
+
+
 
 #pragma mark - UIViewControllerTransitioningDelegate
 
@@ -435,7 +451,7 @@ static os_log_t alert_log;
     _presentAnimator = [[VSAlertControllerTransitionAnimator alloc] init];
     _dismissAnimator = [[VSAlertControllerTransitionAnimator alloc] init];
     
-//     Set up propertie without accessors for use with UIAppearance
+    //     Set up propertie without accessors for use with UIAppearance
     _alertTitleTextColor = [VSAlertController appearance].alertTitleTextColor ? [VSAlertController appearance].alertTitleTextColor : [UIColor blackColor];
     _alertTitleTextFont = [VSAlertController appearance].alertTitleTextFont ? [VSAlertController appearance].alertTitleTextFont : [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold];
     _alertMessageTextColor = [VSAlertController appearance].alertMessageTextColor ? [VSAlertController appearance].alertMessageTextColor : [UIColor blackColor];
@@ -900,7 +916,7 @@ static os_log_t alert_log;
     for (VSAlertAction *alertAction in _defaultActions) {
         
         [self.alertActionStackView addArrangedSubview:alertAction];
-
+        
         [alertAction addTarget:self
                         action:@selector(_tappedAction:)
               forControlEvents:UIControlEventTouchUpInside];
@@ -968,7 +984,7 @@ static os_log_t alert_log;
     if ([self.delegate respondsToSelector:@selector(alertController:didSelectAction:)]) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-           
+            
             [self.delegate alertController:self
                            didSelectAction:sender];
             
