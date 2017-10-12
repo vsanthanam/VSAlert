@@ -4,22 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Documentation.xcscheme</key>
+		<key>Framework.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>Framework.xcscheme</key>
+		<key>VSAlert-Example.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>4</integer>
 		</dict>
 		<key>VSAlert.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
-		<key>VSAlertController-Example.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>

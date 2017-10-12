@@ -7,8 +7,8 @@
 
 #import "AlertExampleViewController.h"
 
-#import "VSAlertController.h"
 #import "AlertExample.h"
+#import "VSAlertController.h"
 
 @interface AlertExampleViewController ()<UITableViewDelegate, UITableViewDataSource>
 
