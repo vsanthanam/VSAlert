@@ -87,17 +87,22 @@ typedef NS_ENUM(NSInteger, VSAlertActionStyle) {
 @property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIFont *cancelActionTextFont UI_APPEARANCE_SELECTOR;
 
 /**
- @name Interacting With Actions
+ @name Interacting with Actions
  */
 
 /**
- The block that will be executed when the user interacts with the action. The block is called on the main thread always, and begins executed before the alert is dismissed
+ The title of the alert
  */
-@property (NS_NONATOMIC_IOSONLY, copy, readonly, nullable) void (^action)(VSAlertAction * _Nonnull action);
+@property (NS_NONATOMIC_IOSONLY, copy, readonly, nullable) NSString *alertTitle;
 
 /**
  The display style of the alert
  */
 @property (NS_NONATOMIC_IOSONLY, assign, readonly) VSAlertActionStyle style;
+
+/**
+ The block that will be executed when the user interacts with the action. The block is called on the main thread always, and begins executed before the alert is dismissed
+ */
+@property (NS_NONATOMIC_IOSONLY, copy, readonly, nullable) void (^action)(VSAlertAction * _Nonnull action);
 
 @end
