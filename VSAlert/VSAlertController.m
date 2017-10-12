@@ -9,6 +9,7 @@
 
 #import "VSAlertController.h"
 #import "VSAlertControllerTransitionAnimator.h"
+#import "VSAlertControllerAppearanceProxy.h"
 
 NSString * const VSAlertControllerNotImplementedException = @"VSAlertControllerNotImplementedException";
 NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControllerTextFieldInvalidException";
@@ -54,12 +55,6 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 
 // Log
 static os_log_t alert_log;
-
-// Static class vars
-static UIColor *_defaultTitleTextColor;
-static UIColor *_defaultMessageTextColor;
-static UIFont *_defaultTitleTextFont;
-static UIFont *_defaultMessageTextFont;
 
 // Explicitly synthesize Ivars from header
 @synthesize alertTitleTextColor = _alertTitleTextColor;
@@ -115,56 +110,6 @@ static UIFont *_defaultMessageTextFont;
                                                                style:style];
     
     return alertController;
-    
-}
-
-#pragma mark - Class Property Access Methods
-
-+ (UIColor *)defaultTitleTextColor {
-    
-    return _defaultTitleTextColor;
-    
-}
-
-+ (void)setDefaultTitleTextColor:(UIColor *)defaultTitleTextColor {
-    
-    _defaultTitleTextColor = defaultTitleTextColor;
-    
-}
-
-+ (UIColor *)defaultMessageTextColor {
-    
-    return _defaultMessageTextColor;
-    
-}
-
-+ (void)setDefaultMessageTextColor:(UIColor *)defaultMessageTextColor {
-    
-    _defaultMessageTextColor = defaultMessageTextColor;
-    
-}
-
-+ (UIFont *)defaultTitleTextFont {
-    
-    return _defaultTitleTextFont;
-    
-}
-
-+ (void)setDefaultTitleTextFont:(UIFont *)defaultTitleTextFont {
-    
-    _defaultTitleTextFont = defaultTitleTextFont;
-    
-}
-
-+ (UIFont *)defaultMessageTextFont {
-    
-    return _defaultMessageTextFont;
-    
-}
-
-+ (void)setDefaultMessageTextFont:(UIFont *)defaultMessageTextFont {
-    
-    _defaultMessageTextFont = defaultMessageTextFont;
     
 }
 
@@ -344,6 +289,32 @@ static UIFont *_defaultMessageTextFont;
     
 }
 
+#pragma mark - UIAppearance
+
++ (instancetype)appearance {
+    
+    return [VSAlertControllerAppearanceProxy appearance];
+    
+}
+
++ (instancetype)appearanceForTraitCollection:(UITraitCollection *)trait {
+    
+    return [VSAlertControllerAppearanceProxy appearanceForTraitCollection:trait];
+    
+}
+
++ (instancetype)appearanceForTraitCollection:(UITraitCollection *)trait whenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes {
+    
+    return [VSAlertControllerAppearanceProxy appearanceForTraitCollection:trait whenContainedInInstancesOfClasses:containerTypes];
+    
+}
+
++ (instancetype)appearanceWhenContainedInInstancesOfClasses:(NSArray<Class<UIAppearanceContainer>> *)containerTypes {
+    
+    return [VSAlertControllerAppearanceProxy appearanceWhenContainedInInstancesOfClasses:containerTypes];
+    
+}
+
 #pragma mark - UIViewControllerTransitioningDelegate
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
@@ -464,11 +435,11 @@ static UIFont *_defaultMessageTextFont;
     _presentAnimator = [[VSAlertControllerTransitionAnimator alloc] init];
     _dismissAnimator = [[VSAlertControllerTransitionAnimator alloc] init];
     
-    // Set instance properties without accessors (to respect UIAppearance) [Use class defaults for now, as this class doesn't actually work with UIAppearance]
-    _alertTitleTextColor = [self class].defaultTitleTextColor ? [self class].defaultTitleTextColor : [UIColor blackColor];
-    _alertTitleTextFont = [self class].defaultTitleTextFont ? [self class].defaultTitleTextFont : [UIFont systemFontOfSize:17.0f weight:UIFontWeightMedium];
-    _alertMessageTextColor = [self class].defaultMessageTextColor ? [self class].defaultMessageTextColor : [UIColor blackColor];
-    _alertMessageTextFont = [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
+//     Set up propertie without accessors for use with UIAppearance
+    _alertTitleTextColor = [VSAlertController appearance].alertTitleTextColor ? [VSAlertController appearance].alertTitleTextColor : [UIColor blackColor];
+    _alertTitleTextFont = [VSAlertController appearance].alertTitleTextFont ? [VSAlertController appearance].alertTitleTextFont : [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold];
+    _alertMessageTextColor = [VSAlertController appearance].alertMessageTextColor ? [VSAlertController appearance].alertMessageTextColor : [UIColor blackColor];
+    _alertMessageTextFont = [VSAlertController appearance].alertMessageTextFont ? [VSAlertController appearance].alertMessageTextFont : [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
     
     // Set instance read-only properties
     _style = VSAlertControllerStyleAlert;

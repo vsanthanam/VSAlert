@@ -30,6 +30,9 @@
 		0710F9D41F8BCDBE00C6D084 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0710F9D21F8BCDB700C6D084 /* CoreGraphics.framework */; };
 		074538171F8C437700092DAF /* VSAlertControllerTransitionAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 074538151F8C437700092DAF /* VSAlertControllerTransitionAnimator.h */; };
 		074538191F8C437700092DAF /* VSAlertControllerTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 074538161F8C437700092DAF /* VSAlertControllerTransitionAnimator.m */; };
+		07F25AB81F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 07F25AB61F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.h */; };
+		07F25AB91F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F25AB71F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.m */; };
+		07F25ABA1F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F25AB71F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.m */; };
 		07FF9E171F8FEF8C002966A3 /* AlertExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FF9E111F8FEF03002966A3 /* AlertExample.m */; };
 		07FF9E181F8FEF8E002966A3 /* AlertExampleSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FF9E0F1F8FEF03002966A3 /* AlertExampleSettingsViewController.m */; };
 		07FF9E191F8FEF92002966A3 /* AlertExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07FF9E0E1F8FEF03002966A3 /* AlertExampleViewController.m */; };
@@ -85,6 +88,8 @@
 		07A7C4051F8D655100A71580 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		07A7C4071F8D655700A71580 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		07F00EFF1F8A972D006FAC96 /* libVSAlert.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVSAlert.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		07F25AB61F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSAlertControllerAppearanceProxy.h; sourceTree = "<group>"; };
+		07F25AB71F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSAlertControllerAppearanceProxy.m; sourceTree = "<group>"; };
 		07FF9DF01F8FEE85002966A3 /* VSAlert-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VSAlert-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07FF9E091F8FEEE3002966A3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		07FF9E0A1F8FEEE3002966A3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -134,6 +139,8 @@
 				0710F9C51F8B1E1000C6D084 /* VSAlertController.m */,
 				074538151F8C437700092DAF /* VSAlertControllerTransitionAnimator.h */,
 				074538161F8C437700092DAF /* VSAlertControllerTransitionAnimator.m */,
+				07F25AB61F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.h */,
+				07F25AB71F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.m */,
 			);
 			name = Src;
 			sourceTree = "<group>";
@@ -217,6 +224,7 @@
 				0710F9C71F8B1E2000C6D084 /* VSAlertAction.h in Headers */,
 				074538171F8C437700092DAF /* VSAlertControllerTransitionAnimator.h in Headers */,
 				0710F9C81F8B1E2200C6D084 /* VSAlertController.h in Headers */,
+				07F25AB81F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07F25AB91F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.m in Sources */,
 				0710F9C91F8B1E3500C6D084 /* VSAlertAction.m in Sources */,
 				074538191F8C437700092DAF /* VSAlertControllerTransitionAnimator.m in Sources */,
 				0710F9CA1F8B1E3700C6D084 /* VSAlertController.m in Sources */,
@@ -367,6 +376,7 @@
 				07FF9E4F1F8FF1D1002966A3 /* VSAlertControllerTransitionAnimator.m in Sources */,
 				07FF9E191F8FEF92002966A3 /* AlertExampleViewController.m in Sources */,
 				07FF9E1A1F8FEF98002966A3 /* main.m in Sources */,
+				07F25ABA1F8FFA98000B4784 /* VSAlertControllerAppearanceProxy.m in Sources */,
 				07FF9E181F8FEF8E002966A3 /* AlertExampleSettingsViewController.m in Sources */,
 				07FF9E1B1F8FEF9B002966A3 /* AppDelegate.m in Sources */,
 			);
