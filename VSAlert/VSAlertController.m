@@ -170,6 +170,17 @@ static UIFont *_defaultMessageTextFont;
 
 #pragma mark - Overridden Instance Methods
 
+- (instancetype)init {
+    
+    self = [self initWithTitle:nil
+                       message:nil
+                         image:nil
+                         style:VSAlertControllerStyleAlert];
+    
+    return self;
+    
+}
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     
     self = [super initWithCoder:aDecoder];
@@ -677,6 +688,8 @@ static UIFont *_defaultMessageTextFont;
     
     [self.alertView addSubview:self.alertTitle];
     
+    CGFloat height = self.title ? 23.0f : 0.0f;
+    
     [self.alertView addConstraints:@[[NSLayoutConstraint constraintWithItem:self.alertTitle
                                                                   attribute:NSLayoutAttributeTop
                                                                   relatedBy:NSLayoutRelationEqual
@@ -704,7 +717,7 @@ static UIFont *_defaultMessageTextFont;
                                                                      toItem:nil
                                                                   attribute:NSLayoutAttributeHeight
                                                                  multiplier:0.0f
-                                                                   constant:23.0f]]];
+                                                                   constant:height]]];
     
 }
 
