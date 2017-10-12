@@ -384,7 +384,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 07F00EDC1F8A96D9006FAC96 /* Build configuration list for PBXProject "VSAlertController" */;
+			buildConfigurationList = 07F00EDC1F8A96D9006FAC96 /* Build configuration list for PBXProject "VSAlert" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -841,7 +841,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07F00EDC1F8A96D9006FAC96 /* Build configuration list for PBXProject "VSAlertController" */ = {
+		07F00EDC1F8A96D9006FAC96 /* Build configuration list for PBXProject "VSAlert" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07F00EDD1F8A96D9006FAC96 /* Debug */,

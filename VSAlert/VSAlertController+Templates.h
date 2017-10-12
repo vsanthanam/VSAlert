@@ -5,7 +5,7 @@
 //  Created by Varun Santhanam on 10/11/17.
 //
 
-#import <VSAlert/VSAlert.h>
+#import "VSAlertController.h"
 
 @interface VSAlertController (Templates)
 

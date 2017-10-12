@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:VSAlertController.xcodeproj">
+      location = "self:/Users/vsanthanam/Documents/Dev/VSAlertController/VSAlert.xcodeproj">
    </FileRef>
 </Workspace>
