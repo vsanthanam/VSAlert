@@ -59,7 +59,7 @@ The included Xcode project allows you to build the static library and an example
 @end
 ```
 
-Full documentation is [here](https://vsanthanam.github.io/VSAlert/Documentation)
+Full documentation is [here](https://vsanthanam.github.io/VSAlert/Documentation/index.html)
 
 ## Image Template
 
