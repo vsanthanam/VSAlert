@@ -242,7 +242,7 @@ static os_log_t example_alert;
     if (exampleType == AlertExampleTypeBasic) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Basic Alert", nil)
-                                                         message:NSLocalizedString(@"Nothing but a title, a messagege, and a button.", nil)
+                                                         message:NSLocalizedString(@"Nothing but a title, a message, and a button.", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleAlert];
         VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
