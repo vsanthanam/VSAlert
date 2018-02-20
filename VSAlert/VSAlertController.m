@@ -536,7 +536,48 @@ static os_log_t alert_log;
     self.alertView.layer.shadowRadius = 8.0f;
     self.alertView.layer.shadowOpacity = 0.3f;
     
-    CGFloat width = self.style == VSAlertControllerStyleAlert ? 270.0f : [UIScreen mainScreen].bounds.size.width - 36.0f;
+    if (self.style == VSAlertControllerStyleAlert) {
+        
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.alertView
+                                                              attribute:NSLayoutAttributeWidth
+                                                              relatedBy:NSLayoutRelationEqual
+                                                                 toItem:nil
+                                                              attribute:NSLayoutAttributeWidth
+                                                             multiplier:0.0f
+                                                               constant:270.0f]];
+        
+    } else {
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            
+            [self.view addConstraints:@[[NSLayoutConstraint constraintWithItem:self.alertView
+                                                                     attribute:NSLayoutAttributeLeft
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self.view
+                                                                     attribute:NSLayoutAttributeLeft
+                                                                    multiplier:1.0f
+                                                                      constant:18.0f],
+                                        [NSLayoutConstraint constraintWithItem:self.alertView
+                                                                     attribute:NSLayoutAttributeRight
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:self.view
+                                                                     attribute:NSLayoutAttributeRight
+                                                                    multiplier:1.0f
+                                                                      constant:-18.0f]]];
+            
+        } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            
+            [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.alertView
+                                                                  attribute:NSLayoutAttributeWidth
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:nil
+                                                                  attribute:NSLayoutAttributeWidth
+                                                                 multiplier:0.0f
+                                                                   constant:500.0f]];
+            
+        }
+        
+    }
     
     [self.view addConstraints:@[[NSLayoutConstraint constraintWithItem:self.alertView
                                                              attribute:NSLayoutAttributeCenterX
@@ -551,14 +592,7 @@ static os_log_t alert_log;
                                                                 toItem:nil
                                                              attribute:NSLayoutAttributeHeight
                                                             multiplier:0.0f
-                                                              constant:100.0f],
-                                [NSLayoutConstraint constraintWithItem:self.alertView
-                                                             attribute:NSLayoutAttributeWidth
-                                                             relatedBy:NSLayoutRelationEqual
-                                                                toItem:nil
-                                                             attribute:NSLayoutAttributeWidth
-                                                            multiplier:0.0f
-                                                              constant:width]]];
+                                                              constant:100.0f]]];
     
     if (self.style == VSAlertControllerStyleActionSheet) {
         
