@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
     VSAlertControllerStyleAlert,
     
     /**
-     A wider alert that stretches to the margins of the device - 18pt in either direction. Supports text fields, useful for onboarding.
+     A wider alert that stretches to the margins of the device - 18pt in either direction. Supports text fields, useful for onboarding. 500px wide on iPad.
      */
     VSAlertControllerStyleWalkthroughAlert,
     
