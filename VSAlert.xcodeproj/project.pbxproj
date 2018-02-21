@@ -427,7 +427,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "jazzy --objc --module VSAlert --framework-root . --umbrella-header VSAlert/VSAlert.h --author Varun Santhanam --output \"${PROJECT_DIR}/Documentation\" --sdk iphonesimulator --hide-declarations swift";
+			shellScript = "jazzy --objc --module VSAlert --framework-root . --umbrella-header VSAlert/VSAlert.h --author Varun Santhanam --output \"${PROJECT_DIR}/Documentation\" --sdk iphonesimulator --hide-declarations swift --author Varun Santhanam --github_url https://github.com/vsanthanam/VSAlert --author_url https://www.vsanthanam.com";
 		};
 /* End PBXShellScriptBuildPhase section */
 
