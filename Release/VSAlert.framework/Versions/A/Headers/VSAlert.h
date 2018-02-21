@@ -5,7 +5,7 @@
 //  Created by Varun Santhanam on 10/8/17.
 //
 
-@import Foundation;
+#import <Foundation/Foundation.h>
 
 /**
  Umbrella Header

@@ -22,8 +22,8 @@ extern NSString * _Nonnull const VSAlertControllerTextFieldInvalidException;
 /**
  An enumeration describing the kinds of alerts that VSAlertController can display
 
- - VSAlertControllerStyleAlert: A standard alert, 270pt wide, variable height. Supports text fields
- - VSAlertControllerStyleWalkthroughAlert: A wider alert that stretches to the margins of the device - 18pt in either direction. Supports text fields, useful for onboarding.
+ - VSAlertControllerStyleAlert: A standard alert, 270pt wide, variable height. Supports texts fields.
+ - VSAlertControllerStyleWalkthroughAlert: A wider alert that stretches to the margins of the device - 18pt in either direction. Supports text fields, useful for onboarding. 500pt wide on iPad.
  - VSAlertControllerStyleActionSheet: An alert that appears at the bottom of the display, similar to Apple's action sheet stlye. Does NOT support text fields.
  */
 typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
     VSAlertControllerStyleAlert,
     
     /**
-     A wider alert that stretches to the margins of the device - 18pt in either direction. Supports text fields, useful for onboarding. 500px wide on iPad.
+     A wider alert that stretches to the margins of the device - 18pt in either direction. Supports text fields, useful for onboarding. 500pt wide on iPad.
      */
     VSAlertControllerStyleWalkthroughAlert,
     
