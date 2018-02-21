@@ -81,6 +81,12 @@
 
 #pragma mark - Property Access Methods
 
+- (UIColor *)actionTextColor {
+    
+    return _actionTextColor;
+    
+}
+
 - (void)setActionTextColor:(UIColor * _Nonnull)actionTextColor {
     
     _actionTextColor = actionTextColor;
@@ -91,6 +97,12 @@
         [self setTitleColor:[self.actionTextColor colorWithAlphaComponent:0.5f] forState:UIControlStateHighlighted];
         
     }
+    
+}
+
+- (UIColor *)destructiveActionTextColor {
+    
+    return _destructiveActionTextColor;
     
 }
 
@@ -107,6 +119,12 @@
     
 }
 
+- (UIFont *)actionTextFont {
+    
+    return _actionTextFont;
+    
+}
+
 - (void)setActionTextFont:(UIFont *)actionTextFont {
     
     _actionTextFont = actionTextFont;
@@ -116,6 +134,12 @@
         self.titleLabel.font = self.actionTextFont;
         
     }
+    
+}
+
+- (UIFont *)cancelActionTextFont {
+    
+    return _cancelActionTextFont;
     
 }
 
