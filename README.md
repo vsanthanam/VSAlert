@@ -66,7 +66,7 @@ The included Xcode project allows you to build the static library and an example
 
 ### Documentation
 
-Full documentation is [here](https://vsanthanam.github.io/VSAlert/Documentation/index.html)
+Full documentation is [here](https://vsanthanam.github.io/VSAlert/Documentation/index.html), at https://vsanthanam.github.io/VSAlert/Documentation/index.html
 
 ### Image Template
 
