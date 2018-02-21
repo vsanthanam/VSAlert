@@ -14,7 +14,7 @@
 extern NSString * _Nonnull const VSAlertControllerTransitionAnimatorNotImplementedException;
 
 /**
- An exception thrown when a transition that doesn't work for a given controller is triggered at runttime
+ An exception thrown when a transition that doesn't work for a given controller is triggered at runtime.
  */
 extern NSString * _Nonnull const VSAlertControllerTransitionAnimatorInvalidUsageException;
 
