@@ -21,4 +21,4 @@ VSAlert is an iOS framework designed to replace UIAlertController. It was design
 * Take a look at the full documentation, available [here](https://vsanthanam.github.io/VSAlert/Documentation/)
 
 ## Contact Me
-* Take a look at [my website](https://www,vsanthanam.)
+* Take a look at [my website](https://www.vsanthanam.com)
