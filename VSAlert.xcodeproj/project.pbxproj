@@ -193,23 +193,71 @@
 			path = VSAlert;
 			sourceTree = "<group>";
 		};
-		07FF9DF11F8FEE85002966A3 /* VSAlert-Example */ = {
+		07FB75A6203DD8EF00ABAF7F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				07FB75A9203DD91F00ABAF7F /* Images */,
+				07FB75A8203DD90C00ABAF7F /* Asset Catalogues */,
+				07FB75A7203DD8F900ABAF7F /* Storyboards */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		07FB75A7203DD8F900ABAF7F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
 				07FF9E151F8FEF3D002966A3 /* LaunchScreen.storyboard */,
 				07FF9E161F8FEF3E002966A3 /* Main.storyboard */,
-				07FF9E141F8FEF29002966A3 /* flag.png */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		07FB75A8203DD90C00ABAF7F /* Asset Catalogues */ = {
+			isa = PBXGroup;
+			children = (
 				07FF9E131F8FEF1E002966A3 /* Assets.xcassets */,
-				07FF9E121F8FEF13002966A3 /* Info.plist */,
+			);
+			name = "Asset Catalogues";
+			sourceTree = "<group>";
+		};
+		07FB75A9203DD91F00ABAF7F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				07FF9E141F8FEF29002966A3 /* flag.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		07FB75AA203DD92A00ABAF7F /* Src */ = {
+			isa = PBXGroup;
+			children = (
+				07FF9E0B1F8FEEEB002966A3 /* main.m */,
 				07FF9E0C1F8FEF02002966A3 /* AlertExample.h */,
 				07FF9E111F8FEF03002966A3 /* AlertExample.m */,
 				07FF9E0D1F8FEF03002966A3 /* AlertExampleSettingsViewController.h */,
 				07FF9E0F1F8FEF03002966A3 /* AlertExampleSettingsViewController.m */,
 				07FF9E101F8FEF03002966A3 /* AlertExampleViewController.h */,
 				07FF9E0E1F8FEF03002966A3 /* AlertExampleViewController.m */,
-				07FF9E0B1F8FEEEB002966A3 /* main.m */,
 				07FF9E091F8FEEE3002966A3 /* AppDelegate.h */,
 				07FF9E0A1F8FEEE3002966A3 /* AppDelegate.m */,
+			);
+			name = Src;
+			sourceTree = "<group>";
+		};
+		07FB75AB203DD93C00ABAF7F /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				07FF9E121F8FEF13002966A3 /* Info.plist */,
+			);
+			name = Supporting;
+			sourceTree = "<group>";
+		};
+		07FF9DF11F8FEE85002966A3 /* VSAlert-Example */ = {
+			isa = PBXGroup;
+			children = (
+				07FB75AB203DD93C00ABAF7F /* Supporting */,
+				07FB75AA203DD92A00ABAF7F /* Src */,
+				07FB75A6203DD8EF00ABAF7F /* UI */,
 			);
 			path = "VSAlert-Example";
 			sourceTree = "<group>";
