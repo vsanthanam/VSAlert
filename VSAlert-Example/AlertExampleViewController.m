@@ -115,29 +115,29 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
     AlertExampleType example;
-    
+
     if (indexPath.section == 0) {
-        
+
         example = (AlertExampleType)[AlertExample sharedExample].alertExamples[indexPath.row].integerValue;
-        
+
     } else if (indexPath.section == 1) {
-        
+
         example = (AlertExampleType)[AlertExample sharedExample].walkthroughExamples[indexPath.row].integerValue;
-        
+
     } else if (indexPath.section == 2) {
-        
+
         example = (AlertExampleType)[AlertExample sharedExample].actionSheetExamples[indexPath.row].integerValue;
-        
+
     } else {
-        
+
         example = AlertExampleTypeBasic;
-        
+
     }
-    
-    [[AlertExample sharedExample] presentAlertForExampleType:example onViewController:self];
-    
+
+    [[AlertExample sharedExample] presentAlertForExampleType:example onViewController:self withSourceView:[tableView cellForRowAtIndexPath:indexPath]];
+
 }
 
 @end

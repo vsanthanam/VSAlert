@@ -11,6 +11,11 @@
 #import "VSAlertControllerTransitionAnimator.h"
 #import "VSAlertControllerAppearanceProxy.h"
 
+#define kStandardAlertWidth 270.0f
+#define kWideAlertWidth 480.0f
+#define kAlertMargin 18.0f
+#define kAlertMinHeight 100.0f
+
 NSString * const VSAlertControllerNotImplementedException = @"VSAlertControllerNotImplementedException";
 NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControllerTextFieldInvalidException";
 
@@ -192,6 +197,12 @@ static os_log_t alert_log;
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
@@ -205,6 +216,12 @@ static os_log_t alert_log;
                                              selector:@selector(_keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && self.style == VSAlertControllerStyleActionSheet) {
+        
+        self.preferredContentSize = CGSizeMake(self.alertView.bounds.size.width, self.alertView.frame.size.height + kAlertMargin);
+        
+    }
     
 }
 
@@ -479,6 +496,7 @@ static os_log_t alert_log;
     [self _setUpAlertTitle];
     [self _setUpAlertMessage];
     [self _setUpAlertActionStackView];
+    [self _setUpPopoverController];
     
 }
 
@@ -530,11 +548,15 @@ static os_log_t alert_log;
     
     [self.alertMaskBackground addSubview:self.alertView];
     
-    self.alertView.layer.cornerRadius = 5.0f;
-    self.alertView.layer.masksToBounds = NO;
-    self.alertView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-    self.alertView.layer.shadowRadius = 8.0f;
-    self.alertView.layer.shadowOpacity = 0.3f;
+    if (!(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && self.style == VSAlertControllerStyleActionSheet)) {
+        
+        self.alertView.layer.cornerRadius = 5.0f;
+        self.alertView.layer.masksToBounds = NO;
+        self.alertView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
+        self.alertView.layer.shadowRadius = 8.0f;
+        self.alertView.layer.shadowOpacity = 0.3f;
+        
+    }
     
     if (self.style == VSAlertControllerStyleAlert) {
         
@@ -544,7 +566,7 @@ static os_log_t alert_log;
                                                                  toItem:nil
                                                               attribute:NSLayoutAttributeWidth
                                                              multiplier:0.0f
-                                                               constant:270.0f]];
+                                                               constant:kStandardAlertWidth]];
         
     } else {
         
@@ -556,14 +578,14 @@ static os_log_t alert_log;
                                                                         toItem:self.view
                                                                      attribute:NSLayoutAttributeLeft
                                                                     multiplier:1.0f
-                                                                      constant:18.0f],
+                                                                      constant:kAlertMargin],
                                         [NSLayoutConstraint constraintWithItem:self.alertView
                                                                      attribute:NSLayoutAttributeRight
                                                                      relatedBy:NSLayoutRelationEqual
                                                                         toItem:self.view
                                                                      attribute:NSLayoutAttributeRight
                                                                     multiplier:1.0f
-                                                                      constant:-18.0f]]];
+                                                                      constant:-kAlertMargin]]];
             
         } else if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             
@@ -573,7 +595,7 @@ static os_log_t alert_log;
                                                                      toItem:nil
                                                                   attribute:NSLayoutAttributeWidth
                                                                  multiplier:0.0f
-                                                                   constant:500.0f]];
+                                                                   constant:kWideAlertWidth]];
             
         }
         
@@ -592,7 +614,7 @@ static os_log_t alert_log;
                                                                 toItem:nil
                                                              attribute:NSLayoutAttributeHeight
                                                             multiplier:0.0f
-                                                              constant:100.0f]]];
+                                                              constant:kAlertMinHeight]]];
     
     if (self.style == VSAlertControllerStyleActionSheet) {
         
@@ -602,7 +624,7 @@ static os_log_t alert_log;
                                                                  toItem:self.view
                                                               attribute:NSLayoutAttributeBottom
                                                              multiplier:1.0f
-                                                               constant:-18.0f]];
+                                                               constant:-kAlertMargin]];
         
     } else {
         
@@ -829,6 +851,17 @@ static os_log_t alert_log;
                                                                       multiplier:0.0f
                                                                         constant:60.0f];
     [self.alertView addConstraint:self.alertStackViewHeightConstraint];
+    
+}
+
+- (void)_setUpPopoverController {
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && self.style == VSAlertControllerStyleActionSheet) {
+        
+        self.modalPresentationStyle = UIModalPresentationPopover;
+        self.popoverPresentationController.backgroundColor = [UIColor whiteColor];
+    
+    }
     
 }
 

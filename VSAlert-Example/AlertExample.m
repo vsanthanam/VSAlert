@@ -235,7 +235,7 @@ static os_log_t example_alert;
     
 }
 
-- (void)presentAlertForExampleType:(AlertExampleType)exampleType onViewController:(UIViewController *)viewController {
+- (void)presentAlertForExampleType:(AlertExampleType)exampleType onViewController:(UIViewController *)viewController withSourceView:(nullable UIView *)view {
     
     VSAlertController *controller;
     
@@ -672,6 +672,14 @@ static os_log_t example_alert;
     
     controller.animationStyle = self.animationStyle;
     controller.dismissOnBackgroundTap = self.dismissOnBackgroundTap;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && controller.style == VSAlertControllerStyleActionSheet) {
+        
+        controller.modalPresentationStyle = UIModalPresentationPopover;
+        controller.popoverPresentationController.sourceView = view;
+        controller.popoverPresentationController.sourceRect = view.bounds;
+        
+    }
     
     [viewController presentViewController:controller
                                  animated:YES

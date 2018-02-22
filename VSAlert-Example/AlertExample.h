@@ -48,6 +48,6 @@ typedef NS_ENUM(NSInteger, AlertExampleType) {
 + (nullable instancetype)sharedExample;
 
 - (nullable NSString *)exampleNameForExampleType:(AlertExampleType)exampleType;
-- (void)presentAlertForExampleType:(AlertExampleType)exampleType onViewController:(nonnull UIViewController *)viewController;
+- (void)presentAlertForExampleType:(AlertExampleType)exampleType onViewController:(nonnull UIViewController *)viewController withSourceView:(nullable UIView *)view;
 
 @end
