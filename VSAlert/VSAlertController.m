@@ -201,6 +201,16 @@ static os_log_t alert_log;
     
     [super viewWillAppear:animated];
     
+    if ([self.delegate respondsToSelector:@selector(alertControllerWillAppear:)]) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+           
+            [self.delegate alertControllerWillAppear:self];
+            
+        });
+        
+    }
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -223,6 +233,32 @@ static os_log_t alert_log;
         
     }
     
+    if ([self.delegate respondsToSelector:@selector(alertControllerDidAppear:)]) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.delegate alertControllerDidAppear:self];
+            
+        });
+        
+    }
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    
+    if ([self.delegate respondsToSelector:@selector(alertControllerWillDisappear:)]) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.delegate alertControllerWillDisappear:self];
+            
+        });
+        
+    }
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -236,6 +272,16 @@ static os_log_t alert_log;
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardWillShowNotification
                                                   object:nil];
+    
+    if ([self.delegate respondsToSelector:@selector(alertControllerDidDisappear:)]) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+           
+            [self.delegate alertControllerDidDisappear:self];
+            
+        });
+        
+    }
     
 }
 
