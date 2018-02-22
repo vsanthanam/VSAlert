@@ -44,13 +44,13 @@ NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControlle
 @implementation VSAlertController {
     
     // Actions
-    NSArray<VSAlertAction *> *_defaultActions;
-    NSArray<VSAlertAction *> *_destructiveActions;
-    NSArray<VSAlertAction *> *_cancelActions;
+    NSArray<VSAlertAction *>            *_defaultActions;
+    NSArray<VSAlertAction *>            *_destructiveActions;
+    NSArray<VSAlertAction *>            *_cancelActions;
     
     // Keyboard Show / Hide
-    CGPoint _tempFrameOrigin;
-    BOOL _keyboardHasBeenShown;
+    CGPoint                             _tempFrameOrigin;
+    BOOL                                _keyboardHasBeenShown;
     
     // Transition
     VSAlertControllerTransitionAnimator *_presentAnimator;
