@@ -268,7 +268,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeDestructive) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Would you like to continue?", nil)
-                                                         message:NSLocalizedString(@"This change is permenant", nil)
+                                                         message:NSLocalizedString(@"This change is permanent", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleAlert];
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
@@ -431,7 +431,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeWalkthroughDestructive) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Would you like to continue?", nil)
-                                                         message:NSLocalizedString(@"This change is permenant", nil)
+                                                         message:NSLocalizedString(@"This change is permanent", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleWalkthroughAlert];
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
@@ -594,7 +594,7 @@ static os_log_t example_alert;
     } else if (exampleType == AlertExampleTypeActionSheetDestructive) {
         
         controller = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Would you like to continue?", nil)
-                                                         message:NSLocalizedString(@"This change is permenant", nil)
+                                                         message:NSLocalizedString(@"This change is permanent", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleActionSheet];
         VSAlertAction *action1 = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Cancel", nil)
