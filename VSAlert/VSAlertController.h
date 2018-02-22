@@ -54,7 +54,7 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
  - VSAlertControllerAnimationStyleFlip: The alert flips from the right, and flips to the left when dismissed.
  - VSAlertControllerAnimationStyleSticker: The alert page flips from the top, then again from the bottom when dismissed.
  - VSAlertControllerAnimationStyleCrossDisolve: The alert page fades in, then fades out dismissed.
- = VSAlertControllerAnimationStyleAutomatic: The alert chooses its presentation and dismissal styles automatically.
+ - VSAlertControllerAnimationStyleAutomatic: The alert chooses its presentation and dismissal styles automatically.
  */
 typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
     
