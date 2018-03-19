@@ -43,7 +43,7 @@ The included Xcode project allows you to build the static library and an example
 
 #import "MyViewController.h"
 
-@import VSAlert;
+@import VSAlert; // replace with #import 'VSAlertController.h' if you're using the source rather than the static framework
 
 @implementation MyViewController
 
