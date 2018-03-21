@@ -20,6 +20,11 @@ extern NSString * _Nonnull const VSAlertControllerNotImplementedException;
 extern NSString * _Nonnull const VSAlertControllerTextFieldInvalidException;
 
 /**
+ An exception thrown when a view controller presentation animation fails
+ */
+extern NSString * _Nonnull const VSAlertControllerPresentationAnimationException;
+
+/**
  An enumeration describing the kinds of alerts that VSAlertController can display
 
  - VSAlertControllerStyleAlert: A standard alert, 270pt wide, variable height. Supports texts fields.

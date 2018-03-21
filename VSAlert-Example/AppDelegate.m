@@ -7,9 +7,6 @@
 
 #import "AppDelegate.h"
 
-#import "VSAlertController.h"
-#import "VSAlertControllerAppearanceProxy.h"
-
 @interface AppDelegate ()
 
 @end
