@@ -79,8 +79,6 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
         
         if (!transitionContext.animated) {
             
-            // No animation needed, dismiss immediately
-            \
             [transitionContext.containerView addSubview:toController.view];
             [transitionContext completeTransition:YES];
             

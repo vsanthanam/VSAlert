@@ -351,8 +351,8 @@
 			targets = (
 				07F00EFE1F8A972D006FAC96 /* VSAlert */,
 				0710F9B61F8B1CB800C6D084 /* Framework */,
-				07FF9DEF1F8FEE85002966A3 /* VSAlert-Example */,
 				07FA6E7C203F3B59005AC1A6 /* Documentation */,
+				07FF9DEF1F8FEE85002966A3 /* VSAlert-Example */,
 			);
 		};
 /* End PBXProject section */
@@ -664,10 +664,7 @@
 				DEVELOPMENT_TEAM = Y88YPD4RJA;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Release",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -731,10 +728,7 @@
 				DEVELOPMENT_TEAM = Y88YPD4RJA;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Release",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
