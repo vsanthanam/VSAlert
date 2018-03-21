@@ -54,7 +54,7 @@ typedef NS_ENUM(NSInteger, VSAlertControllerStyle) {
  - VSAlertControllerAnimationStyleFlip: The alert flips from the right, and flips to the left when dismissed.
  - VSAlertControllerAnimationStyleSticker: The alert page flips from the top, then again from the bottom when dismissed.
  - VSAlertControllerAnimationStyleCrossDisolve: The alert page fades in, then fades out dismissed.
- = VSAlertControllerAnimationStyleAutomatic: The alert chooses its presentation and dismissal styles automatically.
+ - VSAlertControllerAnimationStyleAutomatic: The alert chooses its presentation and dismissal styles automatically.
  */
 typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
     
@@ -103,6 +103,34 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
 @protocol VSAlertControllerDelegate <NSObject>
 
 @optional
+
+/**
+ Sent to the delegate just before the view controller appears.
+
+ @param alertController The alert controller
+ */
+- (void)alertControllerWillAppear:(nonnull VSAlertController *)alertController;
+
+/**
+ Sent to teh delegate just after the view controller appears.
+
+ @param alertController The alert controller
+ */
+- (void)alertControllerDidAppear:(nonnull VSAlertController *)alertController;
+
+/**
+ Sent to the delegate just before the view controller disappears.
+
+ @param alertController The alert controller
+ */
+- (void)alertControllerWillDisappear:(nonnull VSAlertController *)alertController;
+
+/**
+ Sent to teh delegate just after the view controller disappears.
+
+ @param alertController The alert controller
+ */
+- (void)alertControllerDidDisappear:(nonnull VSAlertController *)alertController;
 
 /**
  Sent to the delegate when the user taps on an action. Message is sent *before* the action block is executed.

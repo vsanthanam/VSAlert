@@ -31,7 +31,7 @@ VSAlert is packaged as a static library (with slices for all modern iPhones and 
 3. In your target's build settings, go to "Other Linker Flags", and add `-all_load` and `-ObjC`.
 
 ### Getting Started (Using the source code directly)
-1. Go to `(RepoDirectory)/Library`, and add all six files to your project. Make sure to add all three of the  the implementation files to your target's `compile sources`  build phase, incase Xcode doesn't do this for you automatically when adding the files to the target's membership
+1. Go to `(RepoDirectory)/VSALert`, and add all six files to your project. Make sure to add all three of the  the implementation files to your target's `compile sources`  build phase, incase Xcode doesn't do this for you automatically when adding the files to the target's membership
 
 ## Usage
 
@@ -68,6 +68,9 @@ The included Xcode project allows you to build the static library and an example
 
 Full documentation is [here](https://vsanthanam.github.io/VSAlert/Documentation/index.html), at https://vsanthanam.github.io/VSAlert/Documentation/index.html
 
+Documentation with made with [Jazzy](https://github.com/realm/jazzy), using the [Jony Theme](https://github.com/HarshilShah/Jony) by [Harshil Shah](https://github.com/HarshilShah/)
+
 ### Image Template
 
 VSAlertController includes template images to help you size your images to make them look just right on an alert. I suggest using an Image that is 270pt tall and 180pt high, with your actual content centered in the middle at 116 x 116 pt. I've included PNGs with the appropriate outline, as well as a .sketch file
+
