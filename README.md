@@ -22,7 +22,7 @@ VSAlertController differs from PMAlertController in a few ways:
 ## Set Up
 
 ### Just Give Me The Code
-VSAlert is packaged as a static library (with slices for all modern iPhones and the simulator), but the six files for the three classes that comprise the library are also available in the repo. Open the project, build the "Framework" targetfor "Generic iOS Device"  if you want to re-compile the static library. The framework is built as a clang module, so you can use the `@import module;` syntax. (More info here: https://clang.llvm.org/docs/Modules.html). VSAlert makes use of Objective-C categories, so you'll need to add the appropriate linker flags.
+All you need are `VSAlertController.h`, `VSAlertController.m`, `VSAlertAction.h`, and `VSAlertAction.m`.
 
 ### Getting Started (Static Framework)
 
@@ -31,7 +31,7 @@ VSAlert is packaged as a static library (with slices for all modern iPhones and 
 3. In your target's build settings, go to "Other Linker Flags", and add `-all_load` and `-ObjC`.
 
 ### Getting Started (Using the source code directly)
-1. Go to `(RepoDirectory)/VSALert`, and add all six files to your project. Make sure to add all three of the  the implementation files to your target's `compile sources`  build phase, incase Xcode doesn't do this for you automatically when adding the files to the target's membership
+1. Go to `(RepoDirectory)/VSALert`, and add all the files excepting the modulemap and the umbrella header to your project. Make sure to add all the implementation files to your target's `compile sources`  build phase, incase Xcode doesn't do this for you automatically when adding the files to the target's membership
 
 ## Usage
 
@@ -68,7 +68,7 @@ The included Xcode project allows you to build the static library and an example
 
 Full documentation is [here](https://vsanthanam.github.io/VSAlert/Documentation/index.html), at https://vsanthanam.github.io/VSAlert/Documentation/index.html
 
-Documentation with made with [Jazzy](https://github.com/realm/jazzy), using the [Jony Theme](https://github.com/HarshilShah/Jony) by [Harshil Shah](https://github.com/HarshilShah/)
+Documentation with made with [Jazzy](https://github.com/realm/jazzy) by [Realm](https://realm.io), using the [Jony Theme](https://github.com/HarshilShah/Jony) by [Harshil Shah](https://github.com/HarshilShah/)
 
 ### Image Template
 
