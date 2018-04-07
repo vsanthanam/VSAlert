@@ -1,3 +1,7 @@
+---
+title: README
+---
+
 # VSAlert
 An drop-in replacement for UIAlertController that looks a hell of a lot better, built in Objective-C. Based on Codedio's aweomse Swift library, [PMAlertController](https://github.com/Codeido/PMAlertController).
 
