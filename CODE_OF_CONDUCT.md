@@ -1,7 +1,3 @@
----
-title: Contributor Covenant Code of Conduct
----
-
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge
