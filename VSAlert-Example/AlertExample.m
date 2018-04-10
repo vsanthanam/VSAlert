@@ -245,6 +245,7 @@ static os_log_t example_alert;
                                                          message:NSLocalizedString(@"Nothing but a title, a message, and a button.", nil)
                                                            image:nil
                                                            style:VSAlertControllerStyleAlert];
+        controller.alertMessageTextAlignment = NSTextAlignmentLeft;
         VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
                                                               style:VSAlertActionStyleCancel
                                                              action:nil];
