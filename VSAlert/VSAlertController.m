@@ -20,6 +20,7 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
 
 @interface VSAlertControllerAppearanceProxy : UIView<UIAppearance>
 
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *alertBackgroundColor UI_APPEARANCE_SELECTOR;
 @property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *alertTitleTextColor UI_APPEARANCE_SELECTOR;
 @property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *alertMessageTextColor UI_APPEARANCE_SELECTOR;
 @property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIFont *alertTitleTextFont UI_APPEARANCE_SELECTOR;
@@ -29,6 +30,7 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
 
 @implementation VSAlertControllerAppearanceProxy
 
+@synthesize alertBackgroundColor = _alertBackgroundColor;
 @synthesize alertTitleTextColor = _alertTitleTextColor;
 @synthesize alertTitleTextFont = _alertTitleTextFont;
 @synthesize alertMessageTextColor = _alertMessageTextColor;
@@ -551,6 +553,7 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
 static os_log_t alert_log;
 
 // Explicitly synthesize Ivars from header
+@synthesize alertBackgroundColor = _alertBackgroundColor;
 @synthesize alertTitleTextColor = _alertTitleTextColor;
 @synthesize alertMessageTextColor = _alertMessageTextColor;
 @synthesize alertTitleTextFont = _alertTitleTextFont;
@@ -777,6 +780,19 @@ static os_log_t alert_log;
 }
 
 #pragma mark - Property Access Methods
+
+- (UIColor *)alertBackgroundColor {
+    
+    return _alertBackgroundColor;
+    
+}
+
+- (void)setAlertBackgroundColor:(UIColor *)alertBackgroundColor {
+    
+    _alertBackgroundColor = alertBackgroundColor;
+    self.alertView.backgroundColor = self.alertBackgroundColor;
+    
+}
 
 - (UIColor *)alertTitleTextColor {
     
@@ -1005,7 +1021,8 @@ static os_log_t alert_log;
     _presentAnimator = [[VSAlertControllerTransitionAnimator alloc] init];
     _dismissAnimator = [[VSAlertControllerTransitionAnimator alloc] init];
     
-    //     Set up propertie without accessors for use with UIAppearance
+    // Set up propertie without accessors for use with UIAppearance
+    _alertBackgroundColor = [VSAlertController appearance].alertBackgroundColor ? [VSAlertController appearance].alertBackgroundColor : [UIColor whiteColor];
     _alertTitleTextColor = [VSAlertController appearance].alertTitleTextColor ? [VSAlertController appearance].alertTitleTextColor : [UIColor blackColor];
     _alertTitleTextFont = [VSAlertController appearance].alertTitleTextFont ? [VSAlertController appearance].alertTitleTextFont : [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold];
     _alertMessageTextColor = [VSAlertController appearance].alertMessageTextColor ? [VSAlertController appearance].alertMessageTextColor : [UIColor blackColor];
@@ -1080,7 +1097,7 @@ static os_log_t alert_log;
 - (void)_setUpAlertView {
     
     self.alertView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.alertView.backgroundColor = [UIColor whiteColor];
+    self.alertView.backgroundColor = self.alertBackgroundColor;
     self.alertView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.alertMaskBackground addSubview:self.alertView];

@@ -193,6 +193,11 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
  */
 
 /**
+ The background color of the alert.
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *alertBackgroundColor UI_APPEARANCE_SELECTOR;
+
+/**
  The color of the alert title. The default value is black.
  */
 @property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *alertTitleTextColor UI_APPEARANCE_SELECTOR;
