@@ -213,6 +213,11 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
 @property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIFont *alertMessageTextFont UI_APPEARANCE_SELECTOR;
 
 /**
+ The text alignment of the alert message
+ */
+@property (NS_NONATOMIC_IOSONLY, assign) NSTextAlignment alertMessageTextAlignment;
+
+/**
  @name Configuring Interactive Alert Content
  */
 
