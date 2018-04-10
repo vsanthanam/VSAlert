@@ -654,33 +654,35 @@ static os_log_t alert_log;
 
 - (void)viewDidLoad {
     
-    [self _setUpAlertControllerUI];
+    [super viewDidLoad];
     
+    [self _setUpAlertControllerUI];
+
     // Configure Text
     self.alertTitle.text = self.title;
     self.alertMessage.text = self.message;
-    
+
     // Configure Image
     self.alertImage.image = self.image;
-    
+
     // Update Constraints
     self.headerViewHeightConstraint.constant = (BOOL)self.alertImage.image ? 180.0f : 0.0f;
-    
+
     // Set Up Background Tap Gesture Recognizer If Needed
     if (self.dismissOnBackgroundTap) {
-        
+
         self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                      action:@selector(_dismissAlertControllerFromBackgroundTap)];
         [self.alertMaskBackground addGestureRecognizer:self.tapRecognizer];
-        
+
     }
-    
+
     // Process Text Fields
     [self _processTextFields];
-    
+
     // Process Actions
     [self _processActions];
-    
+
     // Configure Stack
     [self _configureStack];
     
