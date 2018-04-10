@@ -530,6 +530,10 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_DESIGNATED_INITIALIZER;
 
+// flag methods as deprecated
++ (nonnull instancetype)appearanceWhenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... __attribute__((deprecated));
++ (nonnull instancetype)appearanceForTraitCollection:(nonnull UITraitCollection *)trait whenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... __attribute__((deprecated));
+
 @end
 
 @implementation VSAlertController {
@@ -899,17 +903,18 @@ static os_log_t alert_log;
     
 }
 
+
 + (nonnull instancetype)appearanceForTraitCollection:(nonnull UITraitCollection *)trait whenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... {
-    
+
     return nil;
-    
+
 }
 
 
 + (nonnull instancetype)appearanceWhenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... {
-    
+
     return nil;
-    
+
 }
 
 
@@ -1525,7 +1530,7 @@ static os_log_t alert_log;
     
     if (_cancelActions.count > 1) {
         
-        os_log_info(alert_log, "WARNING: Alerts with more than 1 ""Cancel"" action are not advisable");
+        os_log_info(alert_log, "WARNING: Alerts with more than 1 ""cancel"" action are not recommended");
         
     }
     
