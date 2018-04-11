@@ -193,6 +193,11 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
  */
 
 /**
+ The background color of the alert.
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *alertBackgroundColor UI_APPEARANCE_SELECTOR;
+
+/**
  The color of the alert title. The default value is black.
  */
 @property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *alertTitleTextColor UI_APPEARANCE_SELECTOR;
@@ -211,6 +216,11 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
  The font of the alert message (description). The default value is the system font size 15 weight regular.
  */
 @property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIFont *alertMessageTextFont UI_APPEARANCE_SELECTOR;
+
+/**
+ The text alignment of the alert message
+ */
+@property (NS_NONATOMIC_IOSONLY, assign) NSTextAlignment alertMessageTextAlignment;
 
 /**
  @name Configuring Interactive Alert Content

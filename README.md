@@ -68,7 +68,7 @@ The included Xcode project allows you to build the static library and an example
 
 Full documentation is [here](https://vsanthanam.github.io/VSAlert/Documentation/index.html), at https://code.vsanthanam.com/VSAlert/Documentation/index.html
 
-Documentation with made with [Jazzy](https://github.com/realm/jazzy) by [Realm](https://realm.io), using the [Jony Theme](https://github.com/HarshilShah/Jony) by [Harshil Shah](https://github.com/HarshilShah/)
+Documentation with made with [Jazzy](https://github.com/realm/jazzy) by [Realm](https://realm.io), using the [Jony Theme](https://github.com/HarshilShah/Jony) by [Harshil Shah](https://github.com/HarshilShah/), and is hosted on GitHub Pages.
 
 ### Image Template
 

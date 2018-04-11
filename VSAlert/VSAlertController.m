@@ -528,6 +528,10 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
 - (instancetype)initWithCoder:(NSCoder *)aDecoder NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil NS_DESIGNATED_INITIALIZER;
 
+// flag methods as deprecated
++ (nonnull instancetype)appearanceWhenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... __attribute__((deprecated));
++ (nonnull instancetype)appearanceForTraitCollection:(nonnull UITraitCollection *)trait whenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... __attribute__((deprecated));
+
 @end
 
 @implementation VSAlertController {
@@ -555,6 +559,7 @@ static os_log_t alert_log;
 @synthesize alertMessageTextColor = _alertMessageTextColor;
 @synthesize alertTitleTextFont = _alertTitleTextFont;
 @synthesize alertMessageTextFont = _alertMessageTextFont;
+@synthesize alertMessageTextAlignment = _alertMessageTextAlignment;
 @synthesize textFields = _textFields;
 @synthesize animationStyle = _animationStyle;
 @synthesize dismissOnBackgroundTap = _dismissOnBackgroundTap;
@@ -830,6 +835,19 @@ static os_log_t alert_log;
     
 }
 
+- (NSTextAlignment)alertMessageTextAlignment {
+    
+    return _alertMessageTextAlignment;
+    
+}
+
+- (void)setAlertMessageTextAlignment:(NSTextAlignment)alertMessageTextAlignment {
+    
+    _alertMessageTextAlignment = alertMessageTextAlignment;
+    self.alertMessage.textAlignment = self.alertMessageTextAlignment;
+    
+}
+
 - (BOOL)hasTextFieldAdded {
     
     return self.textFields.count > 0;
@@ -869,17 +887,18 @@ static os_log_t alert_log;
     
 }
 
+
 + (nonnull instancetype)appearanceForTraitCollection:(nonnull UITraitCollection *)trait whenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... {
-    
+
     return nil;
-    
+
 }
 
 
 + (nonnull instancetype)appearanceWhenContainedIn:(nullable Class<UIAppearanceContainer>)ContainerClass, ... {
-    
+
     return nil;
-    
+
 }
 
 
@@ -1010,6 +1029,7 @@ static os_log_t alert_log;
     _alertTitleTextFont = [VSAlertController appearance].alertTitleTextFont ? [VSAlertController appearance].alertTitleTextFont : [UIFont systemFontOfSize:17.0f weight:UIFontWeightSemibold];
     _alertMessageTextColor = [VSAlertController appearance].alertMessageTextColor ? [VSAlertController appearance].alertMessageTextColor : [UIColor blackColor];
     _alertMessageTextFont = [VSAlertController appearance].alertMessageTextFont ? [VSAlertController appearance].alertMessageTextFont : [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
+    _alertMessageTextAlignment = NSTextAlignmentCenter;
     
     // Set instance read-only properties
     _style = VSAlertControllerStyleAlert;
@@ -1307,7 +1327,7 @@ static os_log_t alert_log;
     self.alertMessage.font = self.alertMessageTextFont;
     self.alertMessage.textColor = self.alertMessageTextColor;
     self.alertMessage.numberOfLines = 0;
-    self.alertMessage.textAlignment = NSTextAlignmentCenter;
+    self.alertMessage.textAlignment = self.alertMessageTextAlignment;
     self.alertMessage.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.alertView addSubview:self.alertMessage];
@@ -1493,7 +1513,7 @@ static os_log_t alert_log;
     
     if (_cancelActions.count > 1) {
         
-        os_log_info(alert_log, "WARNING: Alerts with more than 1 ""Cancel"" action are not advisable");
+        os_log_info(alert_log, "WARNING: Alerts with more than 1 ""cancel"" action are not recommended");
         
     }
     
