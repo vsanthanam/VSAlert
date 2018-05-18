@@ -1,4 +1,10 @@
 # VSAlert
+
+![Language](https://img.shields.io/badge/language-Objective--C-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Documentation](https://code.vsanthanam.com/VSAlert/Documentation/badge.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/vsanthanam/vsalert.svg)
+
 An drop-in replacement for UIAlertController that looks a hell of a lot better, built in Objective-C. Based on Codedio's aweomse Swift library, [PMAlertController](https://github.com/Codeido/PMAlertController).
 
 Like PMAlertController, VSAlert builds on the functionality of UIAlertController by adding:
@@ -25,7 +31,6 @@ VSAlertController differs from PMAlertController in a few ways:
 All you need are `VSAlertController.h`, `VSAlertController.m`, `VSAlertAction.h`, and `VSAlertAction.m`.
 
 ### Getting Started (Static Framework)
-
 1. Go to `(RepoDirectory)/Release/VSAlert.framework`, and add it to your project directory.
 2. In your app target's settings, go to "General" --> "Linked Frameworks and Libraries", and add `VSAlert.framework`
 3. In your target's build settings, go to "Other Linker Flags", and add `-all_load` and `-ObjC`.
@@ -36,7 +41,6 @@ All you need are `VSAlertController.h`, `VSAlertController.m`, `VSAlertAction.h`
 ## Usage
 
 ### Basics
-
 The included Xcode project allows you to build the static library and an example application. Take a look at the example app to see all customization options, but here's a basic implementation:
 
 ```Objective-C
@@ -63,14 +67,11 @@ The included Xcode project allows you to build the static library and an example
 
 @end
 ```
-
 ### Documentation
-
 Full documentation is [here](https://vsanthanam.github.io/VSAlert/Documentation/index.html), at https://code.vsanthanam.com/VSAlert/Documentation/index.html
 
 Documentation with made with [Jazzy](https://github.com/realm/jazzy) by [Realm](https://realm.io), using the [Jony Theme](https://github.com/HarshilShah/Jony) by [Harshil Shah](https://github.com/HarshilShah/), and is hosted on GitHub Pages.
 
 ### Image Template
-
 VSAlertController includes template images to help you size your images to make them look just right on an alert. I suggest using an Image that is 270pt tall and 180pt high, with your actual content centered in the middle at 116 x 116 pt. I've included PNGs with the appropriate outline, as well as a .sketch file
 
