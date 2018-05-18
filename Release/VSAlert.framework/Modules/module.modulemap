@@ -1,0 +1,6 @@
+framework module VSAlert {
+    umbrella header "VSAlert.h"
+    
+    export *
+    module * { export * }
+}
