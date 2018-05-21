@@ -37,7 +37,7 @@ All you need are `VSAlertController.h`, `VSAlertController.m`, `VSAlertAction.h`
 3. In your target's build settings, go to "Other Linker Flags", and add `-all_load` and `-ObjC`.
 
 ### Getting Started (Using the source code directly)
-1. Go to `(RepoDirectory)/VSALert`, and add all the files excepting the modulemap and the umbrella header to your project. Make sure to add all the implementation files to your target's `compile sources`  build phase, incase Xcode doesn't do this for you automatically when adding the files to the target's membership
+1. Go to `(RepoDirectory)/VSAlert`, and add all the files excepting the modulemap and the umbrella header to your project. Make sure to add all the implementation files to your target's `compile sources`  build phase, incase Xcode doesn't do this for you automatically when adding the files to the target's membership
 
 ## Usage
 
