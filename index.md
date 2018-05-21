@@ -1,5 +1,4 @@
 ## Features
-
 VSAlert is an iOS framework designed to replace UIAlertController. It was designed with the following principles in mind:
 
 * No need to rewrite your code. VSAlertController behaves identically to UIAlertController. Create controller and add actions the same way you already do.
