@@ -3,10 +3,11 @@ title: README
 ---
 # VSAlert
 
-![Language](https://img.shields.io/badge/language-Objective--C-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Documentation](https://code.vsanthanam.com/VSAlert/Documentation/badge.svg)
-![GitHub last commit](https://img.shields.io/github/last-commit/vsanthanam/vsalert.svg)
+[![language](https://img.shields.io/badge/language-Objective--C-blue.svg)](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html)
+[![license](https://img.shields.io/github/license/vsanthanam/vsalert.svg)](https://en.wikipedia.org/wiki/MIT_License)
+[![GitHub release](https://img.shields.io/github/release/vsanthanam/VSAlert.svg)](https://github.com/vsanthanam/VSAlert/releases)
+[![GitHub Release Date](https://img.shields.io/github/release-date/vsanthanam/VSAlert.svg)](https://github.com/vsanthanam/VSAlert/releases)
+[![documentation](https://code.vsanthanam.com/VSAlert/Documentation/badge.svg)](https://code.vsanthanam.com/VSAlert/Documentation/)
 
 An drop-in replacement for UIAlertController that looks a hell of a lot better, built in Objective-C. Based on Codedio's aweomse Swift library, [PMAlertController](https://github.com/Codeido/PMAlertController).
 
