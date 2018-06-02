@@ -22,9 +22,9 @@ VSAlertController differs from PMAlertController in a few ways:
 4. VSAlert adds the "destructive" action style from Apple's UIAlertController that was missing in PMAlertController
 5. VSAlert doesn't add actions and text fields in the order you create them, but rather in a dynamic order based on how many there are and what "style" they are (again, like Apple's UIAlertController)
 6. VSAlert doesn't rely on UITextFieldDelegate, so you can freely assign your UITextField's `.delegate` property without fear and the library will continue to work as expected.
-6. VSAlert executes action blocks on the main-thread, to allow for UI actions and not get caught up by the main thread checker in Xcode 9.
-7. VSAlert adds the "Action Sheet" style from Apple's UIAlertController, missing from PMAlertController
-8. VSAlert uses propertransition, and respects the `animated` parameter in UIViewController's `-presentViewController:animated:completion:` method
+7. VSAlert executes action blocks on the main-thread, to allow for UI actions and not get caught up by the main thread checker in Xcode 9.
+8. VSAlert adds the "Action Sheet" style from Apple's UIAlertController, missing from PMAlertController
+9. VSAlert uses propertransition, and respects the `animated` parameter in UIViewController's `-presentViewController:animated:completion:` method
 
 ## Set Up
 
