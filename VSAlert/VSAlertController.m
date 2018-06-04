@@ -9,10 +9,10 @@
 
 #import "VSAlertController.h"
 
-#define kStandardAlertWidth 270.0f
-#define kWideAlertWidth 480.0f
-#define kAlertMargin 18.0f
-#define kAlertMinHeight 100.0f
+#define kStandardAlertWidth     270.0f
+#define kWideAlertWidth         480.0f
+#define kAlertMargin            18.0f
+#define kAlertMinHeight         100.0f
 
 NSString * const VSAlertControllerNotImplementedException = @"VSAlertControllerNotImplementedException";
 NSString * const VSAlertControllerTextFieldInvalidException = @"VSAlertControllerTextFieldInvalidException";
@@ -24,6 +24,7 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
 @property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *alertMessageTextColor UI_APPEARANCE_SELECTOR;
 @property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIFont *alertTitleTextFont UI_APPEARANCE_SELECTOR;
 @property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIFont *alertMessageTextFont UI_APPEARANCE_SELECTOR;
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *alertBackgroundColor UI_APPEARANCE_SELECTOR;
 
 @end
 
@@ -33,6 +34,7 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
 @synthesize alertTitleTextFont = _alertTitleTextFont;
 @synthesize alertMessageTextColor = _alertMessageTextColor;
 @synthesize alertMessageTextFont = _alertMessageTextFont;
+@synthesize alertBackgroundColor = _alertBackgroundColor;
 
 @end
 
@@ -560,6 +562,7 @@ static os_log_t alert_log;
 @synthesize alertTitleTextFont = _alertTitleTextFont;
 @synthesize alertMessageTextFont = _alertMessageTextFont;
 @synthesize alertMessageTextAlignment = _alertMessageTextAlignment;
+@synthesize alertBackgroundColor = _alertBackgroundColor;
 @synthesize textFields = _textFields;
 @synthesize animationStyle = _animationStyle;
 @synthesize dismissOnBackgroundTap = _dismissOnBackgroundTap;
@@ -848,6 +851,18 @@ static os_log_t alert_log;
     
 }
 
+- (UIColor *)alertBackgroundColor {
+    
+    return _alertBackgroundColor;
+    
+}
+
+- (void)setAlertBackgroundColor:(UIColor *)alertBackgroundColor {
+    
+    _alertBackgroundColor = alertBackgroundColor;
+    
+}
+
 - (BOOL)hasTextFieldAdded {
     
     return self.textFields.count > 0;
@@ -1030,6 +1045,7 @@ static os_log_t alert_log;
     _alertMessageTextColor = [VSAlertController appearance].alertMessageTextColor ? [VSAlertController appearance].alertMessageTextColor : [UIColor blackColor];
     _alertMessageTextFont = [VSAlertController appearance].alertMessageTextFont ? [VSAlertController appearance].alertMessageTextFont : [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
     _alertMessageTextAlignment = NSTextAlignmentCenter;
+    _alertBackgroundColor = [VSAlertController appearance].alertBackgroundColor ? [VSAlertController appearance].alertBackgroundColor : [UIColor whiteColor];
     
     // Set instance read-only properties
     _style = VSAlertControllerStyleAlert;
@@ -1100,7 +1116,7 @@ static os_log_t alert_log;
 - (void)_setUpAlertView {
     
     self.alertView = [[UIView alloc] initWithFrame:CGRectZero];
-    self.alertView.backgroundColor = [UIColor whiteColor];
+    self.alertView.backgroundColor = self.alertBackgroundColor;
     self.alertView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.alertMaskBackground addSubview:self.alertView];

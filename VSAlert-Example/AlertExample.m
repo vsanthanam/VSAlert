@@ -248,6 +248,7 @@ static os_log_t example_alert;
         VSAlertAction *action = [VSAlertAction alertActionWithTitle:NSLocalizedString(@"Close", nil)
                                                               style:VSAlertActionStyleCancel
                                                              action:nil];
+//        controller.alertBackgroundColor = [UIColor purpleColor];
         [controller addAction:action];
         
     } else if (exampleType == AlertExampleTypeCancel) {

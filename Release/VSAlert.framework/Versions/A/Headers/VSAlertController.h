@@ -218,6 +218,11 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
 @property (NS_NONATOMIC_IOSONLY, assign) NSTextAlignment alertMessageTextAlignment;
 
 /**
+ The background color of the alert
+ */
+@property (NS_NONATOMIC_IOSONLY, strong, nonnull) UIColor *alertBackgroundColor UI_APPEARANCE_SELECTOR;
+
+/**
  @name Configuring Interactive Alert Content
  */
 

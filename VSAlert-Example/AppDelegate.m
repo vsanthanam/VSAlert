@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+#import "VSAlertController.h"
 
 @interface AppDelegate ()
 
@@ -15,6 +16,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+//    [VSAlertController appearance].alertBackgroundColor = [UIColor orangeColor];
     
     return YES;
     
