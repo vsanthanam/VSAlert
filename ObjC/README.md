@@ -1,4 +1,6 @@
-# VSAlert
+# VSAlert (ObjC)
+
+***THIS NEEDS TO BE REWRITTEN FOR OBJC ONLY***
 
 [![language](https://img.shields.io/badge/language-Objective--C-blue.svg)](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html)
 [![license](https://img.shields.io/github/license/vsanthanam/vsalert.svg)](https://en.wikipedia.org/wiki/MIT_License)
