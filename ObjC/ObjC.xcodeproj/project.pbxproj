@@ -89,7 +89,6 @@
 
 /* Begin PBXFileReference section */
 		0710F9A91F8B09FB00C6D084 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		0710F9AA1F8B0A0600C6D084 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		0710F9C11F8B1E0F00C6D084 /* VSAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSAlert.h; sourceTree = "<group>"; };
 		0710F9C21F8B1E1000C6D084 /* VSAlertAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VSAlertAction.m; sourceTree = "<group>"; };
 		0710F9C31F8B1E1000C6D084 /* VSAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VSAlertController.h; sourceTree = "<group>"; };
@@ -192,7 +191,6 @@
 		07F00ED81F8A96D9006FAC96 = {
 			isa = PBXGroup;
 			children = (
-				0710F9AA1F8B0A0600C6D084 /* LICENSE */,
 				0710F9A91F8B09FB00C6D084 /* README.md */,
 				07F00EFA1F8A96FB006FAC96 /* VSAlert */,
 				07FF9DF11F8FEE85002966A3 /* VSAlert-Example */,
@@ -389,7 +387,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 07F00EDC1F8A96D9006FAC96 /* Build configuration list for PBXProject "VSAlert" */;
+			buildConfigurationList = 07F00EDC1F8A96D9006FAC96 /* Build configuration list for PBXProject "ObjC" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -972,7 +970,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07F00EDC1F8A96D9006FAC96 /* Build configuration list for PBXProject "VSAlert" */ = {
+		07F00EDC1F8A96D9006FAC96 /* Build configuration list for PBXProject "ObjC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				07F00EDD1F8A96D9006FAC96 /* Debug */,
