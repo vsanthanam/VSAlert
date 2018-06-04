@@ -10,4 +10,7 @@
    <FileRef
       location = "group:/Users/vsanthanam/Documents/Dev/VMS/VSAlert/ObjC/ObjC.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:/Users/vsanthanam/Documents/Dev/VMS/VSAlert/Swift/Swift.xcodeproj">
+   </FileRef>
 </Workspace>
