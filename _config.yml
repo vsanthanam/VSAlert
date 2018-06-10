@@ -25,9 +25,9 @@ links:
 
 ui:
     header:
-        color1: "#F8A169"
-        color2: "#FE4E92"
-        trianglify: false
+        color1: "#80D0C7"
+        color2: "#13547A"
+        trianglify: true
 
 social:
     github:
