@@ -1,2 +1,49 @@
-remote_theme: renyuanz/leonids
-show_downloads: true 
+remote_theme: vsanthanam/jekyll-docs-theme
+# show_downloads: true
+name: VSAlert
+
+project:
+    version: 1.2.3
+    download_url: https://www.github.com/vsanthanam/VSAlert/releases
+
+license:
+    software: MIT License
+    software_url: http://opensource.org/licenses/MIT
+
+    docs: CC BY 3.0
+    docs_url: http://creativecommons.org/licenses/by/3.0/
+
+links:
+    header:
+      - title: GitHub
+        url: https://www.github.com/vsanthanam/VSAlert
+    footer:
+      - title: GitHub
+        url: https://www.github.com/vsanthanam/VSAlert/jekyll-docs-theme
+      - title: Issues
+        url: https://www.github.com/vsanthanam/VSAlert/issues?state=open
+
+ui:
+    header:
+        color1: "#F8A169"
+        color2: "#FE4E92"
+        trianglify: false
+
+social:
+    github:
+        user: vsanthanam
+        repo: VSAlert
+    twitter:
+        enabled: false
+        via:
+        hash:
+        account:
+    facebook:
+        enabled: false
+        profileUrl:
+
+# Build settings
+markdown: kramdown
+exclude:
+    - Gemfile
+    - Gemfile.lock
