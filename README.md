@@ -14,10 +14,12 @@ For detailed instructions, see the [library website](https://vsalert.vsanthanam.
 
 1. Clone the repo and build the `Framework` target or download the latest release from the Releases tab.
 2. Link against `VSAlert.framework`
+3. Include the library using `@import VSAlert;` where relevent.
 
 ### CocoaPods
 
 1. add `pod 'VSAlert', '~> 1.2'` to your project's podfile and run `pod install`. See the [project's page on CocoaPods.org](https://cocoapods.org/pods/VSAlert) for more information.
+2. Include the library using `#import <VSAlert/VSAlert.h>` wherever relevent
 
 ### Source
 
@@ -25,7 +27,7 @@ For detailed instructions, see the [library website](https://vsalert.vsanthanam.
 
 ## Usage & Docs
 
-VSAlertController's API is designed to mimic UIAlertController virtually identically. For detailed instructions, see the documentaion on the project website. You can also build the documentation locally using the `Documentation` target if you have Jazzy installed.
+VSAlertController's API is designed to mimic UIAlertController virtually identically. Full documention is available at the [library website](https://vsalert.vsanthanam.com), as well as in the repo itself.
 
 ## Contributing
 
