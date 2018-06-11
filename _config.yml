@@ -17,6 +17,8 @@ links:
     header:
       - title: GitHub
         url: https://www.github.com/vsanthanam/VSAlert
+      - title: Documentation
+        url: https://code.vsanthanam.com/VSAlert/Documentation/index.html
     footer:
       - title: GitHub
         url: https://www.github.com/vsanthanam/VSAlert/jekyll-docs-theme
