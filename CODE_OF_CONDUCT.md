@@ -1,5 +1,6 @@
 ---
-title: Contributor Covenant Code of Conduct
+title: Contribute
+navorder: 3
 ---
 
 # Contributor Covenant Code of Conduct

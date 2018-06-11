@@ -1,5 +1,6 @@
 ---
-title: README
+title: License
+navorder: 1
 ---
 MIT License
 
