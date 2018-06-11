@@ -12,7 +12,7 @@ VSAlertController is a drop-in replacement for UIAlertController. It's designed 
 
 # Setup
 
-VSAlert is packaged as a static framework. Using the compiled static framework is the recommended setup option, but you can also use CocoaPods, or include the source code directly in your target.
+VSAlert is packaged as a **static framework**. Using the compiled static framework is the recommended setup option, but you can also use CocoaPods, or include the source code directly in your target.
 
 ## Static Framework
 
@@ -50,6 +50,10 @@ $ git clone https://github.com/vsanthanam/VSAlert.git
 
 2. Add `VSAlertController.h`, `VSAlertController.m`, `VSAlertAction.h`, and `VSAlertAction.m` to your project.
 3. Reference the library in the relevent files with `#import "VSAlertController.h"`.
+
+<div class="alert alert-warning" markdown="1">
+**Warning:** Using the version of the code on the master branch isn't always production ready. Use one of the other two installation options for production ready releases.
+</div>
 
 # Basic Usage
 

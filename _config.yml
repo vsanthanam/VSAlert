@@ -3,7 +3,7 @@ remote_theme: vsanthanam/jekyll-docs-theme
 name: VSAlert
 
 project:
-    version: 1.2.3
+    version: 1.2.5
     download_url: https://www.github.com/vsanthanam/VSAlert/releases
 
 license:
