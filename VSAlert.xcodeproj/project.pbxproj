@@ -19,17 +19,6 @@
 			name = Framework;
 			productName = Framework;
 		};
-		07FA6E7C203F3B59005AC1A6 /* Documentation */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 07FA6E7F203F3B59005AC1A6 /* Build configuration list for PBXAggregateTarget "Documentation" */;
-			buildPhases = (
-				07FA6E80203F3B63005AC1A6 /* Build Documentation w/ Jazzy */,
-			);
-			dependencies = (
-			);
-			name = Documentation;
-			productName = Documentation;
-		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -383,10 +372,6 @@
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 					};
-					07FA6E7C203F3B59005AC1A6 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-					};
 					07FF9DEF1F8FEE85002966A3 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
@@ -408,7 +393,6 @@
 			targets = (
 				07F00EFE1F8A972D006FAC96 /* VSAlert */,
 				0710F9B61F8B1CB800C6D084 /* Framework */,
-				07FA6E7C203F3B59005AC1A6 /* Documentation */,
 				07FF9DEF1F8FEE85002966A3 /* VSAlert-Example */,
 				078C2778207D246800DF9D0C /* VSAlertTests */,
 			);
@@ -464,20 +448,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\n# If we're already inside this script then die\nif [ -n \"$MULTIPLATFORM_BUILD_IN_PROGRESS\" ]; then\nexit 0\nfi\nexport MULTIPLATFORM_BUILD_IN_PROGRESS=1\nFRAMEWORK_NAME=\"VSAlert\"\nINPUT_STATIC_LIB=\"lib${FRAMEWORK_NAME}.a\"\nFRAMEWORK_LOCATION=\"${BUILT_PRODUCTS_DIR}/${FRAMEWORK_NAME}.framework\"\nfunction build_static_library {\n    # Will rebuild the static library as specified\n    #     build_static_library sdk\n    xcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" \\\n    -target \"${TARGET_NAME}\" \\\n    -configuration \"${CONFIGURATION}\" \\\n    -sdk \"${1}\" \\\n    ONLY_ACTIVE_ARCH=NO \\\n    BUILD_DIR=\"${BUILD_DIR}\" \\\n    OBJROOT=\"${OBJROOT}\" \\\n    BUILD_ROOT=\"${BUILD_ROOT}\" \\\n    SYMROOT=\"${SYMROOT}\" $ACTION\n}\nfunction make_fat_library {\n    # Will smash 2 static libs together\n    #     make_fat_library in1 in2 out\n    xcrun lipo -create \"${1}\" \"${2}\" -output \"${3}\"\n}\n# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]; then\nSDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n# 2 - Extract the version from the SDK\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]; then\nSDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n# 3 - Determine the other platform\nif [ \"$SDK_PLATFORM\" == \"iphoneos\" ]; then\nOTHER_PLATFORM=iphonesimulator\nelse\nOTHER_PLATFORM=iphoneos\nfi\n# 4 - Find the build directory\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SDK_PLATFORM$ ]]; then\nOTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${OTHER_PLATFORM}\"\nelse\necho \"Could not find other platform build directory.\"\nexit 1\nfi\n# Build the other platform.\nbuild_static_library \"${OTHER_PLATFORM}${SDK_VERSION}\"\n# If we're currently building for iphonesimulator, then need to rebuild\n#   to ensure that we get both i386 and x86_64\nif [ \"$SDK_PLATFORM\" == \"iphonesimulator\" ]; then\nbuild_static_library \"${SDK_NAME}\"\nfi\n# Join the 2 static libs into 1 and push into the .framework\nmake_fat_library \"${BUILT_PRODUCTS_DIR}/${INPUT_STATIC_LIB}\" \\\n\"${OTHER_BUILT_PRODUCTS_DIR}/${INPUT_STATIC_LIB}\" \\\n\"${FRAMEWORK_LOCATION}/Versions/A/${FRAMEWORK_NAME}\"\n# Ensure that the framework is present in both platform's build directories\ncp -a \"${FRAMEWORK_LOCATION}/Versions/A/${FRAMEWORK_NAME}\" \\\n\"${OTHER_BUILT_PRODUCTS_DIR}/${FRAMEWORK_NAME}.framework/Versions/A/${FRAMEWORK_NAME}\"\n# Copy the framework to the user's desktop\nditto \"${FRAMEWORK_LOCATION}\" \"${PROJECT_DIR}/Release/${FRAMEWORK_NAME}.framework\"\nditto \"${PROJECT_DIR}/${FRAMEWORK_NAME}/Supporting/module.modulemap\" \"${PROJECT_DIR}/Release/${FRAMEWORK_NAME}.framework/Modules\"";
-		};
-		07FA6E80203F3B63005AC1A6 /* Build Documentation w/ Jazzy */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Build Documentation w/ Jazzy";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "jazzy --objc --clean --author 'Varun Santhanam' --author_url 'https://www.vsanthanam.com' --github_url 'https://github.com/vsanthanam/VSAlert' --umbrella-header VSAlert/Src/VSAlert.h --framework-root . --module VSAlert --sdk iphonesimulator --hide-declarations swift --output \"${PROJECT_DIR}/Documentation\" --theme \"${PROJECT_DIR}/JazzyTheme\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -813,26 +783,6 @@
 			};
 			name = Release;
 		};
-		07FA6E7D203F3B59005AC1A6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y88YPD4RJA;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-			};
-			name = Debug;
-		};
-		07FA6E7E203F3B59005AC1A6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y88YPD4RJA;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-			};
-			name = Release;
-		};
 		07FF9E041F8FEE85002966A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -990,15 +940,6 @@
 			buildConfigurations = (
 				07F00F061F8A972D006FAC96 /* Debug */,
 				07F00F071F8A972D006FAC96 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		07FA6E7F203F3B59005AC1A6 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				07FA6E7D203F3B59005AC1A6 /* Debug */,
-				07FA6E7E203F3B59005AC1A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
