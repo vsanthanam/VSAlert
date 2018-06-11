@@ -51,76 +51,31 @@
 <a href="https://github.com/vsanthanam/VSAlert/releases"><img src="https://img.shields.io/github/release/vsanthanam/VSAlert.svg" alt="GitHub release"></a>
 <a href="https://github.com/vsanthanam/VSAlert/releases"><img src="https://img.shields.io/github/release-date/vsanthanam/VSAlert.svg" alt="GitHub Release Date"></a>
 <a href="https://code.vsanthanam.com/VSAlert/Documentation/"><img src="https://code.vsanthanam.com/VSAlert/Documentation/badge.svg" alt="documentation"></a></p>
-
-<p>An drop-in replacement for UIAlertController that looks a hell of a lot better, built in Objective-C. Based on Codedio&rsquo;s aweomse Swift library, <a href="https://github.com/Codeido/PMAlertController">PMAlertController</a>.</p>
-
-<p>Like PMAlertController, VSAlert builds on the functionality of UIAlertController by adding:</p>
-
-<ul>
-<li>Built-in support for images in the heading of the alert</li>
-<li>Much better animation</li>
-<li>Much more flexible customization, because alert actions are subclasses of UIButton.</li>
-</ul>
-
-<p>VSAlertController differs from PMAlertController in a few ways:</p>
-
-<ol>
-<li>VSAlert doesn&rsquo;t build it&rsquo;s UI using a XIB file, which makes it a little bit more portable and easier to manage.</li>
-<li>VSAlert is written in Objective-C rather than Swift (but is marked up using nullability for easy use in Swift)</li>
-<li>VSAlert allows for a bit more customization at runtime.</li>
-<li>VSAlert adds the <q>destructive</q> action style from Apple&rsquo;s UIAlertController that was missing in PMAlertController</li>
-<li>VSAlert doesn&rsquo;t add actions and text fields in the order you create them, but rather in a dynamic order based on how many there are and what <q>style</q> they are (again, like Apple&rsquo;s UIAlertController)</li>
-<li>VSAlert doesn&rsquo;t rely on UITextFieldDelegate, so you can freely assign your UITextField&rsquo;s <code>.delegate</code> property without fear and the library will continue to work as expected.</li>
-<li>VSAlert executes action blocks on the main-thread, to allow for UI actions and not get caught up by the main thread checker in Xcode 9.</li>
-<li>VSAlert adds the <q>Action Sheet</q> style from Apple&rsquo;s UIAlertController, missing from PMAlertController</li>
-<li>VSAlert uses propertransition, and respects the <code>animated</code> parameter in UIViewController&rsquo;s <code>-presentViewController:animated:completion:</code> method</li>
-</ol>
 <h2 id='set-up' class='heading'>Set Up</h2>
-<h3 id='just-give-me-the-code' class='heading'>Just Give Me The Code</h3>
 
-<p>All you need are <code>VSAlertController.h</code>, <code>VSAlertController.m</code>, <code>VSAlertAction.h</code>, and <code>VSAlertAction.m</code>.</p>
-<h3 id='getting-started-static-framework' class='heading'>Getting Started (Static Framework)</h3>
-
-<ol>
-<li>Go to <code>(RepoDirectory)/Release/VSAlert.framework</code>, and add it to your project directory.</li>
-<li>In your app target&rsquo;s settings, go to <q>General</q> &ndash;&gt; <q>Linked Frameworks and Libraries</q>, and add <code>VSAlert.framework</code></li>
-<li>In your target&rsquo;s build settings, go to <q>Other Linker Flags</q>, and add <code>-all_load</code> and <code>-ObjC</code>.</li>
-</ol>
-<h3 id='getting-started-using-the-source-code-directly' class='heading'>Getting Started (Using the source code directly)</h3>
+<p>For detailed instructions, see the <a href="https://vsalert.vsanthanam.com">library website</a></p>
+<h3 id='static-framework-preferred' class='heading'>Static Framework (Preferred)</h3>
 
 <ol>
-<li>Go to <code>(RepoDirectory)/VSAlert</code>, and add all the files excepting the modulemap and the umbrella header to your project. Make sure to add all the implementation files to your target&rsquo;s <code>compile sources</code>  build phase, incase Xcode doesn&rsquo;t do this for you automatically when adding the files to the target&rsquo;s membership</li>
+<li>Clone the repo and build the <code>Framework</code> target or download the latest release from the Releases tab.</li>
+<li>Link against <code>VSAlert.framework</code></li>
 </ol>
-<h2 id='usage' class='heading'>Usage</h2>
-<h3 id='basics' class='heading'>Basics</h3>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
 
-<p>The included Xcode project allows you to build the static library and an example application. Take a look at the example app to see all customization options, but here&rsquo;s a basic implementation:</p>
-<pre class="highlight plaintext"><code>
-#import "MyViewController.h"
+<ol>
+<li>add <code>pod &#39;VSAlert&#39;, &#39;~&gt; 1.2&#39;</code> to your project&rsquo;s podfile and run <code>pod install</code>. See the <a href="https://cocoapods.org/pods/VSAlert">project&rsquo;s page on CocoaPods.org</a> for more information.</li>
+</ol>
+<h3 id='source' class='heading'>Source</h3>
 
-@import VSAlert; // replace with #import 'VSAlertController.h' if you're using the source rather than the static framework
+<ol>
+<li>Copy <code>VSAlertAction.h, VSAlertAction.m, VSAlertController.h, and VSAlertController.m</code></li>
+</ol>
+<h2 id='usage-amp-docs' class='heading'>Usage &amp; Docs</h2>
 
-@implementation MyViewController
+<p>VSAlertController&rsquo;s API is designed to mimic UIAlertController virtually identically. For detailed instructions, see the documentaion on the project website. You can also build the documentation locally using the <code>Documentation</code> target if you have Jazzy installed.</p>
+<h2 id='contributing' class='heading'>Contributing</h2>
 
-- (void)showAlert:(id)sender {
-
-    VSAlertController *alertController = [VSAlertController alertControllerWithTitle:NSLocalizedString(@"Alert!", nil) description:NSLocalizedString(@"This app needs your attention right now", nil) style:VSAlertControllerStyleAlert];
-    VSAlertAction *action = [VSAlertAction actionWithTitle:NSLocalizedString(@"Close", nil) style:VSAlertActionStyleDefault action:^(VSAlertAction *action) {
-
-        NSLog(@"Do Something");
-
-    }
-
-    [alertController addAction:action];
-    [self presentViewController:alertController animated:YES completion:nil];
-
-}
-
-@end
-</code></pre>
-<h3 id='image-template' class='heading'>Image Template</h3>
-
-<p>VSAlertController includes template images to help you size your images to make them look just right on an alert. I suggest using an Image that is 270pt tall and 180pt high, with your actual content centered in the middle at 116 x 116 pt. I&rsquo;ve included PNGs with the appropriate outline, as well as a .sketch file</p>
+<p>See the code of conduct.</p>
 
             </section>
           </section>
@@ -181,7 +136,7 @@
       </div>
       <div class="footer-wrapper">
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://www.vsanthanam.com" target="_blank" rel="external">Varun Santhanam</a>. All rights reserved. (Last updated: 2018-06-04)</p>
+          <p>&copy; 2018 <a class="link" href="https://www.vsanthanam.com" target="_blank" rel="external">Varun Santhanam</a>. All rights reserved. (Last updated: 2018-06-11)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </div>
