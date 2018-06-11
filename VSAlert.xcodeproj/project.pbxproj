@@ -118,6 +118,8 @@
 		07FF9E141F8FEF29002966A3 /* flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag.png; sourceTree = "<group>"; };
 		07FF9E151F8FEF3D002966A3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07FF9E161F8FEF3E002966A3 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		110BD2F720CF263C009EA520 /* VSAlert.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = VSAlert.podspec; sourceTree = "<group>"; };
+		110BD2F820CF27E1009EA520 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +161,7 @@
 				0710F9C31F8B1E1000C6D084 /* VSAlertController.h */,
 				0710F9C51F8B1E1000C6D084 /* VSAlertController.m */,
 			);
-			name = Src;
+			path = Src;
 			sourceTree = "<group>";
 		};
 		0710F9CC1F8B1E5B00C6D084 /* Supporting */ = {
@@ -167,7 +169,7 @@
 			children = (
 				0710F9CE1F8B1EA300C6D084 /* module.modulemap */,
 			);
-			name = Supporting;
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 		0710F9D11F8BCDB700C6D084 /* Frameworks */ = {
@@ -192,7 +194,9 @@
 		07F00ED81F8A96D9006FAC96 = {
 			isa = PBXGroup;
 			children = (
+				110BD2F820CF27E1009EA520 /* .gitignore */,
 				0710F9AA1F8B0A0600C6D084 /* LICENSE */,
+				110BD2F720CF263C009EA520 /* VSAlert.podspec */,
 				0710F9A91F8B09FB00C6D084 /* README.md */,
 				07F00EFA1F8A96FB006FAC96 /* VSAlert */,
 				07FF9DF11F8FEE85002966A3 /* VSAlert-Example */,
