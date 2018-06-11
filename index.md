@@ -1,3 +1,13 @@
+---
+title: Overview
+homepage: true
+description: a drop-in replacement in VSAlertController
+layout: page
+navorder: 0
+---
+
+# VSAlert
+
 ## Features
 VSAlert is an iOS framework designed to replace UIAlertController. It was designed with the following principles in mind:
 
