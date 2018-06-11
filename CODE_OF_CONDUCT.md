@@ -1,6 +1,7 @@
 ---
 title: Contribute
 navorder: 3
+hide: true
 ---
 
 # Contributor Covenant Code of Conduct

@@ -1,6 +1,6 @@
 ---
 title: License
-navorder: 1
+navorder: 2
 ---
 MIT License
 
