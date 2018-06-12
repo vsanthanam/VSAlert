@@ -9,7 +9,7 @@
 ## Setup & Help
 
 For installation instructions, quick start guide, and full documentation, see the [project website](https://vsalert.vsanthanam.com).
-The website is hosted on [GitHub Pages](https://pages.github.com), and is built using [Jekyll](https://jekyllrb.com) and [jekyll-docs-theme](https://github.com/vsanthanam/jekyll-docs-theme). Documentation is generated with [JazzyDoc](https://github.com/realm/jazzy), and styled using [Johy](https://github.com/HarshilShah/Jony).  The hosted documentation is applicable for the latest version found under 'releases'.
+The website is hosted on [GitHub Pages](https://pages.github.com), and is built using [Jekyll](https://jekyllrb.com) and [jekyll-docs-theme](https://github.com/vsanthanam/jekyll-docs-theme). Documentation is generated with [JazzyDoc](https://github.com/realm/jazzy), and styled using [Jony](https://github.com/HarshilShah/Jony).  The hosted documentation is applicable for the latest version found under 'releases'.
 
 ## Community Guidelines
 
