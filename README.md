@@ -2,9 +2,9 @@
 
 [![language](https://img.shields.io/badge/language-Objective--C-blue.svg)](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html)
 [![license](https://img.shields.io/github/license/vsanthanam/vsalert.svg)](https://en.wikipedia.org/wiki/MIT_License)
-[![GitHub release](https://img.shields.io/github/release/vsanthanam/VSAlert.svg)](https://github.com/vsanthanam/VSAlert/releases)
-[![GitHub Release Date](https://img.shields.io/github/release-date/vsanthanam/VSAlert.svg)](https://github.com/vsanthanam/VSAlert/releases)
+[![GitHub (pre-)release](https://img.shields.io/github/release/vsanthanam/VSAlert/all.svg)](https://github.com/vsanthanam/VSAlert/releases)
 [![documentation](https://code.vsanthanam.com/VSAlert/Documentation/badge.svg)](https://code.vsanthanam.com/VSAlert/Documentation/)
+[![CocoaPods](https://img.shields.io/cocoapods/v/VSAlert.svg)](https://cocoapods.org/pods/VSAlert)
 
 ## Setup & Help
 
