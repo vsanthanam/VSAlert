@@ -34,7 +34,7 @@ VSAlert is packaged as a **static framework**. Using the compiled static framewo
 $ pod init
 ```
 
-2. Add `pod 'VSAlert', '~> 1.2'` to your podfile for the appropriate targets.
+2. Add `pod 'VSAlert', '~> 1.3'` to your podfile for the appropriate targets.
 
 3. Install the depedency by running:
 
@@ -57,12 +57,11 @@ $ git clone https://github.com/vsanthanam/VSAlert.git
 2. Add `VSAlertController.h`, `VSAlertController.m`, `VSAlertAction.h`, and `VSAlertAction.m` to your project.
 3. Reference the library in the relevent files with `#import "VSAlertController.h"`.
 
-
-
 <div class="alert alert-warning" markdown="1">
 **Warning:** Using the version of the code on the master branch isn't always production ready. Use one of the other two installation options for production ready releases.
 </div>
 
+Alternatively, you can build the `Framework` target for `Generic iOS Device` if you want to compile the static framework yourself. It's output can be found in `{Repo}/Release/VSAlert.framework`.
 
 # Usage
 
@@ -92,6 +91,14 @@ VSAlertController is designed to mimic the UIAlertController API as closely as p
 
 ```
 
-## Documentation
+## Documentation & Examples
 
 VSAlert is highly customizable, both at the per instance level, as well as globally via UIAppearance. Take a look at the [full documentation](https://code.vsanthanam.com/VSAlert/Documentation/index.html) for more detailed information on customizing your alerts and their actions.
+
+The hosted documentation is based on release 1.3. If you're using any other release, refer to the documentation inlcuded in the repository or release download. 
+
+Documentation is included in HTML format, as well in a`.docset`, so you can easily add it to Xcode, Dash, or any other documentation browser of your choice.
+
+VSAlert also includes an example application featuring several different alert styles and customization options. You can build the `VSAlert-Example` target for the simulator or device of your choice to browser around for inspration, as well as get a demo of some of the customiozation options.
+
+VSAlert allows you to embed images in your alert controllers. We provide a .sketch template and some recommended sizes to get you started.
