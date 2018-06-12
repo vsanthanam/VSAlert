@@ -13,5 +13,5 @@ The website is hosted on [GitHub Pages](https://pages.github.com), and is built 
 
 ## Community Guidelines
 
-See the [code of conduct](https://code.vsanthanam.com/VSAlert/CODE_OF_CONDUCT.html) for detailed participation rules.
+See the [code of conduct](https://code.vsanthanam.com/VSAlert/CODE_OF_CONDUCT.html) for detailed participation rules. Please report all violations to [talkto@vsanthanam.com](mailto:talkto@vsanthanam.com)
 
