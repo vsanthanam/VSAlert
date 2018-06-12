@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'VSAlert'
-  s.version          = '1.2.4'
+  s.version          = '1.3'
   s.summary          = "An drop-in replacement for UIAlertController with more power and better looks."
   s.description      = "An drop-in replacement for UIAlertController that looks a hell of a lot better, built in Objective-C. Based on Codedio's aweomse Swift library, PMAlertController."
   s.homepage         = 'https://github.com/vsanthanam/VSAlert'
