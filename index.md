@@ -1,7 +1,7 @@
 ---
 title: Quick Start
 homepage: true
-description: a drop-in replacement in VSAlertController
+description: a drop-in replacement in UIAlertController
 layout: page
 navorder: 0
 ---
