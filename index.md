@@ -1,5 +1,5 @@
 ---
-title: Quick Start Guide
+title: Quick Start
 homepage: true
 description: a drop-in replacement in VSAlertController
 layout: page
@@ -51,12 +51,31 @@ $ git clone https://github.com/vsanthanam/VSAlert.git
 2. Add `VSAlertController.h`, `VSAlertController.m`, `VSAlertAction.h`, and `VSAlertAction.m` to your project.
 3. Reference the library in the relevent files with `#import "VSAlertController.h"`.
 
+
+
 <div class="alert alert-warning" markdown="1">
 **Warning:** Using the version of the code on the master branch isn't always production ready. Use one of the other two installation options for production ready releases.
 </div>
 
-# Basic Usage
 
-## Customizing Alert Appearance
+# Usage
 
-## 
+## Overview
+
+VSAlertController is designed to mimic the UIAlertController API as closely as possible. Its usage pattern is identical.
+
+1. Create & configure an instance of `VSAlertController`.
+2. Create & configure instances of `VSAlertAction` and add them to your alert controller by using it's `-addAction:` instance method.
+3. Present your alert by calling UIViewController's `-presentViewController:animated:` instance method on a view controller of your choice.
+
+## Styling Alerts
+
+sniqqity
+
+## Examples
+
+snaqqity
+
+# Documentation
+
+wh!p
