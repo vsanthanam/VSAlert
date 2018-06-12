@@ -42,7 +42,7 @@ $ pod init
 $ pod install
 ```
 
-4. Reference the library in the releventing files with `#import <VSAlert/VSAlert.h>`.
+4. Reference the library in the relevent files with `#import <VSAlert/VSAlert.h>`.
 
 More information about the pod is available [here](https://cocoapods.org/pods/VSAlert).
 
