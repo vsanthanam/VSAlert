@@ -7,24 +7,6 @@ navorder: 1
 
 # Change Log
 
-## [Unreleased](https://github.com/vsanthanam/VSAlert/tree/HEAD)
-
-[Full Changelog](https://github.com/vsanthanam/VSAlert/compare/1.3...HEAD)
-
-**Implemented enhancements:**
-
-- New Website [\#21](https://github.com/vsanthanam/VSAlert/issues/21)
-
-**Closed issues:**
-
-- Cocoapods support [\#32](https://github.com/vsanthanam/VSAlert/issues/32)
-- Cancel Button Font [\#31](https://github.com/vsanthanam/VSAlert/issues/31)
-
-**Merged pull requests:**
-
-- updated homepage [\#30](https://github.com/vsanthanam/VSAlert/pull/30) ([vsanthanam](https://github.com/vsanthanam))
-- Site update 1 [\#29](https://github.com/vsanthanam/VSAlert/pull/29) ([vsanthanam](https://github.com/vsanthanam))
-
 ## [1.3](https://github.com/vsanthanam/VSAlert/tree/1.3) (2018-06-12)
 [Full Changelog](https://github.com/vsanthanam/VSAlert/compare/1.2.4...1.3)
 
