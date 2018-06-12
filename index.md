@@ -8,7 +8,13 @@ navorder: 0
 
 # Overview
 
-VSAlertController is a drop-in replacement for UIAlertController. It's designed to mimic UIAlertController's API as closely as possible, while adding addtional styling & behaviorial customization options. VSAlertController is loosely inspired by codeio's [PMAlertController](https://github.com/pmusolino/PMAlertController), but is written in Objective-C rather than Swift and does not use IB files to build its UI.
+VSAlertController is a drop-in replacement for UIAlertController. It's designed to mimic UIAlertController's API as closely as possible, while adding addtional styling & behaviorial customization options. VSAlertController is loosely inspired by codeio's [PMAlertController](https://github.com/pmusolino/PMAlertController), but is written in Objective-C rather than Swift and does not use IB files to build its UI. VSAlertController adds the following additional features
+
+* In addition to 'Alert' and 'Action Sheet' styles, VSAlert also provides a 'Walkthrough Alert' style, which is similar to an alert, but is significantly wider.
+* Alerts can be optionally displayed with an image
+* The background color, text color, text alignment, and text color of your alerts can be configured.
+* The animation that is used to show / hide the alert can be configured
+* Appearance of alerts can be configured at the per instance level, or globally via [UIAppearance](https://developer.apple.com/documentation/uikit/uiappearance?language=objc).
 
 # Setup
 
@@ -60,22 +66,32 @@ $ git clone https://github.com/vsanthanam/VSAlert.git
 
 # Usage
 
-## Overview
+## Basics
 
 VSAlertController is designed to mimic the UIAlertController API as closely as possible. Its usage pattern is identical.
 
 1. Create & configure an instance of `VSAlertController`.
 2. Create & configure instances of `VSAlertAction` and add them to your alert controller by using it's `-addAction:` instance method.
-3. Present your alert by calling UIViewController's `-presentViewController:animated:` instance method on a view controller of your choice.
+3. Present your alert by calling UIViewController's `-presentViewController:animated:completion:` instance method on a view controller of your choice.
 
-## Styling Alerts
+```objective-c
 
-sniqqity
+- (void)showAlert:(id)sender {
 
-## Examples
+    VSAlertController *controller = [VSAlertController alertControllerWithTitle:@"Title" message:@"Message" style:VSAlertControllerStyleAlert];
+                                                                          
+    VSAlertAction *action = [VSAlertAction actionWithTitle:@"OK" style:VSAlertActionStyleCancel action:nil];
+    
+    [controller addAction:action];
+    
+    [self presentViewController:controller
+                       animated:YES
+                     completion:nil];
 
-snaqqity
+}
 
-# Documentation
+```
 
-wh!p
+## Documentation
+
+VSAlert is highly customizable, both at the per instance level, as well as globally via UIAppearance. Take a look at the [full documentation](https://code.vsanthanam.com/VSAlert/Documentation/index.html) for more detailed information on customizing your alerts and their actions.
