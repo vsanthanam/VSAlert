@@ -1,4 +1,3 @@
-
 # Introduction
 
 You are here to help on VSAlert? Awesome, feel welcome and read the following sections in order to know how to ask questions and how to work on something.
@@ -44,7 +43,7 @@ Please test your insure your bug can be easily replicated across installation te
 
 Before submitting a feature request, see the [library documentation](https://code.vsanthanam.com/VSAlert/Documentation) to make sure that what you want isn't already possible. 
 
-# Project Phillosophy
+## Philosophy
 
 When contriubuting to the project, keep in mind the following
 
