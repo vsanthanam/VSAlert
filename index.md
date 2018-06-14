@@ -1,5 +1,5 @@
 ---
-title: Quick Start
+title: Get Started
 homepage: true
 description: a drop-in replacement in UIAlertController
 layout: page
