@@ -15,15 +15,17 @@ license:
 
 links:
     header:
-      - title: GitHub
-        url: https://www.github.com/vsanthanam/VSAlert
       - title: Documentation
         url: https://code.vsanthanam.com/VSAlert/Documentation/index.html
+      - title: GitHub
+        url: https://www.github.com/vsanthanam/VSAlert
     footer:
       - title: GitHub
         url: https://www.github.com/vsanthanam/VSAlert/jekyll-docs-theme
       - title: Issues
         url: https://www.github.com/vsanthanam/VSAlert/issues?state=open
+      - title: About Me
+        url: https://www.vsanthanam.com
 
 ui:
     header:
