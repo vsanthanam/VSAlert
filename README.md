@@ -5,6 +5,7 @@
 [![GitHub (pre-)release](https://img.shields.io/github/release/vsanthanam/VSAlert/all.svg)](https://github.com/vsanthanam/VSAlert/releases)
 [![documentation](https://code.vsanthanam.com/VSAlert/Documentation/badge.svg)](https://code.vsanthanam.com/VSAlert/Documentation/)
 [![CocoaPods](https://img.shields.io/cocoapods/v/VSAlert.svg)](https://cocoapods.org/pods/VSAlert)
+![CocoaPods](https://img.shields.io/cocoapods/p/VSAlert.svg)
 
 ## Setup
 
