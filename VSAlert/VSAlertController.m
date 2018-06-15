@@ -593,23 +593,23 @@ static os_log_t alert_log;
 
 #pragma mark - Public Class Methods
 
-+ (instancetype)alertControllerWithTitle:(NSString *)title message:(NSString *)message image:(UIImage *)image style:(VSAlertControllerStyle)style {
++ (instancetype)alertControllerWithTitle:(NSString *)title message:(NSString *)message image:(UIImage *)image preferredStyle:(VSAlertControllerStyle)preferredStyle {
     
     VSAlertController *alertController = [[self alloc] initWithTitle:title
                                                              message:message
                                                                image:image
-                                                               style:style];
+                                                      preferredStyle:preferredStyle];
     
     return alertController;
     
 }
 
-+ (instancetype)alertControllerWithTitle:(NSString *)title message:(NSString *)message style:(VSAlertControllerStyle)style {
++ (instancetype)alertControllerWithTitle:(NSString *)title message:(NSString *)message preferredStyle:(VSAlertControllerStyle)preferredStyle {
     
     VSAlertController *alertController = [[self alloc] initWithTitle:title
                                                              message:message
                                                                image:nil
-                                                               style:style];
+                                                      preferredStyle:preferredStyle];
     
     return alertController;
     
@@ -622,7 +622,7 @@ static os_log_t alert_log;
     self = [self initWithTitle:nil
                        message:nil
                          image:nil
-                         style:VSAlertControllerStyleAlert];
+                preferredStyle:VSAlertControllerStyleAlert];
     
     return self;
     
@@ -946,7 +946,7 @@ static os_log_t alert_log;
 }
 #pragma mark - Public Instance Methods
 
-- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message image:(UIImage *)image style:(VSAlertControllerStyle)style {
+- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message image:(UIImage *)image preferredStyle:(VSAlertControllerStyle)preferredStyle {
     
     self = [super initWithNibName:nil bundle:nil];
     
@@ -961,7 +961,7 @@ static os_log_t alert_log;
         // Assign read-only properties
         _message = message;
         _image = image;
-        _style = style;
+        _style = preferredStyle;
         
     }
     
