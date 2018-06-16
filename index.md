@@ -20,52 +20,48 @@ VSAlertController is a drop-in replacement for UIAlertController. It's designed 
 
 VSAlert is packaged as a **static framework**. Using the compiled static framework is the recommended setup option, but you can also use CocoaPods, or include the source code directly in your target.
 
-## Static Framework
+### Framework
 
 1. Download the latest stable release [from GitHub](https://github.com/vsanthanam/VSAlert/releases). It contains a compiled static framework as well as a copy of the relevent documentation.
 2. Add  `VSAlert.framework`, and have your target link against the framework during the build process.
 3. Reference the library by importing the clang module in relevent files with `@import VSAlert;`.
 
-## CocoaPods
+### CocoaPods
 
-1. If you haven't already, download & install [Ruby](https://www.ruby-lang.org/en/) and [CocoaPods](https://cocoapods.org) on your machine, and setup your project for use with CocoaPods with:
-
-```
-$ pod init
-```
-
-2. Add `pod 'VSAlert', '~> 1.3'` to your podfile for the appropriate targets.
-
-3. Install the depedency by running:
-
-```
-$ pod install
-```
-
-4. Reference the library in the relevent files with `#import <VSAlert/VSAlert.h>`.
+1. If you haven't already, download & install [Ruby](https://www.ruby-lang.org/en/) and [CocoaPods](https://cocoapods.org) on your machine.
+2. If your project isn't already configured to use CocoaPods, create a podfile & project workpsace
+    ```
+    $ pod init
+    ```
+3. Add `pod 'VSAlert', '~> 1.3'` to your podfile for the appropriate targets.
+4. Install the depedency by running:
+    ```
+    $ pod install
+    ```
+5. Reference the library in the relevent files with `#import <VSAlert/VSAlert.h>`.
 
 More information about the pod is available [here](https://cocoapods.org/pods/VSAlert).
 
-## Direct Source
+### Direct Source
 
 1. Clone the repository:
 
-```
-$ git clone https://github.com/vsanthanam/VSAlert.git
-```
+    ```
+    $ git clone https://github.com/vsanthanam/VSAlert.git
+    ```
 
 2. Add `VSAlertController.h`, `VSAlertController.m`, `VSAlertAction.h`, and `VSAlertAction.m` to your project.
 3. Reference the library in the relevent files with `#import "VSAlertController.h"`.
+
+Alternatively, you can build the `Framework` target for `Generic iOS Device` if you want to compile the static framework yourself. It's output can be found in `{Repo}/Release/VSAlert.framework`.
 
 <div class="alert alert-warning" markdown="1">
 **Warning:** Using the version of the code on the master branch isn't always production ready. Use one of the other two installation options for production ready releases.
 </div>
 
-Alternatively, you can build the `Framework` target for `Generic iOS Device` if you want to compile the static framework yourself. It's output can be found in `{Repo}/Release/VSAlert.framework`.
-
 # Usage
 
-## Basics
+### Basics
 
 VSAlertController is designed to mimic the UIAlertController API as closely as possible. Its usage pattern is identical.
 
@@ -91,7 +87,7 @@ VSAlertController is designed to mimic the UIAlertController API as closely as p
 
 ```
 
-## Documentation & Examples
+### Documentation & Examples
 
 VSAlert is highly customizable, both at the per instance level, as well as globally via UIAppearance. Take a look at the [full documentation](https://code.vsanthanam.com/VSAlert/Documentation/index.html) for more detailed information on customizing your alerts and their actions.
 
