@@ -79,7 +79,7 @@ VSAlertController is designed to mimic the UIAlertController API as closely as p
 
 - (void)showAlert:(id)sender {
 
-    VSAlertController *controller = [VSAlertController alertControllerWithTitle:@"Title" message:@"Message" style:VSAlertControllerStyleAlert];
+    VSAlertController *controller = [VSAlertController alertControllerWithTitle:@"Title" message:@"Message" preferredStyle:VSAlertControllerStyleAlert];
                                                                           
     VSAlertAction *action = [VSAlertAction actionWithTitle:@"OK" style:VSAlertActionStyleCancel action:nil];
     
