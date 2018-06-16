@@ -29,12 +29,16 @@ VSAlert is packaged as a **static framework**. Using the compiled static framewo
 ### CocoaPods
 
 1. If you haven't already, download & install [Ruby](https://www.ruby-lang.org/en/) and [CocoaPods](https://cocoapods.org) on your machine.
-2. If your project isn't already configured to use CocoaPods, create a podfile & project workpsace
+2. If your project isn't already configured to use CocoaPods, create a podfile & project workpsace:
+    <br />
+    <br />
     ```
     $ pod init
     ```
 3. Add `pod 'VSAlert', '~> 1.3'` to your podfile for the appropriate targets.
 4. Install the depedency by running:
+    <br />
+    <br />
     ```
     $ pod install
     ```
@@ -45,7 +49,8 @@ More information about the pod is available [here](https://cocoapods.org/pods/VS
 ### Direct Source
 
 1. Clone the repository:
-
+    <br />
+    <br />
     ```
     $ git clone https://github.com/vsanthanam/VSAlert.git
     ```
@@ -54,7 +59,8 @@ More information about the pod is available [here](https://cocoapods.org/pods/VS
 3. Reference the library in the relevent files with `#import "VSAlertController.h"`.
 
 Alternatively, you can build the `Framework` target for `Generic iOS Device` if you want to compile the static framework yourself. It's output can be found in `{Repo}/Release/VSAlert.framework`.
-
+<br />
+<br />
 <div class="alert alert-warning" markdown="1">
 **Warning:** Using the version of the code on the master branch isn't always production ready. Use one of the other two installation options for production ready releases.
 </div>
