@@ -125,17 +125,19 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
 
 /**
  Sent to the delegate just before the view controller disappears.
-
+ 
  @param alertController The alert controller
+ @param action The selected action
  */
-- (void)alertControllerWillDisappear:(nonnull VSAlertController *)alertController;
+- (void)alertControllerWillDisappear:(nonnull VSAlertController *)alertController action:(nonnull VSAlertAction *)action;
 
 /**
  Sent to teh delegate just after the view controller disappears.
-
+ 
  @param alertController The alert controller
+ @param action The selected action
  */
-- (void)alertControllerDidDisappear:(nonnull VSAlertController *)alertController;
+- (void)alertControllerDidDisappear:(nonnull VSAlertController *)alertController action:(nonnull VSAlertAction *)action;
 
 /**
  Sent to the delegate when the user taps on an action. Message is sent *before* the action block is executed.

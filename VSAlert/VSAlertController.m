@@ -522,6 +522,7 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
 @property (NS_NONATOMIC_IOSONLY, strong) UIStackView *alertActionStackView;
 @property (NS_NONATOMIC_IOSONLY, strong) NSLayoutConstraint *alertStackViewHeightConstraint;
 @property (NS_NONATOMIC_IOSONLY, strong) UITapGestureRecognizer *tapRecognizer;
+@property (NS_NONATOMIC_IOSONLY, strong) VSAlertAction *selectedAction;
 
 @property (NS_NONATOMIC_IOSONLY, readonly) CGFloat alertStackViewHeight;
 @property (NS_NONATOMIC_IOSONLY, readonly) BOOL hasTextFieldAdded;
@@ -748,11 +749,11 @@ static os_log_t alert_log;
     
     [super viewWillDisappear:animated];
     
-    if ([self.delegate respondsToSelector:@selector(alertControllerWillDisappear:)]) {
+    if ([self.delegate respondsToSelector:@selector(alertControllerWillDisappear:action:)]) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            [self.delegate alertControllerWillDisappear:self];
+            [self.delegate alertControllerWillDisappear:self action:self.selectedAction];
             
         });
         
@@ -772,11 +773,11 @@ static os_log_t alert_log;
                                                     name:UIKeyboardWillShowNotification
                                                   object:nil];
     
-    if ([self.delegate respondsToSelector:@selector(alertControllerDidDisappear:)]) {
+    if ([self.delegate respondsToSelector:@selector(alertControllerDidDisappear:action:)]) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-           
-            [self.delegate alertControllerDidDisappear:self];
+            
+            [self.delegate alertControllerDidDisappear:self action:self.selectedAction];
             
         });
         
@@ -1441,6 +1442,7 @@ static os_log_t alert_log;
 - (void)_dismissAlertControllerFromAction:(VSAlertAction *)sender {
     
     // Pass action style to animator
+    _selectedAction = sender;
     _dismissAnimator = [[VSAlertControllerTransitionAnimator alloc] initWithActionStyle:sender.style];
     [self dismissViewControllerAnimated:YES completion:nil];
     
