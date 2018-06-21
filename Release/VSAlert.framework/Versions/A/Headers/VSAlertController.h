@@ -162,10 +162,10 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
  @param title The title of the alert
  @param message The message of the alert
  @param image The image to be displayed in the header of the alert.
- @param style The style of the alert
+ @param preferredStyle The style of the alert
  @return The instantiated alert object
  */
-+ (nullable instancetype)alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message image:(nullable UIImage *)image style:(VSAlertControllerStyle)style;
++ (nullable instancetype)alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message image:(nullable UIImage *)image preferredStyle:(VSAlertControllerStyle)preferredStyle;
 
 
 /**
@@ -173,20 +173,20 @@ typedef NS_ENUM(NSInteger, VSAlertControllerAnimationStyle) {
 
  @param title The title of the alert
  @param message The message of the alert
- @param style The style of the alert
+ @param preferredStyle The style of the alert
  @return The instantiated alert object
  */
-+ (nullable instancetype)alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message style:(VSAlertControllerStyle)style;
++ (nullable instancetype)alertControllerWithTitle:(nullable NSString *)title message:(nullable NSString *)message preferredStyle:(VSAlertControllerStyle)preferredStyle;
 
 /** Create an instance of VSAlertController
  
  @param title The title of the alert
  @param message The message of the alert
  @param image The image to be displayed in the header of the alert.
- @param style The style of the alert
+ @param preferredStyle The style of the alert
  @return The instantiated alert object
  */
-- (nullable instancetype)initWithTitle:(nullable NSString *)title message:(nullable NSString *)message image:(nullable UIImage *)image style:(VSAlertControllerStyle)style NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithTitle:(nullable NSString *)title message:(nullable NSString *)message image:(nullable UIImage *)image preferredStyle:(VSAlertControllerStyle)preferredStyle NS_DESIGNATED_INITIALIZER;
 
 /**
  @name Configuring Alert Appearance
