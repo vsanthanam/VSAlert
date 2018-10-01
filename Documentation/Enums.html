@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Constants  Reference</title>
+    <title>Enumerations  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/objc/Section/Constants" class="dashAnchor"></a>
-    <a title="Constants  Reference"></a>
+    <a name="//apple_ref/objc/Section/Enumerations" class="dashAnchor"></a>
+    <a title="Enumerations  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p>
@@ -35,7 +35,7 @@
             <a href="index.html">VSAlert Reference</a>
             <img id="carat" src="img/carat.png" />
           </span>
-          Constants  Reference
+          Enumerations  Reference
         </p>
       </div>
     </div>
@@ -44,8 +44,8 @@
         <article class="main-content">
           <section>
             <section class="section">
-              <h1>Constants</h1>
-              <p>The following constants are available globally.</p>
+              <h1>Enumerations</h1>
+              <p>The following enumerations are available globally.</p>
 
             </section>
             <section class="section task-group-section">
@@ -54,9 +54,9 @@
                   <li class="item">
                     <div>
                       <code>
-                      <a name="/c:@VSAlertControllerNotImplementedException"></a>
-                      <a name="//apple_ref/objc/Constant/VSAlertControllerNotImplementedException" class="dashAnchor"></a>
-                      <a class="token" href="#/c:@VSAlertControllerNotImplementedException">VSAlertControllerNotImplementedException</a>
+                      <a name="/c:@E@VSAlertActionStyle"></a>
+                      <a name="//apple_ref/objc/Enum/VSAlertActionStyle" class="dashAnchor"></a>
+                      <a class="token" href="#/c:@E@VSAlertActionStyle">VSAlertActionStyle</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -64,14 +64,59 @@
                       <section class="section">
                         <div class="pointer"></div>
                         <div class="abstract">
-                          <p>An exception thrown when an unimplemented feature is encountered at runtime.</p>
+                          <p>An enumeration for the kinds of actions that can be created</p>
 
+<ul>
+<li>VSAlertActionStyleDefault: A normal action</li>
+<li>VSAlertActionStyleCancel: An action that indicates to the user that the current process wil be cancelled</li>
+<li>VSAlertActionStyleDestructive: An action indicates to the user that an irreversible process is about to happen.</li>
+</ul>
+
+                          <a href="Enums/VSAlertActionStyle.html" class="slightly-smaller">See more</a>
                         </div>
                         <div class="declaration">
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Objective-C</p>
-                            <pre class="highlight objective_c"><code><span class="k">extern</span> <span class="n">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">_Nonnull</span> <span class="n">VSAlertControllerNotImplementedException</span></code></pre>
+                            <pre class="highlight objective_c"><code><span class="k">enum</span> <span class="n">VSAlertActionStyle</span> <span class="p">{}</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="task-group">
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/c:@E@VSAlertControllerStyle"></a>
+                      <a name="//apple_ref/objc/Enum/VSAlertControllerStyle" class="dashAnchor"></a>
+                      <a class="token" href="#/c:@E@VSAlertControllerStyle">VSAlertControllerStyle</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>An enumeration describing the kinds of alerts that VSAlertController can display</p>
+
+<ul>
+<li>VSAlertControllerStyleAlert: A standard alert, 270pt wide, variable height. Supports texts fields.</li>
+<li>VSAlertControllerStyleWalkthroughAlert: A wider alert that stretches to the margins of the device - 18pt in either direction. Supports text fields, useful for onboarding. 500pt wide on iPad.</li>
+<li>VSAlertControllerStyleActionSheet: An alert that appears at the bottom of the display, similar to Apple&rsquo;s action sheet stlye. Does NOT support text fields.</li>
+</ul>
+
+                          <a href="Enums/VSAlertControllerStyle.html" class="slightly-smaller">See more</a>
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Objective-C</p>
+                            <pre class="highlight objective_c"><code><span class="k">enum</span> <span class="n">VSAlertControllerStyle</span> <span class="p">{}</span></code></pre>
 
                           </div>
                         </div>
@@ -81,9 +126,9 @@
                   <li class="item">
                     <div>
                       <code>
-                      <a name="/c:@VSAlertControllerTextFieldInvalidException"></a>
-                      <a name="//apple_ref/objc/Constant/VSAlertControllerTextFieldInvalidException" class="dashAnchor"></a>
-                      <a class="token" href="#/c:@VSAlertControllerTextFieldInvalidException">VSAlertControllerTextFieldInvalidException</a>
+                      <a name="/c:@E@VSAlertControllerAnimationStyle"></a>
+                      <a name="//apple_ref/objc/Enum/VSAlertControllerAnimationStyle" class="dashAnchor"></a>
+                      <a class="token" href="#/c:@E@VSAlertControllerAnimationStyle">VSAlertControllerAnimationStyle</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -91,41 +136,25 @@
                       <section class="section">
                         <div class="pointer"></div>
                         <div class="abstract">
-                          <p>An exception thrown when a text field is added to an alert controller which doesn&rsquo;t support text fields</p>
+                          <p>An enumeration describing the kinds of animations that can be used to present and hide an alert</p>
 
+<ul>
+<li>VSAlertControllerAnimationStyleRise: The alert rises from the bottom of the screen and falls down when dismissed.</li>
+<li>VSAlertControllerAnimationStyleFall: The alert falls from the top of the screen and rises up when dismissed.</li>
+<li>VSAlertControllerAnimationStyleSlide: The alert slides from the left of the screen and slides to the right when dismissed.</li>
+<li>VSAlertControllerAnimationStyleFlip: The alert flips from the right, and flips to the left when dismissed.</li>
+<li>VSAlertControllerAnimationStyleSticker: The alert page flips from the top, then again from the bottom when dismissed.</li>
+<li>VSAlertControllerAnimationStyleCrossDisolve: The alert page fades in, then fades out dismissed.</li>
+<li>VSAlertControllerAnimationStyleAutomatic: The alert chooses its presentation and dismissal styles automatically.</li>
+</ul>
+
+                          <a href="Enums/VSAlertControllerAnimationStyle.html" class="slightly-smaller">See more</a>
                         </div>
                         <div class="declaration">
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Objective-C</p>
-                            <pre class="highlight objective_c"><code><span class="k">extern</span> <span class="n">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">_Nonnull</span> <span class="n">VSAlertControllerTextFieldInvalidException</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/c:@VSAlertControllerPresentationAnimationException"></a>
-                      <a name="//apple_ref/objc/Constant/VSAlertControllerPresentationAnimationException" class="dashAnchor"></a>
-                      <a class="token" href="#/c:@VSAlertControllerPresentationAnimationException">VSAlertControllerPresentationAnimationException</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>An exception thrown when a view controller presentation animation fails</p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Objective-C</p>
-                            <pre class="highlight objective_c"><code><span class="k">extern</span> <span class="n">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">_Nonnull</span> <span class="n">VSAlertControllerPresentationAnimationException</span></code></pre>
+                            <pre class="highlight objective_c"><code><span class="k">enum</span> <span class="n">VSAlertControllerAnimationStyle</span> <span class="p">{}</span></code></pre>
 
                           </div>
                         </div>
