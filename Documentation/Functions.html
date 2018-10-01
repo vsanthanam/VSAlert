@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Classes  Reference</title>
+    <title>Functions  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/objc/Section/Classes" class="dashAnchor"></a>
-    <a title="Classes  Reference"></a>
+    <a name="//apple_ref/objc/Section/Functions" class="dashAnchor"></a>
+    <a title="Functions  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p>
@@ -35,7 +35,7 @@
             <a href="index.html">VSAlert Reference</a>
             <img id="carat" src="img/carat.png" />
           </span>
-          Classes  Reference
+          Functions  Reference
         </p>
       </div>
     </div>
@@ -44,8 +44,8 @@
         <article class="main-content">
           <section>
             <section class="section">
-              <h1>Classes</h1>
-              <p>The following classes are available globally.</p>
+              <h1>Functions</h1>
+              <p>The following functions are available globally.</p>
 
             </section>
             <section class="section task-group-section">
@@ -54,9 +54,9 @@
                   <li class="item">
                     <div>
                       <code>
-                      <a name="/c:objc(cs)VSAlertAction"></a>
-                      <a name="//apple_ref/objc/Class/VSAlertAction" class="dashAnchor"></a>
-                      <a class="token" href="#/c:objc(cs)VSAlertAction">VSAlertAction</a>
+                      <a name="/c:@F@NS_ENUM"></a>
+                      <a name="//apple_ref/objc/Function/NS_ENUM" class="dashAnchor"></a>
+                      <a class="token" href="#/c:@F@NS_ENUM">NS_ENUM</a>
                       </code>
                     </div>
                     <div class="height-container">
@@ -64,47 +64,20 @@
                       <section class="section">
                         <div class="pointer"></div>
                         <div class="abstract">
-                          <p>VSAlertAction is a specialized subclass of UIButton that is used to populate and provide interactive controls to an instance of VSAlertController.</p>
+                          <p>An enumeration for the kinds of actions that can be created</p>
 
-                          <a href="Classes/VSAlertAction.html" class="slightly-smaller">See more</a>
+<ul>
+<li>VSAlertActionStyleDefault: A normal action</li>
+<li>VSAlertActionStyleCancel: An action that indicates to the user that the current process wil be cancelled</li>
+<li>VSAlertActionStyleDestructive: An action indicates to the user that an irreversible process is about to happen.</li>
+</ul>
+
                         </div>
                         <div class="declaration">
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Objective-C</p>
-                            <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">VSAlertAction</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/c:objc(cs)VSAlertController"></a>
-                      <a name="//apple_ref/objc/Class/VSAlertController" class="dashAnchor"></a>
-                      <a class="token" href="#/c:objc(cs)VSAlertController">VSAlertController</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>VSAlertController is a drop-in replacement for UIAlertController with more features. It is created using the <code>+alertControllerWithTitle:message:image:style:</code> class method, and configured using instances of VSAlertAction. You can add text fields by calling <code><a href="Classes/VSAlertController.html#/c:objc(cs)VSAlertController(im)addTextField:">-addTextField:</a></code> on an instance of VSAlertController. Instantiate the controller, add your actions and textfieds. and any other configuration you might need. Present the controller modally using UIViewController&rsquo;s <code>-presentViewController:animated:completion:</code> method. VSAlertController respects the animation paramater of this call, and you configure the animation in question by setting your instances animationStyle property before presentation. You can also change this property in the handler of an action to use a different animation on dismissal.</p>
-
-                          <a href="Classes/VSAlertController.html" class="slightly-smaller">See more</a>
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Objective-C</p>
-                            <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">VSAlertController</span></code></pre>
+                            <pre class="highlight objective_c"><code><span class="kt">int</span> <span class="n">NS_ENUM</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">,</span> <span class="n">VSAlertActionStyle</span><span class="p">)</span></code></pre>
 
                           </div>
                         </div>
