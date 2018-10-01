@@ -16,7 +16,7 @@
       <div class="content-wrapper">
         <p>
           <a href="../index.html">VSAlert Docs</a>
-          <span class="no-mobile"> (76% documented)</span>
+          <span class="no-mobile"> (100% documented)</span>
         </p>
     
         <p class="header-right">
@@ -47,7 +47,7 @@
               <h1>VSAlertAction</h1>
                 <div class="declaration">
                   <div class="language">
-                    <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">VSAlertAction</span></code></pre>
+                    <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">VSAlertAction</span> <span class="p">:</span> <span class="nc">UIButton</span> <span class="o">&lt;</span><span class="n">UIAppearance</span><span class="o">&gt;</span></code></pre>
 
                   </div>
                 </div>
@@ -85,8 +85,8 @@
                           <div class="language">
                             <p class="aside-title">Objective-C</p>
                             <pre class="highlight objective_c"><code><span class="k">+</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span>
-<span class="nf">alertActionWithTitle</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">title</span>
-               <span class="nf">style</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">style</span>
+<span class="nf">alertActionWithTitle</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">title</span>
+               <span class="nf">style</span><span class="p">:(</span><span class="n"><a href="../Enums/VSAlertActionStyle.html">VSAlertActionStyle</a></span><span class="p">)</span><span class="nv">style</span>
               <span class="nf">action</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">_Nullable</span><span class="p">)(</span><span class="n">VSAlertAction</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">))</span><span class="nv">action</span><span class="p">;</span></code></pre>
 
                           </div>
@@ -162,8 +162,8 @@
                           <div class="language">
                             <p class="aside-title">Objective-C</p>
                             <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span>
-<span class="nf">initWithTitle</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">title</span>
-        <span class="nf">style</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">style</span>
+<span class="nf">initWithTitle</span><span class="p">:(</span><span class="n">nonnull</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">title</span>
+        <span class="nf">style</span><span class="p">:(</span><span class="n"><a href="../Enums/VSAlertActionStyle.html">VSAlertActionStyle</a></span><span class="p">)</span><span class="nv">style</span>
        <span class="nf">action</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">_Nullable</span><span class="p">)(</span><span class="n">VSAlertAction</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">))</span><span class="nv">action</span><span class="p">;</span></code></pre>
 
                           </div>
@@ -249,7 +249,7 @@
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Objective-C</p>
-                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">int</span> <span class="o">*</span><span class="n">actionTextColor</span><span class="p">;</span></code></pre>
+                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIColor</span> <span class="o">*</span><span class="n">actionTextColor</span><span class="p">;</span></code></pre>
 
                           </div>
                         </div>
@@ -276,7 +276,8 @@
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Objective-C</p>
-                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">int</span> <span class="o">*</span><span class="n">destructiveActionTextColor</span><span class="p">;</span></code></pre>
+                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span>
+    <span class="n">UIColor</span> <span class="o">*</span><span class="n">destructiveActionTextColor</span><span class="p">;</span></code></pre>
 
                           </div>
                         </div>
@@ -303,7 +304,7 @@
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Objective-C</p>
-                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">int</span> <span class="o">*</span><span class="n">actionTextFont</span><span class="p">;</span></code></pre>
+                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIFont</span> <span class="o">*</span><span class="n">actionTextFont</span><span class="p">;</span></code></pre>
 
                           </div>
                         </div>
@@ -330,7 +331,7 @@
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Objective-C</p>
-                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">int</span> <span class="o">*</span><span class="n">cancelActionTextFont</span><span class="p">;</span></code></pre>
+                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">UIFont</span> <span class="o">*</span><span class="n">cancelActionTextFont</span><span class="p">;</span></code></pre>
 
                           </div>
                         </div>
@@ -368,7 +369,7 @@
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Objective-C</p>
-                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">int</span> <span class="o">*</span><span class="n">alertTitle</span><span class="p">;</span></code></pre>
+                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">alertTitle</span><span class="p">;</span></code></pre>
 
                           </div>
                         </div>
@@ -395,7 +396,7 @@
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Objective-C</p>
-                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">style</span><span class="p">;</span></code></pre>
+                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Enums/VSAlertActionStyle.html">VSAlertActionStyle</a></span> <span class="n">style</span><span class="p">;</span></code></pre>
 
                           </div>
                         </div>
@@ -422,7 +423,8 @@
                           <h4>Declaration</h4>
                           <div class="language">
                             <p class="aside-title">Objective-C</p>
-                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">atomic</span><span class="p">)</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">VSAlertAction</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">)</span> <span class="n">action</span><span class="p">;</span></code></pre>
+                            <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">VSAlertAction</span> <span class="o">*</span><span class="n">_Nonnull</span><span class="p">)</span>
+    <span class="n">action</span><span class="p">;</span></code></pre>
 
                           </div>
                         </div>
@@ -453,9 +455,6 @@
               <a href="../Constants.html">Constants</a>
               <ul class="nav-group-tasks">
                 <li class="nav-group-task">
-                  <a href="../Constants.html#/c:@UI_APPEARANCE_SELECTOR">UI_APPEARANCE_SELECTOR</a>
-                </li>
-                <li class="nav-group-task">
                   <a href="../Constants.html#/c:@VSAlertControllerNotImplementedException">VSAlertControllerNotImplementedException</a>
                 </li>
                 <li class="nav-group-task">
@@ -467,18 +466,24 @@
               </ul>
             </li>
             <li class="nav-group-name">
-              <a href="../Protocols.html">Protocols</a>
+              <a href="../Enums.html">Enumerations</a>
               <ul class="nav-group-tasks">
                 <li class="nav-group-task">
-                  <a href="../Protocols/VSAlertControllerDelegate.html">VSAlertControllerDelegate</a>
+                  <a href="../Enums/VSAlertActionStyle.html">VSAlertActionStyle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/VSAlertControllerAnimationStyle.html">VSAlertControllerAnimationStyle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="../Enums/VSAlertControllerStyle.html">VSAlertControllerStyle</a>
                 </li>
               </ul>
             </li>
             <li class="nav-group-name">
-              <a href="../Functions.html">Functions</a>
+              <a href="../Protocols.html">Protocols</a>
               <ul class="nav-group-tasks">
                 <li class="nav-group-task">
-                  <a href="../Functions.html#/c:@F@NS_ENUM">NS_ENUM</a>
+                  <a href="../Protocols/VSAlertControllerDelegate.html">VSAlertControllerDelegate</a>
                 </li>
               </ul>
             </li>
