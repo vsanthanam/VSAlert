@@ -8,10 +8,10 @@
 
 Pod::Spec.new do |s|
   s.name             = 'VSAlert'
-  s.version          = '1.3.4'
+  s.version          = '1.3.5'
   s.summary          = "An drop-in replacement for UIAlertController with more power and better looks."
   s.description      = "An drop-in replacement for UIAlertController that looks a hell of a lot better, built in Objective-C. Based on Codedio's aweomse Swift library, PMAlertController."
-  s.homepage         = 'https://vsalert.vsanthanam.com'
+  s.homepage         = 'https://vsalert.io'
   s.license          = { :type => 'Copyright', :text => 'MIT' }
   s.author           = { 'Varun Santhanam' => 'talkto@vsanthanam.com' }
   s.source           = { :git => 'https://github.com/vsanthanam/VSAlert.git', :tag => s.version.to_s }
