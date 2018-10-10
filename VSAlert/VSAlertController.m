@@ -674,7 +674,11 @@ static os_log_t alert_log;
     self.alertImage.image = self.image;
 
     // Update Constraints
-    self.headerViewHeightConstraint.constant = (BOOL)self.alertImage.image ? 180.0f : 0.0f;
+    float height = 0.0f;
+    if (self.alertImage.image != nil) {
+        height = self.alertImage.image.size.height >= 180 ? 180.0f : self.alertImage.image.size.height;
+    }
+    self.headerViewHeightConstraint.constant = height;
 
     // Set Up Background Tap Gesture Recognizer If Needed
     if (self.dismissOnBackgroundTap) {
