@@ -120,7 +120,8 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
                                      
                                  }
                                  completion:^(BOOL finished) {
-                                     
+                    
+                                     [self _constrain:alertController.view toParent:fromController.view];
                                      [transitionContext completeTransition:finished];
                                      
                                  }];
@@ -144,7 +145,7 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
                                  }
                                  completion:^(BOOL finished) {
                                      
-                                     
+                                     [self _constrain:alertController.view toParent:fromController.view];
                                      [transitionContext completeTransition:finished];
                                      
                                  }];
@@ -173,6 +174,7 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
                                         }
                                         completion:^(BOOL finished) {
                                             
+                                            [self _constrain:alertController.view toParent:fromController.view];
                                             [transitionContext completeTransition:finished];
                                             
                                         }];
@@ -206,6 +208,7 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
                                         }
                                         completion:^(BOOL finished) {
                                             
+                                            [self _constrain:alertController.view toParent:fromController.view];
                                             [transitionContext completeTransition:finished];
                                             
                                         }];
@@ -238,6 +241,7 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
                                         }
                                         completion:^(BOOL finished) {
                                             
+                                            [self _constrain:alertController.view toParent:fromController.view];
                                             [transitionContext completeTransition:finished];
                                             
                                         }];
@@ -506,6 +510,13 @@ NSString * const VSAlertControllerPresentationAnimationException = @"VSAlertCont
     
     return VSAlertControllerAnimationStyleRise;
     
+}
+
+- (void)_constrain:(UIView *)alertView toParent:(UIView *)parent {
+    [alertView.topAnchor constraintEqualToAnchor: parent.topAnchor].active = YES;
+    [alertView.leadingAnchor constraintEqualToAnchor: parent.leadingAnchor].active = YES;
+    [alertView.trailingAnchor constraintEqualToAnchor: parent.trailingAnchor].active = YES;
+    [alertView.bottomAnchor constraintEqualToAnchor: parent.bottomAnchor].active = YES;
 }
 
 @end
