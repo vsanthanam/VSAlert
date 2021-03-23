@@ -35,7 +35,7 @@ VSAlert is packaged as a **static framework**. Using the compiled static framewo
     ```
     $ pod init
     ```
-3. Add `pod 'VSAlert', '~> 1.3'` to your podfile for the appropriate targets.
+3. Add `pod 'VSAlert', '~> 1.4'` to your podfile for the appropriate targets.
 4. Install the depedency by running:
     <br />
     <br />
@@ -97,7 +97,7 @@ VSAlertController is designed to mimic the UIAlertController API as closely as p
 
 VSAlert is highly customizable, both at the per instance level, as well as globally via UIAppearance. Take a look at the [full documentation](https://code.vsanthanam.com/VSAlert/Documentation/index.html) for more detailed information on customizing your alerts and their actions.
 
-The hosted documentation is based on release 1.3. If you're using any other release, refer to the documentation inlcuded in the repository or release download. 
+The hosted documentation is based on release 1.4. If you're using any other release, refer to the documentation inlcuded in the repository or release download. 
 
 Documentation is included in HTML format, as well in a`.docset`, so you can easily add it to Xcode, Dash, or any other documentation browser of your choice.
 
